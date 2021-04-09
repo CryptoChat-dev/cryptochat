@@ -171,6 +171,14 @@
       socket.emit( 'chat event', {
         data: 'User Connected'  
     })})    
+    document.getElementById("msg")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        form2()
+    }
+});
+
     socket.emit( 'chat event', {
         user_name : code.encryptMessage(user_name,decryptPass),
         message : code.encryptMessage('has joined the room.',decryptPass)
