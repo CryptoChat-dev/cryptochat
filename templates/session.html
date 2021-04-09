@@ -6,13 +6,16 @@
   <body>
 
     <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
-    <div class="message_holder"></div>
-
-    <form action="" method="POST">
+    <div class="chat box" style="border-radius:2px;border: 3px solid rgb(168, 168, 168);max-height:20%;position:fixed;">
+    <div name="messageholder" class="message_holder" style="max-height: inherit;    "><p class="allmessages"></p>
+    </div>
+    <form action="" method="POST" style="display:flex;align-items:flex-end;">
       <input type="text" class="username" placeholder="Username"/>
       <input type="text" class="message" placeholder="Messages"/>
       <input type="submit"/>
     </form>
+  </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
@@ -22,6 +25,7 @@
 
     var socket = io.connect('http://' + window.location.hostname + ':' + location.port);
     var decryptPass = window.location.href.match(/key=(.+)/)[1]
+    console.log(decryptPass)
 
     socket.on( 'connect', function() {
       socket.emit( 'chat event', {
@@ -32,7 +36,7 @@
         let user_name = $( 'input.username' ).val()
         let user_input = $( 'input.message' ).val()
         socket.emit( 'chat event', {
-          user_name : user_name,
+          user_name : code.encryptMessage(user_name,decryptPass),
           message : code.encryptMessage(user_input,decryptPass)
         } )
         $( 'input.message' ).val( '' ).focus()
@@ -42,10 +46,19 @@
       console.log( msg )
       if( typeof msg.user_name !== 'undefined' ) {
         $( 'h3' ).remove()
-        $( 'div.message_holder' ).append( '<div><b style="color: #000">'+msg.user_name+'</b> '+code.decryptMessage(msg.message,decryptPass)+'</div>' )
+        messagebox = document.createElement('P')
+        messagebox.className = 'message global'
+
+        text = document.createTextNode(code.decryptMessage(msg.user_name,decryptPass) + ": " + code.decryptMessage(msg.message,decryptPass));
+        messagebox.appendChild(text)
+        messages = document.getElementsByName("messageholder")[0]
+        messages.appendChild(messagebox)
+        messages.scrollBottom = messages.scrollHeight;
+    
+
+        //$( 'div.message_holder' ).append( '<div><b style="color: #000">'+msg.user_name+'</b> '+code.decryptMessage(msg.message,decryptPass)+'</div>' )
       }
     })
-
     let code = (function(){
     return{
       encryptMessage: function(messageToencrypt = '', secretkey = ''){
@@ -61,6 +74,5 @@
     }
     })();
 </script>
-
   </body>
   </html>

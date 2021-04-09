@@ -10,10 +10,11 @@ socketio.init_app(app, cors_allowed_origins="*")
 
 @app.route('/',methods=["GET","POST"])
 def sessions():
-	return render_template('session.html')
+	return render_template('client_chat.html')
 
 @socketio.on('chat event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print(json)
     socketio.emit('my response', json)
 
 if __name__ == '__main__':
