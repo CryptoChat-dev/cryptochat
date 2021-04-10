@@ -219,6 +219,7 @@ p{
     .chatbox-child{
         height:100%;
         width: 100%;
+        border-radius: 0;
     }
     .chatbox-title{
         font-size:2em;
