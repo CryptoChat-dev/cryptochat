@@ -10,13 +10,13 @@ Here's an overview of the features CryptoChat has to offer.
 
 CryptoChat has barely any clutter on its user interface. It's a simple, yet featured, interface that anybody could use--even your grandma!
 
-![Dark Mode Desktop](https://james-has.among-drip.cool/6lvkfaackmvhcn7ki3.png)
+![Dark Mode Desktop](https://james-has.among-drip.cool/6lvkfaackmvhcn7ki3.png?raw=true)
 
-![Light Mode Desktop](https://i.should-not-be-a.live/jtju0jumo6cg49mzk5.png)
+![Light Mode Desktop](https://i.should-not-be-a.live/jtju0jumo6cg49mzk5.png?raw=true)
 
-![Dark Mode Mobile](https://what-the-fu.cc/a72fkb44q8piej26yb.jpeg)
+![Dark Mode Mobile](https://what-the-fu.cc/a72fkb44q8piej26yb.jpeg?raw=true)
 
-![Light Mode Mobile](https://windscribe.is-a-cu.lt/hx9qfnz22w1the7fny.jpeg)
+![Light Mode Mobile](https://windscribe.is-a-cu.lt/hx9qfnz22w1the7fny.jpeg?raw=true)
 
 ### Encryption
 
