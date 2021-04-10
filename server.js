@@ -1,8 +1,7 @@
 const express = require('express')
-var io = require('socket.io');
 var app = express()
 var server = require('http').Server(app)
-var io = io(server);
+var io = require('socket.io')(server);
 const port = 6969
 
 app.get('/', (req, res) => {
