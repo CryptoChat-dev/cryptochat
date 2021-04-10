@@ -139,8 +139,8 @@ a{
 .username {
     margin-bottom: 30px;
     border-radius: 25px;
-    box-shadow: inset 8px 8px 8px #242424,
-                inset -8px -8px 8px #131313;
+    box-shadow: inset 8px 8px 8px #131313,
+                inset -8px -8px 8px #242424;
     width: 50em;
     
 }
@@ -149,8 +149,8 @@ a{
     height: 80%;
     margin-bottom: 30px;
     border-radius: 25px;
-    box-shadow: inset 8px 8px 8px #242424,
-                inset -8px -8px 8px #131313;
+    box-shadow: inset 8px 8px 8px #131313,
+                inset -8px -8px 8px #242424;
     width: 45em;
     border: none;
     outline:none;
