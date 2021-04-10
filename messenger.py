@@ -46,9 +46,9 @@ def worker():
 @app.route('/icons/512', methods=["GET"])
 def icon512():
     return send_file(
-        "icons/cryptochat 512.png",
+        "icons/cryptochat 512.jpg",
         as_attachment=True,
-        attachment_filename="cryptochat 512.png"
+        attachment_filename="cryptochat 512.jpg"
     )
 
 @app.route('/icons/192', methods=["GET"])

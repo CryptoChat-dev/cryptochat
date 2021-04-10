@@ -172,6 +172,21 @@
             document.getElementById('toggler').innerText = "DARK"
         }
 }
+function leaveRoom() {
+    socket.emit( 'chat event', {
+        user_name : code.encryptMessage(user_name,decryptPass),
+        message : code.encryptMessage('has left the room.',decryptPass)
+    })    
+}
+window.addEventListener("beforeunload", function(evt) {
+
+// Cancel the event (if necessary)
+evt.preventDefault();
+leaveRoom()
+// Google Chrome requires returnValue to be set
+evt.returnValue = '';
+return null;
+});
 
 
     </script>
