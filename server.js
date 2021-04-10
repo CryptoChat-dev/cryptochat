@@ -57,7 +57,7 @@ app.get('/notification', (req, res) => {
 
 io.on('connection', (connection) => {
   connection.on('chat event', (data) => {
-    connection.emit('my response', data);
+    io.emit('my response', data);
   });
 });
 
