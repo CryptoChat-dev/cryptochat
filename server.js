@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(express.static('public'));
+
 app.get('/cryptojs', (req, res) => {
     res.sendFile('bower_components/crypto-js/crypto-js.js', { root: __dirname })
 })
@@ -19,6 +20,11 @@ app.get('/cryptojs', (req, res) => {
 
 io.on('connection', (connection) => {
     connection.on('chat event', (data) => {
+        try{
+            JSON.parse(data)
+        } catch {
+            return
+        }
         io.emit('my response', data);
     });
 });

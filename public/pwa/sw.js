@@ -8,9 +8,9 @@ self.addEventListener('install', e => {
       // but you can add more such as style.css as your app grows
       return cache.addAll([
         './',
-        '/manifest.webmanifest'
+        '/pwa/manifest.webmanifest'
       ]);
-    })
+    })    
   );
 });
 
