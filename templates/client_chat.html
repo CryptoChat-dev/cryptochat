@@ -4,7 +4,7 @@
         <script src='/cryptojs' cross-origin='anonymous'></script>
         <script src='/scripts/jquery.min.js' crossorigin='anonymous'></script>
         <script src='/socket.io/socket.io.js'></script>
-        <link rel='manifest' href='pwa/manifest.webmanifest'>
+        <link rel='manifest' href='/pwa/manifest.webmanifest'>
         <link rel='stylesheet' href='/styles/darkmode.css'>
         <link rel="shortcut icon" type="image/jpg" href="/icons/favicon.ico"/>
         <link rel='apple-touch-icon' href='/icons/cryptochat-512.png'>
@@ -152,23 +152,6 @@
 			el.innerText = 'Dark';
 		}
 	}
-    function toggleTheme(el) {
-            changeButton(el);
-            // Obtains an array of all <link>
-            // elements.
-            // Select your element using indexing.
-            var theme = document.getElementsByName('styles')[0];
-            console.log(theme);
-  
-            // Change the value of href attribute 
-            // to change the css sheet.
-            if (theme.getAttribute('href') == 'lightmode.css') {
-                theme.setAttribute('href', 'darkmode.css');
-				
-            } else {
-                theme.setAttribute('href', 'lightmode.css');
-            }
-        }
 
     function switchTheme(e) {
         button = document.getElementById('toggler').innerText;
