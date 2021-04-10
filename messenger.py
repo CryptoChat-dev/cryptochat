@@ -27,6 +27,38 @@ def darkmode():
          as_attachment=True, 
          attachment_filename="darkmode.css")
 
+@app.route('/manifest.webmanifest', methods=["GET"])
+def manifest():
+    return send_file(
+        "manifest.webmanifest",
+        as_attachment=True,
+        attachment_filename="manifest.webmanifest"
+    )
+
+@app.route('/sw.js', methods=["GET"])
+def worker():
+    return send_file(
+        "sw.js",
+        as_attachment=True,
+        attachment_filename="sw.js"
+    )
+
+@app.route('/icons/512', methods=["GET"])
+def icon512():
+    return send_file(
+        "icons/cryptochat 512.png",
+        as_attachment=True,
+        attachment_filename="cryptochat 512.png"
+    )
+
+@app.route('/icons/192', methods=["GET"])
+def icon192():
+    return send_file(
+        "icons/cryptochat 192.png",
+        as_attachment=True,
+        attachment_filename="cryptochat 512.png"
+    )
+
 @socketio.on('chat event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
     socketio.emit('my response', json)

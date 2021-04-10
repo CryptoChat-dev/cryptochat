@@ -5,6 +5,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+        <link rel='manifest' href='./manifest.webmanifest'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CryptoChat</title>
         <link rel="stylesheet" href="/darkmode.css" name="styles">
@@ -41,6 +42,21 @@
         <a href="https://github.com/httpjamesm/cryptochat/"><button class="githubbttn">Github</button></a>
     </body>
     <script>
+            // Registering our Service worker
+
+    if ('serviceWorker' in navigator) {
+	window.addEventListener('load', function() {
+		navigator.serviceWorker.register('./sw.js').then(function(registration) {
+			// Registration was successful
+			console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		}, function(err) {
+			// Registration Failed :(
+			console.log('ServiceWorker registration failed: ', err);
+		});
+	});
+}
+
+
         var user_name = prompt("Username:", "");
         var decryptPass = prompt("Encryption Key:", "")
         var notificationsound = new Audio('https://' + window.location.hostname + ":" + location.port + "/notification")
