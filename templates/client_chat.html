@@ -6,10 +6,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="/manifest.json">
         <title>CryptoChat Web</title>
+        <link rel="stylesheet" href="/darkmode.css" name="styles">
     </head>
     <body>
         <a id="chat-zone"></a>
+        
         <div class="chatbox-parent">
             <div class="chatbox-child">
                 <h1 class="chatbox-title">CryptoChat</h1>
@@ -23,167 +26,21 @@
                         <div class="fields">
                             <div class="username"><input id="msg" type="username" class="message" placeholder="Hello!" /></div>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="chatbox-buttons">
                     <button class="send" onclick="submitMessage();">Send</button>
+                    <button class="themetoggler" onclick="toggleTheme(this)" name="toggler">Dark</button>
                 </div>
             </div>
         </div>
     </body>
-    <style>
-        body{
-            background: #e0e0e0;
-            min-height: 100%;
-            min-width: auto;
-        }
-        .chatbox-parent{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            height: 100%;
-            width: 100%;
-        }
-        .chatbox-child{
-            height: 50em;
-            width: 60em;
-            border-radius: 50px;
-            background: #e0e0e0;
-            box-shadow:  20px 20px 60px #bebebe,
-                        -20px -20px 60px #ffffff;
-        }
-        .chatbox-title{
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 3em;
-            margin-left: 5%;
-        }
-        .chatbox-messages{
-            height: 75%;
-        }
-
-        .chatbox-buttons{
-            margin-left: 5%;
-            margin-right: 5%;
-        }
-        .send{
-            width: 140px;
-            height: 45px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-weight: 500;
-            color: #000;
-            background-color: #fff;
-            border: none;
-            border-radius: 45px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-            outline: none;
-            float: right;
-        }
-
-        .send:hover {
-            background-color: #2EE59D;
-            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-            color: #fff;
-            transform: translateY(-7px);
-        }    
-        .messagebox {
-            width: 100%;
-            padding: 0px 5px 5px 5px;
-            display: flex;
-            justify-content: center;
-        }
-        .messagebox input {
-            border: none;
-            outline:none;
-            background: none;
-            font-size: 18px;
-            margin-left: 1%;
-            color: #555;
-            padding:20px 10px 20px 5px;
-            margin-right:1%;
-            width: 95%;
-        }
-        .username {
-            margin-bottom: 30px;
-            border-radius: 25px;
-            box-shadow: inset 8px 8px 8px #cbced1,
-                        inset -8px -8px 8px #ffffff;
-            width: 50em;
-        }
-        .messageviewer{
-            /*width: 100%;*/
-            height: 80%;
-            margin-bottom: 30px;
-            border-radius: 25px;
-            box-shadow: inset 8px 8px 8px #cbced1,
-                        inset -8px -8px 8px #ffffff;
-            width: 45em;
-            border: none;
-            outline:none;
-            background: none;
-            font-size: 18px;
-            color: #555;
-            padding:20px 10px 20px 9px;
-            overflow:scroll;
-            overflow-x: hidden;
-        }
-        .messageviewer p{
-            margin-left:5%;
-        }
-        p{
-            word-wrap:break-word;
-        }
-        .messageviewer-parent{
-            display: flex;
-            justify-content: center;
-            height: 80%;
-        }
-        .message{
-            width: 50em;
-        }
-        @media only screen and (max-width: 800px) {
-            .chatbox-child{
-                height:100%;
-                width: 100%;
-            }
-            .chatbox-title{
-                font-size:2em;
-            }
-            .messageviewer{
-                font-size:1em;
-            }
-            .send{
-                width:90%;
-                
-            }
-            .chatbox-buttons{
-                justify-content: center;
-            }
-            .username{
-                width:22em;
-            }
-            .messagebox{
-                width:100%;
-            }
-            .message{
-                width:100%;
-            }
-        }
-
-    </style>
     <script>
     var user_name = prompt("Username:", "");
     var decryptPass = prompt("Encryption Key:", "")
-    
+    var notificationsound = new Audio('http://' + window.location.hostname + ":" + location.port + "/notification")
+    notificationsound.volume = 0.1
+
     let code = (function(){
     return{
       encryptMessage: function(messageToencrypt = '', secretkey = ''){
@@ -221,15 +78,14 @@
     })    
     var form2 = function( e ) {
         let user_input =  document.getElementById("msg").value
-        try {
-            socket.emit( 'chat event', {
-              user_name : code.encryptMessage(user_name,decryptPass),  
-              message : code.encryptMessage(user_input,decryptPass)
-            } )  
-            $( 'input.message' ).val( '' ).focus()
-        } catch {
-            window.alert("Couldn't connect to server. Try again later.")    
-        }    
+        if (user_input == "") {
+            return
+        }
+        socket.emit( 'chat event', {
+            user_name : code.encryptMessage(user_name,decryptPass),  
+            message : code.encryptMessage(user_input,decryptPass)
+        } )  
+        $( 'input.message' ).val( '' ).focus()
     }    
     socket.on( 'my response', function( msg ) {
       console.log( msg )
@@ -237,18 +93,46 @@
         $( 'h3' ).remove()  
         messagebox = document.createElement('P')
         messagebox.className = 'messagetxt'
-
+        
+        if (code.decryptMessage(msg.user_name,decryptPass) == "" && code.decryptMessage(msg.message,decryptPass) == ""){
+            return
+        }
         text = document.createTextNode(code.decryptMessage(msg.user_name,decryptPass) + ": " + code.decryptMessage(msg.message,decryptPass));
         messagebox.appendChild(text)
         messages = document.getElementsByName("messageviewer")[0]
         messages.appendChild(messagebox)
         messages.scrollTop = messages.scrollHeight;
-    
+        if (document.hasFocus()){
+            return
+        }
+        notificationsound.play()
       }  
     })  
     function submitMessage() {
         form2()
     }
-
+    function changeButton( el )
+{
+    if ( el.innerText == "Dark" )
+        el.innerText = "Light";
+    else
+        el.innerText = "Dark";
+}
+    function toggleTheme(el) {
+            changeButton(el);
+            // Obtains an array of all <link>
+            // elements.
+            // Select your element using indexing.
+            var theme = document.getElementsByName('styles')[0];
+            console.log(theme)
+  
+            // Change the value of href attribute 
+            // to change the css sheet.
+            if (theme.getAttribute('href') == 'lightmode.css') {
+                theme.setAttribute('href', 'darkmode.css');
+            } else {
+                theme.setAttribute('href', 'lightmode.css');
+            }
+        }
     </script>
 </html>
