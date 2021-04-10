@@ -6,8 +6,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CryptoChat Web</title>
+        <title>CryptoChat</title>
         <link rel="stylesheet" href="/darkmode.css" name="styles">
+        <meta name="description" content="Chat anonymously and securely with disposable encrypted rooms."
     </head>
     <body>
         <a id="chat-zone"></a>
@@ -33,7 +34,7 @@
                 </div>
                 <div class="chatbox-buttons">
                     <button class="send" onclick="submitMessage();">Send</button>
-                    <button class="themetoggler" onclick="toggleTheme(this)" name="toggler">Dark</button>
+                    <button class="themetoggler" onclick="switchTheme()" id="toggler">Dark</button>
                 </div>
             </div>
         </div>
@@ -142,5 +143,20 @@
                 theme.setAttribute('href', 'lightmode.css');
             }
         }
+
+    function switchTheme(e) {
+        button = document.getElementById('toggler').innerText
+        console.log(button)
+        if (button === "DARK"){
+            console.log("yes")
+            document.documentElement.setAttribute('data-theme','light')
+            document.getElementById('toggler').innerText = "LIGHT"
+        } else {
+            document.documentElement.setAttribute('data-theme','dark')
+            document.getElementById('toggler').innerText = "DARK"
+        }
+}
+
+
     </script>
 </html>

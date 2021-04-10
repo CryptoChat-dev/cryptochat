@@ -20,13 +20,6 @@ def notification():
          as_attachment=True, 
          attachment_filename="notification.mp3")
 
-@app.route('/lightmode.css', methods=["GET"])
-def lightmode():
-     return send_file(
-         "lightmode.css", 
-         as_attachment=True, 
-         attachment_filename="lightmode.css")
-
 @app.route('/darkmode.css', methods=["GET"])
 def darkmode():
      return send_file(
@@ -34,12 +27,9 @@ def darkmode():
          as_attachment=True, 
          attachment_filename="darkmode.css")
 
-
 @socketio.on('chat event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
     socketio.emit('my response', json)
-
-
 
 if __name__ == '__main__':
     print("[info] Booting")
