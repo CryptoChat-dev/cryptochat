@@ -42,4 +42,6 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 
 
 if __name__ == '__main__':
+    print("[info] Booting")
     socketio.run(app, debug=False, host=settings.configdata["endpoint"],port=settings.configdata["port"])
+    print("[info] Booted.")

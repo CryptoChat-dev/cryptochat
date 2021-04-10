@@ -32,6 +32,23 @@ body{
     color:white;
     margin-left: 5%;
 }
+.chatbox-subtitle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    color:white;
+    margin-left: 5%;
+    font-weight: lighter;
+}
+.keyname{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .5em;
+    color:white;
+    margin-left: 5%;
+    font-weight: lighter;
+}
+.chatbox-header{
+    line-height: 0.75em;
+}
 .chatbox-messages{
     height: 75%;
 }
