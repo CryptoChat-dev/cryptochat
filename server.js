@@ -4,10 +4,6 @@ var app = express()
 var server = require('http').Server(app)
 var io = io(server);
 const port = 6969
-const http = require('http');
-const { Socket } = require('engine.io');
-//var server = require('http').Server(app);
-
 
 app.get('/', (req, res) => {
     res.sendFile('templates/client_chat.html', { root: __dirname });
