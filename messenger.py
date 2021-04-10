@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = settings.configdata["secret_Key"]
 socketio = SocketIO(app)
 socketio.init_app(app, cors_allowed_origins="*")
 
-@app.route('/',methods=["GET","POST"])
+@app.route('/',methods=["GET","POST"], strict_slashes=False)
 def sessions():
 	return render_template('client_chat.html')
 
@@ -37,10 +37,9 @@ def darkmode():
 
 @socketio.on('chat event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
-    print(json)
     socketio.emit('my response', json)
 
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host=settings.configdata["endpoint"],port=settings.configdata["port"])
+    socketio.run(app, debug=False, host=settings.configdata["endpoint"],port=settings.configdata["port"])

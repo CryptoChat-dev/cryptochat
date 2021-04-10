@@ -14,7 +14,9 @@
         
         <div class="chatbox-parent">
             <div class="chatbox-child">
-                <h1 class="chatbox-title">CryptoChat</h1>
+                <div class="chatbox-header">
+                    <h1 class="chatbox-title">CryptoChat</h1>
+                </div>
                 <div class="chatbox-messages">
                     <div class="messageviewer-parent">
                         <div id="messageviewer" name="messageviewer" class="messageviewer">
@@ -33,20 +35,21 @@
                 </div>
             </div>
         </div>
+        <a href="https://github.com/httpjamesm/cryptochat/"><button class="githubbttn">Github</button></a>
     </body>
     <script>
-    var user_name = prompt("Username:", "");
-    var decryptPass = prompt("Encryption Key:", "")
-    var notificationsound = new Audio('http://' + window.location.hostname + ":" + location.port + "/notification")
+        var user_name = prompt("Username:", "");
+        var decryptPass = prompt("Encryption Key:", "")
+        var notificationsound = new Audio('https://' + window.location.hostname + ":" + location.port + "/notification")
     notificationsound.volume = 0.1
-
+    
     let code = (function(){
-    return{
-      encryptMessage: function(messageToencrypt = '', secretkey = ''){
-        var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, secretkey);
-        return encryptedMessage.toString();
-    },
-      decryptMessage: function(encryptedMessage = '', secretkey = ''){
+        return{
+            encryptMessage: function(messageToencrypt = '', secretkey = ''){
+                var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, secretkey);
+                return encryptedMessage.toString();
+            },
+            decryptMessage: function(encryptedMessage = '', secretkey = ''){
         var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
         var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
 
@@ -55,7 +58,7 @@
     }
     })();
 
-    var socket = io.connect('http://' + window.location.hostname + ':' + location.port);
+    var socket = io.connect('https://' + window.location.hostname + ':' + location.port);
     /*var matches = window.location.href.match(/\?key=(?<key>.*)&username=(?<username>.*)/);
     var decryptPass = matches.groups.key;    
     var user_name = matches.groups.username;*/
