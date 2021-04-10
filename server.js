@@ -29,7 +29,7 @@ app.get('/aes', (req, res) => {
 })
 
 app.get('/jquery', (req, res) => {
-    res.sendFile('scripts/jquery.min.js')
+    res.sendFile('scripts/jquery.min.js', { root: __dirname })
 })
 
 // Icons
