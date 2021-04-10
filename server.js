@@ -21,7 +21,6 @@ app.get('/cryptojs', (req, res) => {
 io.on('connection', (connection) => {
     connection.on('chat event', (data) => {
         if (typeof data === 'object') {
-            console.log(data)
             io.emit('my response', data);
         }
     });
