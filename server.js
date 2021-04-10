@@ -37,13 +37,15 @@ app.get('/notification', (req, res) => {
     res.sendFile('notification.mp3', { root: __dirname });
 })
 
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile('icons/favicon.ico', { root: __dirname });
+})
 
 io.on('connection', connection =>  {
     connection.on('chat event', data => {
         connection.emit('my response', data)
     });
 });
-
 
 server.listen(port, () => {
     console.log('listening on *:' + port);
