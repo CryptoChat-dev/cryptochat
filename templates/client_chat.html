@@ -5,7 +5,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CryptoChat Web</title>
     </head>
     <body>
@@ -109,6 +109,8 @@
             margin-left: 1%;
             color: #555;
             padding:20px 10px 20px 5px;
+            margin-right:1%;
+            width: 95%;
         }
         .username {
             margin-bottom: 30px;
@@ -137,10 +139,44 @@
         .messageviewer p{
             margin-left:5%;
         }
+        p{
+            word-wrap:break-word;
+        }
         .messageviewer-parent{
             display: flex;
             justify-content: center;
             height: 80%;
+        }
+        .message{
+            width: 50em;
+        }
+        @media only screen and (max-width: 800px) {
+            .chatbox-child{
+                height:100%;
+                width: 100%;
+            }
+            .chatbox-title{
+                font-size:2em;
+            }
+            .messageviewer{
+                font-size:1em;
+            }
+            .send{
+                width:90%;
+                
+            }
+            .chatbox-buttons{
+                justify-content: center;
+            }
+            .username{
+                width:22em;
+            }
+            .messagebox{
+                width:100%;
+            }
+            .message{
+                width:100%;
+            }
         }
 
     </style>
