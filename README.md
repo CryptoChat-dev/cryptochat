@@ -10,6 +10,14 @@ Here's an overview of the features CryptoChat has to offer.
 
 CryptoChat has barely any clutter on its user interface. It's a simple, yet featured, interface that anybody could use--even your grandma!
 
+![Dark Mode Desktop](https://james-has.among-drip.cool/6lvkfaackmvhcn7ki3.png)
+
+![Light Mode Desktop](https://i.should-not-be-a.live/jtju0jumo6cg49mzk5.png)
+
+![Dark Mode Mobile](https://what-the-fu.cc/a72fkb44q8piej26yb.jpeg)
+
+![Light Mode Mobile](https://windscribe.is-a-cu.lt/hx9qfnz22w1the7fny.jpeg)
+
 ### Encryption
 
 All messages sent through the official CryptoChat clients are end-to-end encrypted locally, meaning nobody except for the message recipients can read their contents. 

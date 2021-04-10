@@ -16,7 +16,7 @@
         <div class="chatbox-parent">
             <div class="chatbox-child">
                 <div class="chatbox-header">
-                    <p class="keyname" name="keyname"></p>
+                    <p class="keyname" id="keyname"></p>
                     <h1 class="chatbox-title">CryptoChat</h1>
                     <h2 class="chatbox-subtitle">A stunning encrypted chat webapp.</h2>
                 </div>
@@ -80,7 +80,7 @@
         }
     });
     
-    document.getElementsByName("keyname").innerHTML = "Key: " + decryptPass
+    document.getElementById("keyname").innerText = "Key: " + decryptPass
     socket.emit( 'chat event', {
         user_name : code.encryptMessage(user_name,decryptPass),
         message : code.encryptMessage('has joined the room.',decryptPass)
