@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="/darkmode.css" name="styles">
         <meta name="description" content="Chat anonymously and securely with disposable encrypted rooms."
     </head>
-    <body>        
+    <body onload="askInfo()">        
         <div class="chatbox-parent">
             <div class="chatbox-child">
                 <div class="chatbox-header">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="chatbox-buttons">
-                    <button class="send" onclick="submitMessage();">Send</button>
+                    <button class="send" onclick="checkCommands()">Send</button>
                     <button class="themetoggler" onclick="switchTheme()" id="toggler">Dark</button>
                 </div>
             </div>
@@ -41,24 +41,48 @@
         <a href="https://github.com/httpjamesm/cryptochat/"><button class="githubbttn">Github</button></a>
     </body>
     <script>
-            // Registering our Service worker
+        // Registering our Service worker
+        
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js').then(function(registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    // Registration Failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+            var user_name = 0
+            var decryptPass = 0
+            function askInfo(){
+                var user_name = window.prompt("Username:", "");
+                var decryptPass = prompt("Encryption Key:", "")
+            }
+            var notificationsound = new Audio('https://' + window.location.hostname + ":" + location.port + "/notification")
+            notificationsound.volume = 0.1
 
-    if ('serviceWorker' in navigator) {
-	window.addEventListener('load', function() {
-		navigator.serviceWorker.register('./sw.js').then(function(registration) {
-			// Registration was successful
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		}, function(err) {
-			// Registration Failed :(
-			console.log('ServiceWorker registration failed: ', err);
-		});
-	});
-}
-        var user_name = prompt("Username:", "");
-        var decryptPass = prompt("Encryption Key:", "")
-        var notificationsound = new Audio('https://' + window.location.hostname + ":" + location.port + "/notification")
-    notificationsound.volume = 0.1
-    
+    function checkCommands(){
+        var message = document.getElementById("msg").value
+        var args = message.split(" ");
+        switch (args[0]) {
+            case "/nick":
+                if (args.length == 1) {
+                    window.alert("Invalid nickname. Correct usage: /nick <username>")
+                } else {
+
+                    socket.emit( 'chat event', {
+                        user_name : code.encryptMessage(user_name,decryptPass),  
+                        message : code.encryptMessage("changed their username to " + args[1],decryptPass)
+                    } )  
+                    $( 'input.message' ).val( '' ).focus()
+                    var user_name = args[1]
+                    window.alert("Nickname changed to " + args[1])
+                } 
+                break;
+        }
+    }
     let code = (function(){
         return{
             encryptMessage: function(messageToencrypt = '', secretkey = ''){
