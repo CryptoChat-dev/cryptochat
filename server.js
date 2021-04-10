@@ -20,12 +20,10 @@ app.get('/cryptojs', (req, res) => {
 
 io.on('connection', (connection) => {
     connection.on('chat event', (data) => {
-        try{
-            JSON.parse(data)
-        } catch {
-            return
+        if (typeof data === 'object') {
+            console.log(data)
+            io.emit('my response', data);
         }
-        io.emit('my response', data);
     });
 });
 
