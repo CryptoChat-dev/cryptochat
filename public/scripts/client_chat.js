@@ -21,9 +21,11 @@ function checkCommands() {
             }
     
             break;
+            
         case "/leave":
             location.reload();
             break;
+            
         default:
             form2();
     }
@@ -51,11 +53,11 @@ notificationsound.volume = 0.1;
 
 let code = (function () {
     return {
-        encryptMessage: function (messageToencrypt = '', secretkey = ''){
+        encryptMessage: function (messageToencrypt = '', secretkey = '') {
             var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, secretkey);
             return encryptedMessage.toString();
         },
-        decryptMessage: function (encryptedMessage = '', secretkey = ''){
+        decryptMessage: function (encryptedMessage = '', secretkey = '') {
             var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
             var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
             return decryptedMessage;
@@ -66,7 +68,7 @@ let code = (function () {
 var socket = io.connect('https://' + window.location.hostname + ':' + location.port);
 
 socket.on('connect', function () {
-      socket.emit('chat event', {
+    socket.emit('chat event', {
         data: 'User Connected'  
     });
 });
@@ -77,7 +79,7 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
     event.preventDefault();
     
     if (event.keyCode === 13) {
-        checkCommands()
+        checkCommands();
     }
 });
 
@@ -111,7 +113,7 @@ socket.on('my response', function (msg) {
         messagebox = document.createElement('P');
         messagebox.className = 'messagetxt';
         
-        if (code.decryptMessage(msg.user_name, decryptPass) == '' && code.decryptMessage(msg.message, decryptPass) == ''){
+        if (code.decryptMessage(msg.user_name, decryptPass) == '' && code.decryptMessage(msg.message, decryptPass) == '') {
             return;
         }
         
@@ -121,7 +123,7 @@ socket.on('my response', function (msg) {
         messages.appendChild(messagebox);
         messages.scrollTop = messages.scrollHeight;
         
-        if (document.hasFocus()){
+        if (document.hasFocus()) {
             return;
         }
         
@@ -146,7 +148,7 @@ function switchTheme(e) {
     button = document.getElementById('toggler').innerText;
     console.log(button);
     
-    if (button === 'DARK'){
+    if (button === 'DARK') {
         console.log('yes');
         document.documentElement.setAttribute('data-theme','light');
         document.getElementById('toggler').innerText = 'LIGHT';
