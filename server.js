@@ -10,7 +10,7 @@ const port = 6969;
 
 const limiter = new RateLimit({
     windowMs: 1 * 60 * 1000,
-    max: 50
+    max: 50,
 });
 
 const router = express.Router();
