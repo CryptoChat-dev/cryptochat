@@ -1,4 +1,4 @@
-# cryptochat
+# cryptochat [![DeepSource](https://deepsource.io/gh/CryptoChat-dev/cryptochat.svg/?label=active+issues)](https://deepsource.io/gh/CryptoChat-dev/cryptochat/?ref=repository-badge)
 
 CryptoChat is a simple, secure and beautiful chat webapp. Chatting has never been so satisfying.
 

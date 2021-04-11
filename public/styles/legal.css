@@ -38,7 +38,7 @@ body {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     height: 100%;
-    z-index:0;
+    z-index: 0;
     width: 100%;
     position: fixed;
 }
@@ -48,13 +48,13 @@ body {
     width: 60em;
     border-radius: 50px;
     background: var(--main-background);
-    box-shadow:  20px 20px 60px var(--first-box-shadow),
+    box-shadow: 20px 20px 60px var(--first-box-shadow),
                  -20px -20px 60px var(--second-box-shadow);
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
 
 .extras {
-    margin:5%;
+    margin: 5%;
 }
 
 .chatbox-title {
@@ -65,7 +65,7 @@ body {
 .chatbox-subtitle {
     
     font-size: 1.5em;
-    margin-bottom:5%;
+    margin-bottom: 5%;
     margin-left: 5%;
     font-weight: lighter;
 }
@@ -76,9 +76,9 @@ body {
 
 
 .chatbox-buttons {
-    display:flex;
+    display: flex;
     justify-content: space-evenly;
-    margin-top:5%;
+    margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -90,16 +90,16 @@ a {
 
 .textcontent {
     margin-left: 5%;
-    margin-right:5%;
+    margin-right: 5%;
 }
 
 .header {
-    margin-left:5%;
+    margin-left: 5%;
 }
 
 .bullet {
-    margin-left:3%;
-    margin-right:3%;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .githubbttn {
@@ -228,20 +228,20 @@ a {
 
 @media only screen and (max-width: 800px) {
     .chatbox-child {
-        height:100%;
+        height: 100%;
         width: 100%;
         border-radius: 0;
-        overflow:scroll;
+        overflow: scroll;
     }
 
     .chatbox-title {
-        margin-top:30%;
-        font-size:2em;
+        margin-top: 30%;
+        font-size: 2em;
     }
     .chatbox-subtitle {
-        font-size:1em;
+        font-size: 1em;
         line-height: 1.25em;
-        margin-bottom:50%;
+        margin-bottom: 50%;
     }
 
     .chatbox-buttons {
