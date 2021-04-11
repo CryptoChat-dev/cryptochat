@@ -4,7 +4,6 @@ var decryptPass;
 
 if (matches != null) {
     decryptPass = matches.groups.key;
-    
 } else {
     decryptPass = prompt('Encryption Key:', '');
 }
@@ -31,7 +30,7 @@ function checkCommands() {
                     message: code.encryptMessage(
                         'changed their username to ' + args[1],
                         decryptPass
-                    ),
+                    )
                 });
 
                 $('input.message').val('').focus();
@@ -98,7 +97,7 @@ let code = (function () {
             );
             var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
             return decryptedMessage;
-        },
+        }
     };
 })();
 
@@ -110,7 +109,7 @@ var socket = io.connect(
 socket.on('connect', function () {
     // on connect
     socket.emit('chat event', {
-        data: 'User Connected',
+        data: 'User Connected'
     });
 });
 
@@ -131,7 +130,7 @@ document.getElementById('keyname').innerText = 'Key: ' + decryptPass;
 socket.emit('chat event', {
     // on join, broadcast to room
     user_name: code.encryptMessage(user_name, decryptPass),
-    message: code.encryptMessage('has joined the room.', decryptPass),
+    message: code.encryptMessage('has joined the room.', decryptPass)
 });
 
 function form2() {
@@ -147,7 +146,7 @@ function form2() {
     socket.emit('chat event', {
         // encrypt and send the user's name and message
         user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage(user_input, decryptPass),
+        message: code.encryptMessage(user_input, decryptPass)
     });
 
     $('input.message').val('').focus(); // clear the message input box after send
@@ -175,7 +174,7 @@ socket.on('my response', function (msg) {
                 ': ' +
                 code.decryptMessage(msg.message, decryptPass)
         );
-        
+
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
@@ -200,7 +199,6 @@ function switchTheme() {
 
         document.documentElement.setAttribute('data-theme', 'light');
         document.getElementById('toggler').innerText = 'LIGHT';
-        
     } else {
         // otherwise, just switch the page to dark theme
 
@@ -214,7 +212,7 @@ function leaveRoom() {
 
     socket.emit('chat event', {
         user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage('has left the room.', decryptPass),
+        message: code.encryptMessage('has left the room.', decryptPass)
     });
 }
 
