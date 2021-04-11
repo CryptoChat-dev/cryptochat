@@ -1,4 +1,4 @@
-:root {
+: root {
     --main-background: #1e1e1e;
     --first-box-shadow: #363636;
     --second-box-shadow: #1a1a1a;
@@ -33,7 +33,7 @@ body {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     height: 100%;
-    z-index:0;
+    z-index: 0;
     width: 100%;
     position: fixed;
 }
@@ -43,7 +43,7 @@ body {
     width: 60em;
     border-radius: 50px;
     background: var(--main-background);
-    box-shadow:  20px 20px 60px var(--first-box-shadow),
+    box-shadow: 20px 20px 60px var(--first-box-shadow),
                  -20px -20px 60px var(--second-box-shadow);
 }
 
@@ -107,7 +107,7 @@ a {
     float: right;
 }
 
-.send:hover {
+.send: hover {
     background-color: #2EE59D;
     box-shadow: 0 15px 20px 0 rgba(46, 229, 157, 0.4);
     color: var(--txt-color);
@@ -135,7 +135,7 @@ a {
     position: relative;
 }
 
-.githubbttn:hover {
+.githubbttn: hover {
     background-color: #2e68e5;
     box-shadow: 0 15px 20px 0 #2e68e5;
     color: var(--txt-color);
@@ -163,7 +163,7 @@ a {
     position: relative;
 }
 
-.legal:hover {
+.legal: hover {
     background-color: #832ee5;
     box-shadow: 0 15px 20px 0 #832ee5;
     color: var(--txt-color);
@@ -189,7 +189,7 @@ a {
     float: left;
 }
 
-.themetoggler:hover {
+.themetoggler: hover {
     background-color: #2ee5dc;
     box-shadow: 0 15px 20px 0 #2ee5dc;
     color: var(--txt-color);
@@ -205,13 +205,13 @@ a {
 
 .messagebox input {
     border: none;
-    outline:none;
+    outline: none;
     background: none;
     font-size: 18px;
     margin-left: 1%;
-    color: #555;
-    padding:20px 10px 20px 5px;
-    margin-right:1%;
+    /*color: #555;*/
+    padding: 20px 10px 20px 5px;
+    margin-right: 1%;
     width: 95%;
     color: var(--txt-color);
 }
@@ -234,23 +234,23 @@ a {
                 inset -8px -8px 8px var(--inside-box-shadow-two);
     width: 45em;
     border: none;
-    outline:none;
+    outline: none;
     background: none;
     font-size: 18px;
-    color: #555;
-    padding:20px 10px 20px 9px;
-    overflow:scroll;
+    /*color: #555;*/
+    padding: 20px 10px 20px 9px;
+    overflow: scroll;
     overflow-x: hidden;
     color: var(--txt-color);
 }
 
 p {
-    word-wrap:break-word;
+    word-wrap: break-word;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .messageviewer p {
-    margin-left:5%;
+    margin-left: 5%;
 }
 
 .messageviewer-parent {
@@ -265,21 +265,21 @@ p {
 
 @media only screen and (max-width: 800px) {
     .chatbox-child {
-        height:100%;
+        height: 100%;
         width: 100%;
         border-radius: 0;
     }
     
     .chatbox-title {
-        font-size:2em;
+        font-size: 2em;
     }
     
     .chatbox-subtitle {
-        font-size:1em;
+        font-size: 1em;
     }
     
     .messageviewer {
-        font-size:1em;
+        font-size: 1em;
     }
     
     .chatbox-buttons {
@@ -287,15 +287,15 @@ p {
     }
     
     .username {
-        width:22em;
+        width: 22em;
     }
     
     .messagebox {
-        width:100%;
+        width: 100%;
     }
     
     .message {
-        width:100%;
+        width: 100%;
     }
 }
 
