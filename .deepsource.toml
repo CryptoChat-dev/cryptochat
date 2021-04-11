@@ -4,5 +4,5 @@ version = 1
 name = "javascript"
 enabled = true
 exclude_patterns = [
-  "**/bower_components"
+  "public/bower_components"
 ]
