@@ -66,6 +66,7 @@ linter:
 
 ignore:
   - "public/bower_components"
+  - "public/styles/fontawesome.min.css"
 
 # Exclude specific branches. Example:
 # branches:

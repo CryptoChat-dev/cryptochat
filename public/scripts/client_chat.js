@@ -1,9 +1,11 @@
 var matches = window.location.href.match(/\?key=(?<key>.*)/);
 var user_name = prompt('Username:', '');
+var decryptPass;
+
 if (matches != null) {
-    var decryptPass = matches.groups.key
+    decryptPass = matches.groups.key;
 } else {
-    var decryptPass = prompt('Encryption Key:', '');
+    decryptPass = prompt('Encryption Key:', '');
 }
 
 function checkCommands() {
@@ -75,6 +77,7 @@ var notificationsound = new Audio(
         location.port +
         '/sounds/notification.mp3'
 );
+
 notificationsound.volume = 0.1; //lower notification volume
 
 let code = (function () {
@@ -94,7 +97,7 @@ let code = (function () {
             );
             var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
             return decryptedMessage;
-        },
+        }
     };
 })();
 
@@ -106,7 +109,7 @@ var socket = io.connect(
 socket.on('connect', function () {
     // on connect
     socket.emit('chat event', {
-        data: 'User Connected',
+        data: 'User Connected'
     });
 });
 
@@ -127,7 +130,7 @@ document.getElementById('keyname').innerText = 'Key: ' + decryptPass;
 socket.emit('chat event', {
     // on join, broadcast to room
     user_name: code.encryptMessage(user_name, decryptPass),
-    message: code.encryptMessage('has joined the room.', decryptPass),
+    message: code.encryptMessage('has joined the room.', decryptPass)
 });
 
 function form2() {
@@ -143,7 +146,7 @@ function form2() {
     socket.emit('chat event', {
         // encrypt and send the user's name and message
         user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage(user_input, decryptPass),
+        message: code.encryptMessage(user_input, decryptPass)
     });
 
     $('input.message').val('').focus(); // clear the message input box after send
@@ -171,6 +174,7 @@ socket.on('my response', function (msg) {
                 ': ' +
                 code.decryptMessage(msg.message, decryptPass).toString()
         );
+
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
@@ -208,7 +212,7 @@ function leaveRoom() {
 
     socket.emit('chat event', {
         user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage('has left the room.', decryptPass),
+        message: code.encryptMessage('has left the room.', decryptPass)
     });
 }
 
