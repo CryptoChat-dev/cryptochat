@@ -1,4 +1,4 @@
-# cryptochat [![DeepSource](https://deepsource.io/gh/CryptoChat-dev/cryptochat.svg/?label=active+issues)](https://deepsource.io/gh/CryptoChat-dev/cryptochat/?ref=repository-badge) [![CodeFactor](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat/badge)](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat) [![Memes](https://img.shields.io/badge/need-memes-red)]
+# cryptochat [![DeepSource](https://deepsource.io/gh/CryptoChat-dev/cryptochat.svg/?label=active+issues)](https://deepsource.io/gh/CryptoChat-dev/cryptochat/?ref=repository-badge) [![CodeFactor](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat/badge)](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat) [![Memes](https://img.shields.io/badge/need-memes-red)](https://img.shields.io/badge/need-memes-red)
 
 CryptoChat is a simple, secure and beautiful chat webapp. Chatting has never been so satisfying.
 
