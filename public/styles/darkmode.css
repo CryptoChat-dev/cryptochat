@@ -161,7 +161,7 @@ p {
     .message {
         width: 100%;
     }
-    
+
     .legal {
         position: absolute;
         bottom: 0;
@@ -169,7 +169,7 @@ p {
         width: 100px;
         margin-bottom: 1%;
     }
-    
+
     .githubbttn {
         position: relative;
         bottom: 0;
