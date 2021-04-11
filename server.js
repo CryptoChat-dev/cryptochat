@@ -17,16 +17,16 @@ app.get('/', (req, res) => {
 // Legal
 
 app.get('/legal', (req, res) => {
-    res.sendFile('templates/legal.html', { root: __dirname })
-})
+    res.sendFile('templates/legal.html', { root: __dirname });
+});
 
 app.get('/terms', (req, res) => {
-    res.sendFile('templates/terms.html', { root: __dirname })
-})
+    res.sendFile('templates/terms.html', { root: __dirname });
+});
 
 app.get('/privacy', (req, res) => {
-    res.sendFile('templates/privacy.html', { root: __dirname })
-})
+    res.sendFile('templates/privacy.html', { root: __dirname });
+});
 
 // SocketIO
 
