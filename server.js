@@ -16,7 +16,7 @@ const limiter = new RateLimit({
 const router = express.Router();
 
 // apply rate limiter to all requests
-router.use(limiter);
+//router.use(limiter);
 router.use(express.static('public'));
 
 express.use(router);

@@ -214,8 +214,8 @@ window.addEventListener('beforeunload', function (evt) {
     // Cancel the event (if necessary)
     evt.preventDefault();
     // Google Chrome requires returnValue to be set
-    leaveRoom();
     evt.returnValue = '';
+    leaveRoom();
 });
 
 // bind the send button to checkCommands()
@@ -223,4 +223,4 @@ document.getElementById('sendbutton').addEventListener('click', checkCommands);
 // bind the theme toggle button to switchTheme()
 document.getElementById('toggler').addEventListener('click', switchTheme);
 // bind the leave    button to leaveRoom()
-document.getElementById('leavebutton').addEventListener('click', leaveRoom());
+document.getElementById('leavebutton').addEventListener('click', location.reload());
