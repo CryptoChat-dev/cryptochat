@@ -1,12 +1,25 @@
 // Imports
 
 const express = require('express');
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+const RateLimit = require('express-rate-limit');
+
 const port = 6969;
 
-app.use(express.static('public'));
+const limiter = new RateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 5
+});
+
+const router = express.Router();
+
+// apply rate limiter to all requests
+router.use(limiter);
+router.use(express.static('public'));
+
+express.use(router);
 
 // API Routes
 
