@@ -57,7 +57,7 @@ body {
     margin:5%;
 }
 
-.chatbox-title {    
+.chatbox-title {
     font-size: 3em;
     margin-left: 5%;
 }
@@ -113,7 +113,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -124,7 +124,7 @@ a {
 
 .githubbttn:hover {
     background-color: #2e68e5;
-    box-shadow: 0px 15px 20px #2e68e5;
+    box-shadow: 0 15px 20px 0 #2e68e5;
     transform: translateY(-7px);
 }
 
@@ -139,7 +139,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -157,7 +157,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -166,13 +166,13 @@ a {
 
 .themetoggler:hover {
     background-color: #2ee5dc;
-    box-shadow: 0px 15px 20px #2ee5dc;
+    box-shadow: 0 15px 20px 0 #2ee5dc;
     transform: translateY(-7px);
 }
 
 .home:hover {
     background-color: #ffe550;
-    box-shadow: 0px 15px 20px #ffe550;
+    box-shadow: 0 15px 20px 0 #ffe550;
     color: var(--bttn-color);
     transform: translateY(-7px);
 }
@@ -188,7 +188,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -206,7 +206,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -215,13 +215,13 @@ a {
 
 .privacy:hover {
     background-color: #e52ecd;
-    box-shadow: 0px 15px 20px #e52ecd;
+    box-shadow: 0 15px 20px 0 #e52ecd;
     transform: translateY(-7px);
 }
 
 .terms:hover {
     background-color: #ff6a50;
-    box-shadow: 0px 15px 20px #ff6a50;
+    box-shadow: 0 15px 20px 0 #ff6a50;
     color: var(--bttn-color);
     transform: translateY(-7px);
 }

@@ -1,4 +1,4 @@
-:root{
+:root {
     --main-background: #1e1e1e;
     --first-box-shadow: #363636;
     --second-box-shadow: #1a1a1a;
@@ -8,7 +8,7 @@
     --bttn-color: black;
 }
 
-[data-theme="light"]{
+[data-theme="light"] {
     --main-background: #e0e0e0;
     --first-box-shadow: #bebebe;
     --second-box-shadow: #ffffff;
@@ -18,17 +18,16 @@
     --bttn-color: white;
 }
 
-body{
+body {
     background: var(--main-background);
     min-height: 100%;
     min-width: auto;
 }
 
-.chatbox-parent{
+.chatbox-parent {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
@@ -38,50 +37,58 @@ body{
     width: 100%;
     position: fixed;
 }
-.chatbox-child{
+
+.chatbox-child {
     height: 50em;
     width: 60em;
     border-radius: 50px;
     background: var(--main-background);
     box-shadow:  20px 20px 60px var(--first-box-shadow),
-                 -20px -20px 60px var(--second-box-shadow);    
-                }
-.chatbox-title{
+                 -20px -20px 60px var(--second-box-shadow);
+}
+
+.chatbox-title {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 3em;
     color: var(--txt-color);
     margin-left: 5%;
 }
-.chatbox-subtitle{
+
+.chatbox-subtitle {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     color: var(--txt-color);
     margin-left: 5%;
     font-weight: lighter;
 }
-.keyname{
+
+.keyname {
     font-family: Arial, Helvetica, sans-serif;
     font-size: .5em;
     color: var(--txt-color);
     margin-left: 5%;
     font-weight: lighter;
 }
-.chatbox-header{
+
+.chatbox-header {
     line-height: 0.75em;
 }
-.chatbox-messages{
+
+.chatbox-messages {
     height: 75%;
 }
 
-.chatbox-buttons{
+.chatbox-buttons {
     margin-left: 5%;
     margin-right: 5%;
 }
-a{
+
+a {
     text-decoration: none;
     text-decoration-color: none;
 }
-.send{
+
+.send {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -93,19 +100,21 @@ a{
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     float: right;
 }
+
 .send:hover {
     background-color: #2EE59D;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    box-shadow: 0 15px 20px 0 rgba(46, 229, 157, 0.4);
     color: var(--txt-color);
     transform: translateY(-7px);
-}    
-.githubbttn{
+}
+
+.githubbttn {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -117,22 +126,23 @@ a{
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     float: right;
     z-index: 10000 important;
-    position: relative; 
+    position: relative;
 }
 
 .githubbttn:hover {
     background-color: #2e68e5;
-    box-shadow: 0px 15px 20px #2e68e5;
+    box-shadow: 0 15px 20px 0 #2e68e5;
     color: var(--txt-color);
     transform: translateY(-7px);
-}    
-.legal{
+}
+
+.legal {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -144,22 +154,23 @@ a{
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     float: left;
     z-index: 10000 important;
-    position: relative; 
+    position: relative;
 }
 
 .legal:hover {
     background-color: #832ee5;
-    box-shadow: 0px 15px 20px #832ee5;
+    box-shadow: 0 15px 20px 0 #832ee5;
     color: var(--txt-color);
     transform: translateY(-7px);
-}    
-.themetoggler{
+}
+
+.themetoggler {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -171,24 +182,27 @@ a{
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     float: left;
 }
+
 .themetoggler:hover {
     background-color: #2ee5dc;
-    box-shadow: 0px 15px 20px #2ee5dc;
+    box-shadow: 0 15px 20px 0 #2ee5dc;
     color: var(--txt-color);
     transform: translateY(-7px);
-}    
+}
+
 .messagebox {
     width: 100%;
-    padding: 0px 5px 5px 5px;
+    padding: 0 5px 5px;
     display: flex;
     justify-content: center;
 }
+
 .messagebox input {
     border: none;
     outline:none;
@@ -201,6 +215,7 @@ a{
     width: 95%;
     color: var(--txt-color);
 }
+
 .username {
     margin-bottom: 30px;
     border-radius: 25px;
@@ -209,7 +224,8 @@ a{
     width: 50em;
     
 }
-.messageviewer{
+
+.messageviewer {
     /*width: 100%;*/
     height: 80%;
     margin-bottom: 30px;
@@ -227,48 +243,59 @@ a{
     overflow-x: hidden;
     color: var(--txt-color);
 }
-.messageviewer p{
-    margin-left:5%;
-}
-p{
+
+p {
     word-wrap:break-word;
     font-family: Arial, Helvetica, sans-serif;
 }
-.messageviewer-parent{
+
+.messageviewer p {
+    margin-left:5%;
+}
+
+.messageviewer-parent {
     display: flex;
     justify-content: center;
     height: 80%;
 }
-.message{
+
+.message {
     width: 50em;
 }
+
 @media only screen and (max-width: 800px) {
-    .chatbox-child{
+    .chatbox-child {
         height:100%;
         width: 100%;
         border-radius: 0;
     }
-    .chatbox-title{
+    
+    .chatbox-title {
         font-size:2em;
     }
-    .chatbox-subtitle{
+    
+    .chatbox-subtitle {
         font-size:1em;
     }
-    .messageviewer{
+    
+    .messageviewer {
         font-size:1em;
     }
-    .chatbox-buttons{
+    
+    .chatbox-buttons {
         justify-content: center;
     }
-    .username{
+    
+    .username {
         width:22em;
     }
-    .messagebox{
+    
+    .messagebox {
         width:100%;
     }
-    .message{
+    
+    .message {
         width:100%;
     }
-
 }
 
