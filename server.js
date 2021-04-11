@@ -13,7 +13,7 @@ const port = 6969;
     max: 50
 });*/
 
-const router = express.Router();
+//const router = express.Router();
 
 // apply rate limiter to all requests
 //router.use(limiter);
@@ -51,7 +51,7 @@ io.on('connection', (connection) => {
 });
 
 // Server start
-app.use('/', router)
+//app.use('/', router)
 
 server.listen(port, () => {
     console.log('listening on *:' + port);
