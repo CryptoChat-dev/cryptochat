@@ -12,3 +12,6 @@ function switchTheme(e) {
         document.getElementById('toggler').innerText = 'DARK';
     }
 }
+
+document.getElementById("toggler").addEventListener("click", switchTheme);
+

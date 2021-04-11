@@ -173,3 +173,7 @@ window.addEventListener('beforeunload', function (evt) {
     leaveRoom();
     evt.returnValue = '';
 });
+
+
+document.getElementById("sendbutton").addEventListener("click", checkCommands);
+document.getElementById("toggler").addEventListener("click", switchTheme);
