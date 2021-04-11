@@ -131,20 +131,7 @@ socket.on('my response', function (msg) {
     }
 });
 
-function submitMessage() {
-    form2();
-}
-
-function changeButton(el) {
-    if (el.innerText == 'Dark') {
-        el.innerText = 'Light';
-        
-    } else {
-        el.innerText = 'Dark';
-    }
-}
-
-function switchTheme(e) {
+function switchTheme() {
     button = document.getElementById('toggler').innerText;
     console.log(button);
     
