@@ -64,6 +64,11 @@
                 }
         
                 break;
+            case "/leave":
+                location.reload();
+                break;
+            default:
+                form2();
         }
     }
 
@@ -115,7 +120,7 @@
         event.preventDefault();
         
         if (event.keyCode === 13) {
-            form2();
+            checkCommands()
         }
     });
     
