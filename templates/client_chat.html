@@ -4,7 +4,7 @@
         <script src='/bower_components/crypto-js/crypto-js.js' cross-origin='anonymous'></script>
         <script src='/scripts/jquery.min.js' crossorigin='anonymous'></script>
         <script src='/socket.io/socket.io.js'></script>
-        <link rel='manifest' href='/pwa/manifest.webmanifest'>
+        <link rel='manifest' href='/manifest.webmanifest'>
         <link rel='stylesheet' href='/styles/darkmode.css'>
         <link rel="shortcut icon" type="image/jpg" href="/icons/favicon.ico"/>
         <link rel='apple-touch-icon' href='/icons/cryptochat-512.png'>
@@ -42,33 +42,7 @@
         <a href='https://github.com/httpjamesm/cryptochat/'><button class='githubbttn'>Github</button></a>
     </body>
     <script>
-        // Registering our Service worker
-        
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('./sw.js').then(function (registration) {
-                    // Registration was successful
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        
-                }, function (err) {
-                        // Registration Failed :(
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-                });
-            }
-        
-            var user_name = "default";
-            var decryptPass = "default";
-        
-            function askInfo() {
-                var user_name = window.prompt("Username:", "");
-                var decryptPass = prompt("Encryption Key:", "");
-            }
-        
-            var notificationsound = new Audio('http://' + window.location.hostname + ":" + location.port + "/notification");
-            notificationsound.volume = 0.1;
-
-    function checkCommands() {
+	function checkCommands() {
         var message = document.getElementById("msg").value;
         var args = message.split(" ");
     
@@ -80,7 +54,7 @@
                 } else {
                     socket.emit('chat event', {
                         user_name : code.encryptMessage(user_name, decryptPass),  
-                        message : code.encryptMessage("changed their username to " + args[1], decryptPass);
+                        message : code.encryptMessage("changed their username to " + args[1], decryptPass)
                     });
             
                     $('input.message').val( '' ).focus();
@@ -96,7 +70,7 @@
 
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/pwa/sw.js').then(function (registration) {
+            navigator.serviceWorker.register('/sw.js').then(function (registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
 
@@ -109,7 +83,7 @@
     
     var user_name = prompt('Username:', '');
     var decryptPass = prompt('Encryption Key:', '');
-    var notificationsound = new Audio('https://' + window.location.hostname + ':' + location.port + '/sounds/notification.mp3');
+    var notificationsound = new Audio('http://' + window.location.hostname + ':' + location.port + '/sounds/notification.mp3');
     notificationsound.volume = 0.1;
     
     let code = (function () {
