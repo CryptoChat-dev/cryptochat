@@ -17,7 +17,8 @@
     width: 55%;
     border-radius: 50px;
     background: var(--main-background);
-    box-shadow: 20px 20px 60px var(--first-box-shadow),
+    box-shadow:
+        20px 20px 60px var(--first-box-shadow),
         -20px -20px 60px var(--second-box-shadow);
     word-wrap: break-word;
     overflow-y: scroll;
