@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     res.sendFile('templates/client_chat.html', { root: __dirname });
 });
 
+app.get('/privacy', (req, res) => {
+    res.sendFile('templates/privacy.html', { root: __dirname })
+})
+
 app.use(express.static('public'));
 
 app.get('/cryptojs', (req, res) => {
