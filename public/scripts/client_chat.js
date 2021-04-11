@@ -1,9 +1,12 @@
 var matches = window.location.href.match(/\?key=(?<key>.*)/);
 var user_name = prompt('Username:', '');
+var decryptPass;
+
 if (matches != null) {
-    var decryptPass = matches.groups.key
+    decryptPass = matches.groups.key;
+    
 } else {
-    var decryptPass = prompt('Encryption Key:', '');
+    decryptPass = prompt('Encryption Key:', '');
 }
 
 function checkCommands() {
@@ -75,6 +78,7 @@ var notificationsound = new Audio(
         location.port +
         '/sounds/notification.mp3'
 );
+
 notificationsound.volume = 0.1; //lower notification volume
 
 let code = (function () {
@@ -171,6 +175,7 @@ socket.on('my response', function (msg) {
                 ': ' +
                 code.decryptMessage(msg.message, decryptPass)
         );
+        
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
@@ -195,6 +200,7 @@ function switchTheme() {
 
         document.documentElement.setAttribute('data-theme', 'light');
         document.getElementById('toggler').innerText = 'LIGHT';
+        
     } else {
         // otherwise, just switch the page to dark theme
 
