@@ -11,21 +11,21 @@ app.use(express.static('public'));
 // API Routes
 
 app.get('/', (req, res) => {
-    res.sendFile('templates/client_chat.html', { root: __dirname });
+    res.sendFile('public/templates/client_chat.html', { root: __dirname });
 });
 
 // Legal
 
 app.get('/legal', (req, res) => {
-    res.sendFile('templates/legal.html', { root: __dirname });
+    res.sendFile('public/templates/legal.html', { root: __dirname });
 });
 
 app.get('/terms', (req, res) => {
-    res.sendFile('templates/terms.html', { root: __dirname });
+    res.sendFile('public/templates/terms.html', { root: __dirname });
 });
 
 app.get('/privacy', (req, res) => {
-    res.sendFile('templates/privacy.html', { root: __dirname });
+    res.sendFile('public/templates/privacy.html', { root: __dirname });
 });
 
 // SocketIO
