@@ -19,7 +19,6 @@ const router = express.Router();
 //router.use(limiter);
 router.use(express.static('public'));
 
-express.use(router);
 
 // API Routes
 
@@ -52,6 +51,7 @@ io.on('connection', (connection) => {
 });
 
 // Server start
+app.use('/', router)
 
 server.listen(port, () => {
     console.log('listening on *:' + port);
