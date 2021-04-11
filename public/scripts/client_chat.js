@@ -1,3 +1,14 @@
+var matches = window.location.href.match(/\?key=(?<key>.*)/);
+var user_name = prompt('Username:', '');
+var decryptPass;
+
+if (matches != null) {
+    decryptPass = matches.groups.key;
+    
+} else {
+    decryptPass = prompt('Encryption Key:', '');
+}
+
 function checkCommands() {
     // get message and split the individual words into an array
     var message = document.getElementById('msg').value;
@@ -13,6 +24,7 @@ function checkCommands() {
                     'Invalid nickname. Correct usage: /nick <username>'
                 );
             } else {
+                var user_name = args[1];
                 socket.emit('chat event', {
                     // broadcast the username change to the whole room
                     user_name: code.encryptMessage(user_name, decryptPass),
@@ -23,7 +35,6 @@ function checkCommands() {
                 });
 
                 $('input.message').val('').focus();
-                var user_name = args[1];
                 window.alert('Nickname changed to ' + args[1]);
             }
             break;
@@ -59,10 +70,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// ask user for username and key
-var user_name = prompt('Username:', '');
-var decryptPass = prompt('Encryption Key:', '');
-
 // load notification sound
 var notificationsound = new Audio(
     'https://' +
@@ -71,6 +78,7 @@ var notificationsound = new Audio(
         location.port +
         '/sounds/notification.mp3'
 );
+
 notificationsound.volume = 0.1; //lower notification volume
 
 let code = (function () {
@@ -167,6 +175,7 @@ socket.on('my response', function (msg) {
                 ': ' +
                 code.decryptMessage(msg.message, decryptPass)
         );
+        
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
@@ -191,6 +200,7 @@ function switchTheme() {
 
         document.documentElement.setAttribute('data-theme', 'light');
         document.getElementById('toggler').innerText = 'LIGHT';
+        
     } else {
         // otherwise, just switch the page to dark theme
 
