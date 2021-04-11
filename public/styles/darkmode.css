@@ -100,7 +100,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -109,7 +109,7 @@ a {
 
 .send:hover {
     background-color: #2EE59D;
-    box-shadow: 0px 15px 20px 0px rgba(46, 229, 157, 0.4);
+    box-shadow: 0 15px 20px 0 rgba(46, 229, 157, 0.4);
     color: var(--txt-color);
     transform: translateY(-7px);
 }
@@ -126,7 +126,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -137,7 +137,7 @@ a {
 
 .githubbttn:hover {
     background-color: #2e68e5;
-    box-shadow: 0px 15px 20px #2e68e5;
+    box-shadow: 0 15px 20px #2e68e5;
     color: var(--txt-color);
     transform: translateY(-7px);
 }
@@ -154,7 +154,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -165,7 +165,7 @@ a {
 
 .legal:hover {
     background-color: #832ee5;
-    box-shadow: 0px 15px 20px 0px #832ee5;
+    box-shadow: 0 15px 20px 0 #832ee5;
     color: var(--txt-color);
     transform: translateY(-7px);
 }
@@ -182,7 +182,7 @@ a {
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
-    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
@@ -191,14 +191,14 @@ a {
 
 .themetoggler:hover {
     background-color: #2ee5dc;
-    box-shadow: 0px 15px 20px #2ee5dc;
+    box-shadow: 0 15px 20px #2ee5dc;
     color: var(--txt-color);
     transform: translateY(-7px);
 }
 
 .messagebox {
     width: 100%;
-    padding: 0px 5px 5px 5px;
+    padding: 0 5px 5px 5px;
     display: flex;
     justify-content: center;
 }
