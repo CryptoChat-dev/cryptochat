@@ -1,3 +1,13 @@
+var matches = window.location.href.match(/\?key=(?<key>.*)&username=(?<username>.*)/);
+if (matches != null) {
+    var decryptPass = matches.groups.key
+
+    var user_name = matches.groups.username
+} else {
+    var user_name = prompt('Username:', '');
+    var decryptPass = prompt('Encryption Key:', '');
+}
+
 function checkCommands() {
     // get message and split the individual words into an array
     var message = document.getElementById('msg').value;
@@ -58,10 +68,6 @@ if ('serviceWorker' in navigator) {
         );
     });
 }
-
-// ask user for username and key
-var user_name = prompt('Username:', '');
-var decryptPass = prompt('Encryption Key:', '');
 
 // load notification sound
 var notificationsound = new Audio(
