@@ -21,16 +21,16 @@ function checkCommands() {
                     'Invalid nickname. Correct usage: /nick <username>'
                 );
             } else {
-                var user_name = args[1];
                 socket.emit('chat event', {
                     // broadcast the username change to the whole room
                     user_name: code.encryptMessage(user_name, decryptPass),
                     message: code.encryptMessage(
                         'changed their username to ' + args[1],
                         decryptPass
-                    ),
-                });
-
+                        ),
+                    });
+                    
+                var user_name = args[1];
                 $('input.message').val('').focus();
                 window.alert('Nickname changed to ' + args[1]);
             }
@@ -167,9 +167,9 @@ socket.on('my response', function (msg) {
 
         // create a text node with the decrypted username and message
         text = document.createTextNode(
-            code.decryptMessage(msg.user_name, decryptPass) +
+            code.decryptMessage(msg.user_name, decryptPass).toString() +
                 ': ' +
-                code.decryptMessage(msg.message, decryptPass)
+                code.decryptMessage(msg.message, decryptPass).toString()
         );
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
