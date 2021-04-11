@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
     <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none';X-XSS-Protection: 1; mode=block; connect-src: wss://cryptochat.dev https://cryptochat.dev/notification">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'none';img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self';">
         <script src='/bower_components/crypto-js/crypto-js.js' cross-origin='anonymous'></script>
         <script src='/scripts/jquery.min.js' crossorigin='anonymous'></script>
         <script src='/socket.io/socket.io.js'></script>

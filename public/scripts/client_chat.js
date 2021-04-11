@@ -115,7 +115,7 @@ socket.on('my response', function (msg) {
             return;
         }
         
-        text = document.createTextNode(code.decryptMessage(msg.user_name, decryptPass).bold() + ': ' + code.decryptMessage(msg.message, decryptPass));
+        text = document.createTextNode(code.decryptMessage(msg.user_name, decryptPass) + ': ' + code.decryptMessage(msg.message, decryptPass));
         messagebox.appendChild(text);
         messages = document.getElementsByName('messageviewer')[0];
         messages.appendChild(messagebox);
