@@ -191,3 +191,5 @@ window.addEventListener('beforeunload', function (evt) {
 document.getElementById("sendbutton").addEventListener("click", checkCommands);
 // bind the theme toggle button to switchTheme()
 document.getElementById("toggler").addEventListener("click", switchTheme);
+// bind the leave    button to leaveRoom()
+document.getElementById("leavebutton").addEventListener("click", leaveRoom());

@@ -36,7 +36,7 @@ CryptoChat is open-source meaning that anybody can see its interworkings. This a
 
 ## Encryption
 
-CryptoChat relies on the crypto-js AES encryption framework to encrypt all usernames and messages with the specified encryption/room key.
+CryptoChat relies on the crypto-js AES encryption framework to encrypt all usernames and messages with the specified encryption/room key. More specifically, all data sent over the Internet is encrypted using AES-256 bit keys. 
 
 (This section will be improved on)
 
