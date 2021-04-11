@@ -137,7 +137,7 @@ a {
 
 .githubbttn:hover {
     background-color: #2e68e5;
-    box-shadow: 0 15px 20px #2e68e5;
+    box-shadow: 0 15px 20px 0 #2e68e5;
     color: var(--txt-color);
     transform: translateY(-7px);
 }
@@ -191,7 +191,7 @@ a {
 
 .themetoggler:hover {
     background-color: #2ee5dc;
-    box-shadow: 0 15px 20px #2ee5dc;
+    box-shadow: 0 15px 20px 0 #2ee5dc;
     color: var(--txt-color);
     transform: translateY(-7px);
 }
@@ -244,13 +244,13 @@ a {
     color: var(--txt-color);
 }
 
-.messageviewer p {
-    margin-left:5%;
-}
-
 p {
     word-wrap:break-word;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.messageviewer p {
+    margin-left:5%;
 }
 
 .messageviewer-parent {
