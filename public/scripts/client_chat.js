@@ -21,6 +21,7 @@ function checkCommands() {
                     'Invalid nickname. Correct usage: /nick <username>'
                 );
             } else {
+                var user_name = args[1];
                 socket.emit('chat event', {
                     // broadcast the username change to the whole room
                     user_name: code.encryptMessage(user_name, decryptPass),
@@ -31,7 +32,6 @@ function checkCommands() {
                 });
 
                 $('input.message').val('').focus();
-                var user_name = args[1];
                 window.alert('Nickname changed to ' + args[1]);
             }
             break;
