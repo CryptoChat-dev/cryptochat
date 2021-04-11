@@ -49,7 +49,7 @@ body {
     border-radius: 50px;
     background: var(--main-background);
     box-shadow:  20px 20px 60px var(--first-box-shadow),
-                 -20px -20px 60px var(--second-box-shadow);    
+                 -20px -20px 60px var(--second-box-shadow);
     word-wrap:break-word;
     overflow-y:scroll;
 }
@@ -110,7 +110,7 @@ a {
     outline: none;
     float: right;
     z-index: 10000 important;
-    position: relative; 
+    position: relative;
 }
 
 .githubbttn:hover {
