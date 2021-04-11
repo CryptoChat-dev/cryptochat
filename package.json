@@ -20,5 +20,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "socketio": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0"
   }
 }
