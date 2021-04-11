@@ -1,3 +1,13 @@
+var matches = window.location.href.match(/\?key=(?<key>.*)/);
+var user_name = prompt('Username:', '');
+var decryptPass;
+
+if (matches != null) {
+    decryptPass = matches.groups.key;
+} else {
+    decryptPass = prompt('Encryption Key:', '');
+}
+
 function checkCommands() {
     // get message and split the individual words into an array
     var message = document.getElementById('msg').value;
@@ -13,17 +23,17 @@ function checkCommands() {
                     'Invalid nickname. Correct usage: /nick <username>'
                 );
             } else {
+                var user_name = args[1];
                 socket.emit('chat event', {
                     // broadcast the username change to the whole room
                     user_name: code.encryptMessage(user_name, decryptPass),
                     message: code.encryptMessage(
                         'changed their username to ' + args[1],
                         decryptPass
-                    ),
+                    )
                 });
 
                 $('input.message').val('').focus();
-                var user_name = args[1];
                 window.alert('Nickname changed to ' + args[1]);
             }
             break;
@@ -59,10 +69,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// ask user for username and key
-var user_name = prompt('Username:', '');
-var decryptPass = prompt('Encryption Key:', '');
-
 // load notification sound
 var notificationsound = new Audio(
     'https://' +
@@ -71,6 +77,7 @@ var notificationsound = new Audio(
         location.port +
         '/sounds/notification.mp3'
 );
+
 notificationsound.volume = 0.1; //lower notification volume
 
 let code = (function () {
@@ -90,7 +97,7 @@ let code = (function () {
             );
             var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
             return decryptedMessage;
-        },
+        }
     };
 })();
 
@@ -102,7 +109,7 @@ var socket = io.connect(
 socket.on('connect', function () {
     // on connect
     socket.emit('chat event', {
-        data: 'User Connected',
+        data: 'User Connected'
     });
 });
 
@@ -123,7 +130,7 @@ document.getElementById('keyname').innerText = 'Key: ' + decryptPass;
 socket.emit('chat event', {
     // on join, broadcast to room
     user_name: code.encryptMessage(user_name, decryptPass),
-    message: code.encryptMessage('has joined the room.', decryptPass),
+    message: code.encryptMessage('has joined the room.', decryptPass)
 });
 
 function form2() {
@@ -139,7 +146,7 @@ function form2() {
     socket.emit('chat event', {
         // encrypt and send the user's name and message
         user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage(user_input, decryptPass),
+        message: code.encryptMessage(user_input, decryptPass)
     });
 
     $('input.message').val('').focus(); // clear the message input box after send
@@ -167,6 +174,7 @@ socket.on('my response', function (msg) {
                 ': ' +
                 code.decryptMessage(msg.message, decryptPass)
         );
+
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
@@ -204,7 +212,7 @@ function leaveRoom() {
 
     socket.emit('chat event', {
         user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage('has left the room.', decryptPass),
+        message: code.encryptMessage('has left the room.', decryptPass)
     });
 }
 
