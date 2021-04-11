@@ -63,6 +63,7 @@ linter:
 #   - "*.mp4"
 #   - "*.min.*"
 #   - "images/**"
+public/bower_components/
 
 ignore:
   - "public/bower_components"
