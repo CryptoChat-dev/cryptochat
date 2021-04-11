@@ -16,10 +16,6 @@ app.get('/privacy', (req, res) => {
 
 app.use(express.static('public'));
 
-app.get('/cryptojs', (req, res) => {
-    res.sendFile('bower_components/crypto-js/crypto-js.js', { root: __dirname })
-})
-
 // SocketIO
 
 io.on('connection', (connection) => {
