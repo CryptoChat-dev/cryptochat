@@ -65,6 +65,9 @@ linter:
 #   - "images/**"
 public/bower_components/
 
+ignore:
+  - "public/bower_components"
+
 # Exclude specific branches. Example:
 # branches:
 #   exclude:

@@ -39,3 +39,7 @@ CryptoChat is open-source meaning that anybody can see its interworkings. This a
 CryptoChat relies on the crypto-js AES encryption framework to encrypt all usernames and messages with the specified encryption/room key.
 
 (This section will be improved on)
+
+###### Miscellaneous
+
+A clone of this git repository is available [here](https://git.himiko.cloud/httpjames/cryptochat).

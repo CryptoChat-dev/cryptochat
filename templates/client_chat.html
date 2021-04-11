@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang=en>
     <head>
-        <script src='/cryptojs' cross-origin='anonymous'></script>
+        <script src='/bower_components/crypto-js/crypto-js.js' cross-origin='anonymous'></script>
         <script src='/scripts/jquery.min.js' crossorigin='anonymous'></script>
         <script src='/socket.io/socket.io.js'></script>
-        <link rel='manifest' href='/pwa/manifest.webmanifest'>
+        <link rel='manifest' href='/manifest.webmanifest'>
         <link rel='stylesheet' href='/styles/darkmode.css'>
         <link rel="shortcut icon" type="image/jpg" href="/icons/favicon.ico"/>
         <link rel='apple-touch-icon' href='/icons/cryptochat-512.png'>
         <meta name='description' content='Chat anonymously and securely with disposable encrypted rooms.'>
         <meta name='theme-color' content='#363636'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <title>CryptoChat</title>
+        <title>CryptoChat - Anonymous & Secure Messaging</title>
     </head>
     <body>        
-        <div class='chatbox-parent'>
-            <div class='chatbox-child'>
-                <div class='chatbox-header'>
-                    <p class='keyname' id='keyname'></p>
-                    <h1 class='chatbox-title'>CryptoChat</h1>
-                    <h2 class='chatbox-subtitle'>A stunning encrypted chat webapp.</h2>
+        <div class="chatbox-parent">
+            <div class="chatbox-child">
+                <div class="chatbox-header">
+                    <p class="keyname" id="keyname"></p>
+                    <h1 class="chatbox-title">CryptoChat</h1>
+                    <h2 class="chatbox-subtitle">A stunning encrypted chat webapp.</h2>
                 </div>
                 <div class='chatbox-messages'>
                     <div class='messageviewer-parent'>
@@ -33,154 +33,186 @@
                         </div>
                     </div>
                 </div>
-                <div class='chatbox-buttons'>
-                    <button class='send' onclick='submitMessage();'>Send</button>
-                    <button class='themetoggler' onclick='switchTheme()' id='toggler'>Dark</button>
+                <div class="chatbox-buttons">
+                    <button class="send" onclick="checkCommands()">Send</button>
+                    <button class="themetoggler" onclick="switchTheme()" id="toggler">Dark</button>
                 </div>
             </div>
         </div>
+        <a href="/legal"><button class="legal">Legal</button></a>
         <a href='https://github.com/httpjamesm/cryptochat/'><button class='githubbttn'>Github</button></a>
     </body>
-    <script>
-	// Registering our Service worker
+    <script defer>
+	function checkCommands() {
+        var message = document.getElementById("msg").value;
+        var args = message.split(" ");
+    
+        switch (args[0]) {
+            case "/nick":
+                if (args.length == 1) {
+                    window.alert("Invalid nickname. Correct usage: /nick <username>");
+        
+                } else {
+                    socket.emit('chat event', {
+                        user_name : code.encryptMessage(user_name, decryptPass),  
+                        message : code.encryptMessage("changed their username to " + args[1], decryptPass)
+                    });
+            
+                    $('input.message').val( '' ).focus();
+                    var user_name = args[1];
+                    window.alert("Nickname changed to " + args[1]);
+                }
+        
+                break;
+            case "/leave":
+                location.reload();
+                break;
+            default:
+                form2();
+        }
+    }
+
+    // Registering our Service worker
 
     if ('serviceWorker' in navigator) {
-		window.addEventListener('load', function() {
-			navigator.serviceWorker.register('/pwa/sw.js').then(function(registration) {
-				// Registration was successful
-				console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				
-			}, function(err) {
-				// Registration Failed :(
-				console.log('ServiceWorker registration failed: ', err);
-			});
-		});
-	}
-	
-	var user_name = prompt('Username:', '');
-	var decryptPass = prompt('Encryption Key:', '');
-	var notificationsound = new Audio('https://' + window.location.hostname + ':' + location.port + '/sounds/notification.mp3');
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+            }, function (err) {
+                // Registration Failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+    
+    var user_name = prompt('Username:', '');
+    var decryptPass = prompt('Encryption Key:', '');
+    var notificationsound = new Audio('http://' + window.location.hostname + ':' + location.port + '/sounds/notification.mp3');
     notificationsound.volume = 0.1;
     
-    let code = (function(){
-        return{
-            encryptMessage: function(messageToencrypt = '', secretkey = ''){
+    let code = (function () {
+        return {
+            encryptMessage: function (messageToencrypt = '', secretkey = ''){
                 var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, secretkey);
                 return encryptedMessage.toString();
             },
-            decryptMessage: function(encryptedMessage = '', secretkey = ''){
-				var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
-				var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
-
-			  return decryptedMessage;
-			}
-		};
+            decryptMessage: function (encryptedMessage = '', secretkey = ''){
+                var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
+                var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
+                return decryptedMessage;
+            }
+        };
     })();
 
-    var socket = io.connect('https://' + window.location.hostname + ':' + location.port);
-	
-    socket.on('connect', function() {
-      socket.emit('chat event', {
-        data: 'User Connected'  
-    })});
+    var socket = io.connect('http://' + window.location.hostname + ':' + location.port);
+    
+    socket.on('connect', function () {
+          socket.emit('chat event', {
+            data: 'User Connected'  
+        });
+    });
     
     document.getElementById('msg').focus();
-	
-    document.getElementById('msg').addEventListener('keyup', function(event) {
+    
+    document.getElementById('msg').addEventListener('keyup', function (event) {
         event.preventDefault();
-		
+        
         if (event.keyCode === 13) {
-            form2();
+            checkCommands()
         }
     });
     
     document.getElementById('keyname').innerText = 'Key: ' + decryptPass;
-	
+    
     socket.emit('chat event', {
         user_name : code.encryptMessage(user_name, decryptPass),
         message : code.encryptMessage('has joined the room.', decryptPass)
     });
-	
+    
     function form2 (e) {
         let user_input =  document.getElementById('msg').value;
-		
+        
         if (user_input == '') {
             return;
         }
+        
         socket.emit('chat event', {
             user_name : code.encryptMessage(user_name, decryptPass),  
             message : code.encryptMessage(user_input, decryptPass)
-        });  
+        });
+        
         $('input.message').val('').focus();
     }
-	
+    
     socket.on('my response', function (msg) {
-		console.log(msg);
-		
-		if(typeof msg.user_name !== 'undefined') {
-			$('h3').remove();
-			messagebox = document.createElement('P');
-			messagebox.className = 'messagetxt';
-			
-			if (code.decryptMessage(msg.user_name, decryptPass) == '' && code.decryptMessage(msg.message, decryptPass) == ''){
-				return;
-			}
-			
-			text = document.createTextNode(code.decryptMessage(msg.user_name, decryptPass) + ': ' + code.decryptMessage(msg.message, decryptPass));
-			messagebox.appendChild(text);
-			messages = document.getElementsByName('messageviewer')[0];
-			messages.appendChild(messagebox);
-			messages.scrollTop = messages.scrollHeight;
-			
-			if (document.hasFocus()){
-				return;
-			}
-			
-			notificationsound.play();
-		}
+        console.log(msg);
+        
+        if (typeof msg.user_name !== 'undefined') {
+            $('h3').remove();
+            messagebox = document.createElement('P');
+            messagebox.className = 'messagetxt';
+            
+            if (code.decryptMessage(msg.user_name, decryptPass) == '' && code.decryptMessage(msg.message, decryptPass) == ''){
+                return;
+            }
+            
+            text = document.createTextNode(code.decryptMessage(msg.user_name, decryptPass) + ': ' + code.decryptMessage(msg.message, decryptPass));
+            messagebox.appendChild(text);
+            messages = document.getElementsByName('messageviewer')[0];
+            messages.appendChild(messagebox);
+            messages.scrollTop = messages.scrollHeight;
+            
+            if (document.hasFocus()){
+                return;
+            }
+            
+            notificationsound.play();
+        }
     });
-	
+    
     function submitMessage() {
         form2();
     }
-	
+    
     function changeButton(el) {
-		if (el.innerText == 'Dark') {
-			el.innerText = 'Light';
-			
-		} else {
-			el.innerText = 'Dark';
-		}
-	}
+        if (el.innerText == 'Dark') {
+            el.innerText = 'Light';
+            
+        } else {
+            el.innerText = 'Dark';
+        }
+    }
 
     function switchTheme(e) {
         button = document.getElementById('toggler').innerText;
         console.log(button);
-		
+        
         if (button === 'DARK'){
             console.log('yes');
             document.documentElement.setAttribute('data-theme','light');
             document.getElementById('toggler').innerText = 'LIGHT';
-			
+            
         } else {
             document.documentElement.setAttribute('data-theme','dark');
             document.getElementById('toggler').innerText = 'DARK';
         }
-	}
+    }
 
-	function leaveRoom() {
-		socket.emit('chat event', {
-			user_name : code.encryptMessage(user_name, decryptPass),
-			message : code.encryptMessage('has left the room.', decryptPass)
-		});
-	}
+    function leaveRoom() {
+        socket.emit('chat event', {
+            user_name : code.encryptMessage(user_name, decryptPass),
+            message : code.encryptMessage('has left the room.', decryptPass)
+        });
+    }
 
-	window.addEventListener('beforeunload', function (evt) {
-		// Cancel the event (if necessary)
-		evt.preventDefault();
-		// Google Chrome requires returnValue to be set
-		leaveRoom();
-		evt.returnValue = '';
-	});
+    window.addEventListener('beforeunload', function (evt) {
+        // Cancel the event (if necessary)
+        evt.preventDefault();
+        // Google Chrome requires returnValue to be set
+        leaveRoom();
+        evt.returnValue = '';
+    });
     </script>
 </html>

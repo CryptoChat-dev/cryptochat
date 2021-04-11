@@ -18,6 +18,11 @@
     --bttn-color: white;
 }
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--txt-color);
+}
+
 body {
     background: var(--main-background);
     min-height: 100%;
@@ -39,33 +44,24 @@ body {
 }
 
 .chatbox-child {
-    height: 50em;
-    width: 60em;
+    height: 85%;
+    width: 55%;
     border-radius: 50px;
     background: var(--main-background);
     box-shadow:  20px 20px 60px var(--first-box-shadow),
                  -20px -20px 60px var(--second-box-shadow);
+    word-wrap:break-word;
+    overflow-y:scroll;
 }
 
 .chatbox-title {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 3em;
-    color: var(--txt-color);
     margin-left: 5%;
 }
 
 .chatbox-subtitle {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5em;
-    color: var(--txt-color);
-    margin-left: 5%;
-    font-weight: lighter;
-}
-
-.keyname {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: .5em;
-    color: var(--txt-color);
+    margin-bottom:5%;
     margin-left: 5%;
     font-weight: lighter;
 }
@@ -74,13 +70,8 @@ body {
     line-height: 0.75em;
 }
 
-.chatbox-messages {
-    height: 75%;
-}
-
 .chatbox-buttons {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin:5%;
 }
 
 a {
@@ -88,30 +79,18 @@ a {
     text-decoration-color: none;
 }
 
-.send {
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: var(--txt-color);
-    background-color: var(--bttn-color);
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    float: right;
+.textcontent {
+    margin-left: 5%;
+    margin-right:5%;
 }
 
-.send:hover {
-    background-color: #2EE59D;
-    box-shadow: 0 15px 20px 0 rgba(46, 229, 157, 0.4);
-    color: var(--txt-color);
-    transform: translateY(-7px);
+.header {
+    margin-left:5%;
+}
+
+.bullet {
+    margin-left:3%;
+    margin-right:3%;
 }
 
 .githubbttn {
@@ -122,7 +101,6 @@ a {
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: var(--txt-color);
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
@@ -138,35 +116,6 @@ a {
 .githubbttn:hover {
     background-color: #2e68e5;
     box-shadow: 0 15px 20px 0 #2e68e5;
-    color: var(--txt-color);
-    transform: translateY(-7px);
-}
-
-.legal {
-    width: 140px;
-    height: 45px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: var(--txt-color);
-    background-color: var(--bttn-color);
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    float: left;
-    z-index: 10000 important;
-    position: relative;
-}
-
-.legal:hover {
-    background-color: #832ee5;
-    box-shadow: 0 15px 20px 0 #832ee5;
-    color: var(--txt-color);
     transform: translateY(-7px);
 }
 
@@ -178,7 +127,6 @@ a {
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: var(--txt-color);
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
@@ -189,78 +137,35 @@ a {
     float: left;
 }
 
+.home {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    background-color: var(--bttn-color);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    float: right;
+}
+
 .themetoggler:hover {
     background-color: #2ee5dc;
     box-shadow: 0 15px 20px 0 #2ee5dc;
-    color: var(--txt-color);
     transform: translateY(-7px);
 }
 
-.messagebox {
-    width: 100%;
-    padding: 0 5px 5px;
-    display: flex;
-    justify-content: center;
-}
-
-.messagebox input {
-    border: none;
-    outline:none;
-    background: none;
-    font-size: 18px;
-    margin-left: 1%;
-    color: #555;
-    padding:20px 10px 20px 5px;
-    margin-right:1%;
-    width: 95%;
-    color: var(--txt-color);
-}
-
-.username {
-    margin-bottom: 30px;
-    border-radius: 25px;
-    box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
-                inset -8px -8px 8px var(--inside-box-shadow-two);
-    width: 50em;
-    
-}
-
-.messageviewer {
-    /*width: 100%;*/
-    height: 80%;
-    margin-bottom: 30px;
-    border-radius: 25px;
-    box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
-                inset -8px -8px 8px var(--inside-box-shadow-two);
-    width: 45em;
-    border: none;
-    outline:none;
-    background: none;
-    font-size: 18px;
-    color: #555;
-    padding:20px 10px 20px 9px;
-    overflow:scroll;
-    overflow-x: hidden;
-    color: var(--txt-color);
-}
-
-p {
-    word-wrap:break-word;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.messageviewer p {
-    margin-left:5%;
-}
-
-.messageviewer-parent {
-    display: flex;
-    justify-content: center;
-    height: 80%;
-}
-
-.message {
-    width: 50em;
+.home:hover {
+    background-color: #ffe550;
+    box-shadow: 0 15px 20px 0 #ffe550;
+    color: var(--bttn-color);
+    transform: translateY(-7px);
 }
 
 @media only screen and (max-width: 800px) {
@@ -268,34 +173,19 @@ p {
         height:100%;
         width: 100%;
         border-radius: 0;
+        overflow:scroll;
     }
-    
+
     .chatbox-title {
         font-size:2em;
     }
-    
     .chatbox-subtitle {
         font-size:1em;
+        line-height: 1.25em;
     }
-    
-    .messageviewer {
-        font-size:1em;
-    }
-    
+
     .chatbox-buttons {
         justify-content: center;
-    }
-    
-    .username {
-        width:22em;
-    }
-    
-    .messagebox {
-        width:100%;
-    }
-    
-    .message {
-        width:100%;
     }
 }
 
