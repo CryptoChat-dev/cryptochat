@@ -1,4 +1,4 @@
-function switchTheme(e) {
+function switchTheme() {
     button = document.getElementById('toggler').innerText;
     console.log(button);
     

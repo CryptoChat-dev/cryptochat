@@ -90,7 +90,7 @@ socket.emit('chat event', {
     message : code.encryptMessage('has joined the room.', decryptPass)
 });
 
-function form2 (e) {
+function form2 () {
     let user_input =  document.getElementById('msg').value;
     
     if (user_input == '') {
