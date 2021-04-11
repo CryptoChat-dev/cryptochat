@@ -18,12 +18,8 @@
     --bttn-color: white;
 }
 
-<<<<<<< HEAD
 
 *{
-=======
-* {
->>>>>>> 322581fe4fbf58d53730d8fdd99b08a6253c936c
     font-family: Arial, Helvetica, sans-serif;
     color: var(--txt-color);
 }
@@ -48,16 +44,9 @@ body {
     width: 100%;
     position: fixed;
 }
-<<<<<<< HEAD
 .chatbox-child{
     height: 85%;
     width: 55%;
-=======
-
-.chatbox-child {
-    height: 65em;
-    width: 60em;
->>>>>>> 322581fe4fbf58d53730d8fdd99b08a6253c936c
     border-radius: 50px;
     background: var(--main-background);
     box-shadow:  20px 20px 60px var(--first-box-shadow),
