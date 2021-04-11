@@ -118,7 +118,7 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 });
 
 // change to the key name
-document.getElementById('keyname').innerText = 'Key: ' + decryptPass;
+//document.getElementById('keyname').innerText = 'Key: ' + decryptPass;
 
 socket.emit('chat event', {
     // on join, broadcast to room
@@ -222,3 +222,5 @@ window.addEventListener('beforeunload', function (evt) {
 document.getElementById('sendbutton').addEventListener('click', checkCommands);
 // bind the theme toggle button to switchTheme()
 document.getElementById('toggler').addEventListener('click', switchTheme);
+// bind the leave    button to leaveRoom()
+document.getElementById('leavebutton').addEventListener('click', leaveRoom());

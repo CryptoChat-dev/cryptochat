@@ -79,7 +79,10 @@ body {
 }
 
 .chatbox-buttons {
+    display:flex;
+    justify-content: space-between;
     margin-left: 5%;
+    margin-bottom:3%;
     margin-right: 5%;
 }
 
@@ -104,7 +107,6 @@ a {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    float:right;
 }
 
 .send:hover {
@@ -170,6 +172,34 @@ a {
     transform: translateY(-7px);
 }
 
+.leavebutton {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: var(--txt-color);
+    background-color: var(--bttn-color);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    z-index: 10000 important;
+    position:relative;
+
+}
+
+.leavebutton:hover {
+    background-color: #ff000d;
+    box-shadow: 0 15px 20px 0 #ff000d;
+    color: var(--txt-color);
+    transform: translateY(-7px);
+}
+
 .themetoggler {
     width: 140px;
     height: 45px;
@@ -186,7 +216,6 @@ a {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    float: left;
 }
 
 .themetoggler:hover {
@@ -282,9 +311,6 @@ p {
         font-size: 1em;
     }
     
-    .chatbox-buttons {
-        justify-content: center;
-    }
     
     .username {
         width: 22em;
@@ -297,5 +323,19 @@ p {
     .message {
         width: 100%;
     }
+    .legal{
+        position: absolute;
+        bottom:0;
+        height: 25px;
+        width:100px;
+        margin-bottom:1%;
+    }
+    .githubbttn{
+        position: relative;
+        bottom:0;
+        float:right;
+        height: 25px;
+        width:100px;
+        margin-bottom:1%;
+    }
 }
-
