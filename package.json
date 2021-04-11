@@ -19,7 +19,8 @@
   "homepage": "https://github.com/httpjamesm/cryptochat#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socketio": "^1.0.0"
+    "express-rate-limit": "^5.2.6",
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "eslint": "^7.24.0"
