@@ -46,7 +46,7 @@ if ('serviceWorker' in navigator) {
 
 var user_name = prompt('Username:', '');
 var decryptPass = prompt('Encryption Key:', '');
-var notificationsound = new Audio('http://' + window.location.hostname + ':' + location.port + '/sounds/notification.mp3');
+var notificationsound = new Audio('https://' + window.location.hostname + ':' + location.port + '/sounds/notification.mp3');
 notificationsound.volume = 0.1;
 
 let code = (function () {
@@ -63,7 +63,7 @@ let code = (function () {
     };
 })();
 
-var socket = io.connect('http://' + window.location.hostname + ':' + location.port);
+var socket = io.connect('https://' + window.location.hostname + ':' + location.port);
 
 socket.on('connect', function () {
       socket.emit('chat event', {
