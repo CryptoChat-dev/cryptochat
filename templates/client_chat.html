@@ -14,12 +14,12 @@
         <title>CryptoChat</title>
     </head>
     <body>        
-        <div class='chatbox-parent'>
-            <div class='chatbox-child'>
-                <div class='chatbox-header'>
-                    <p class='keyname' id='keyname'></p>
-                    <h1 class='chatbox-title'>CryptoChat</h1>
-                    <h2 class='chatbox-subtitle'>A stunning encrypted chat webapp.</h2>
+        <div class="chatbox-parent">
+            <div class="chatbox-child">
+                <div class="chatbox-header">
+                    <p class="keyname" id="keyname"></p>
+                    <h1 class="chatbox-title">CryptoChat</h1>
+                    <h2 class="chatbox-subtitle">A stunning encrypted chat webapp.</h2>
                 </div>
                 <div class='chatbox-messages'>
                     <div class='messageviewer-parent'>
@@ -33,15 +33,57 @@
                         </div>
                     </div>
                 </div>
-                <div class='chatbox-buttons'>
-                    <button class='send' onclick='submitMessage();'>Send</button>
-                    <button class='themetoggler' onclick='switchTheme()' id='toggler'>Dark</button>
+                <div class="chatbox-buttons">
+                    <button class="send" onclick="checkCommands()">Send</button>
+                    <button class="themetoggler" onclick="switchTheme()" id="toggler">Dark</button>
                 </div>
             </div>
         </div>
         <a href='https://github.com/httpjamesm/cryptochat/'><button class='githubbttn'>Github</button></a>
     </body>
     <script>
+        // Registering our Service worker
+        
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js').then(function(registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    // Registration Failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+            var user_name = "default"
+            var decryptPass = "default"
+            function askInfo(){
+                var user_name = window.prompt("Username:", "");
+                var decryptPass = prompt("Encryption Key:", "")
+            }
+            var notificationsound = new Audio('http://' + window.location.hostname + ":" + location.port + "/notification")
+            notificationsound.volume = 0.1
+
+    function checkCommands(){
+        var message = document.getElementById("msg").value
+        var args = message.split(" ");
+        switch (args[0]) {
+            case "/nick":
+                if (args.length == 1) {
+                    window.alert("Invalid nickname. Correct usage: /nick <username>")
+                } else {
+
+                    socket.emit( 'chat event', {
+                        user_name : code.encryptMessage(user_name,decryptPass),  
+                        message : code.encryptMessage("changed their username to " + args[1],decryptPass)
+                    } )  
+                    $( 'input.message' ).val( '' ).focus()
+                    var user_name = args[1]
+                    window.alert("Nickname changed to " + args[1])
+                } 
+                break;
+        }
+    }
 	// Registering our Service worker
 
     if ('serviceWorker' in navigator) {
@@ -77,7 +119,7 @@
 		};
     })();
 
-    var socket = io.connect('https://' + window.location.hostname + ':' + location.port);
+    var socket = io.connect('http://' + window.location.hostname + ':' + location.port);
 	
     socket.on('connect', function() {
       socket.emit('chat event', {
