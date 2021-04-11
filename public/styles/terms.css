@@ -1,4 +1,4 @@
-:root{
+:root {
     --main-background: #1e1e1e;
     --first-box-shadow: #363636;
     --second-box-shadow: #1a1a1a;
@@ -8,7 +8,7 @@
     --bttn-color: black;
 }
 
-[data-theme="light"]{
+[data-theme="light"] {
     --main-background: #e0e0e0;
     --first-box-shadow: #bebebe;
     --second-box-shadow: #ffffff;
@@ -18,19 +18,23 @@
     --bttn-color: white;
 }
 
+<<<<<<< HEAD
 
 *{
+=======
+* {
+>>>>>>> 322581fe4fbf58d53730d8fdd99b08a6253c936c
     font-family: Arial, Helvetica, sans-serif;
     color: var(--txt-color);
 }
 
-body{
+body {
     background: var(--main-background);
     min-height: 100%;
     min-width: auto;
 }
 
-.chatbox-parent{
+.chatbox-parent {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,59 +48,64 @@ body{
     width: 100%;
     position: fixed;
 }
+<<<<<<< HEAD
 .chatbox-child{
     height: 85%;
     width: 55%;
+=======
+
+.chatbox-child {
+    height: 65em;
+    width: 60em;
+>>>>>>> 322581fe4fbf58d53730d8fdd99b08a6253c936c
     border-radius: 50px;
     background: var(--main-background);
     box-shadow:  20px 20px 60px var(--first-box-shadow),
                  -20px -20px 60px var(--second-box-shadow);    
     word-wrap:break-word;
     overflow-y:scroll;
-    }
+}
 
-.chatbox-title{
-    
+.chatbox-title {
     font-size: 3em;
-    ;
     margin-left: 5%;
 }
-.chatbox-subtitle{
-    
+
+.chatbox-subtitle {
     font-size: 1.5em;
     margin-bottom:5%;
     margin-left: 5%;
     font-weight: lighter;
 }
 
-.chatbox-header{
+.chatbox-header {
     line-height: 0.75em;
 }
 
-
-.chatbox-buttons{
+.chatbox-buttons {
     margin:5%;
 }
-a{
+
+a {
     text-decoration: none;
     text-decoration-color: none;
 }
 
-.textcontent{
+.textcontent {
     margin-left: 5%;
     margin-right:5%;
 }
 
-.header{
+.header {
     margin-left:5%;
 }
 
-.bullet{
+.bullet {
     margin-left:3%;
     margin-right:3%;
 }
 
-.githubbttn{
+.githubbttn {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -104,7 +113,6 @@ a{
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    ;
     background-color: var(--bttn-color);
     border: none;
     border-radius: 45px;
@@ -121,8 +129,9 @@ a{
     background-color: #2e68e5;
     box-shadow: 0px 15px 20px #2e68e5;
     transform: translateY(-7px);
-}    
-.themetoggler{
+}
+
+.themetoggler {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -139,7 +148,8 @@ a{
     outline: none;
     float: left;
 }
-.home{
+
+.home {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -156,37 +166,38 @@ a{
     outline: none;
     float: right;
 }
+
 .themetoggler:hover {
     background-color: #2ee5dc;
     box-shadow: 0px 15px 20px #2ee5dc;
     transform: translateY(-7px);
-}    
+}
+
 .home:hover {
     background-color: #ffe550;
     box-shadow: 0px 15px 20px #ffe550;
     color: var(--bttn-color);
     transform: translateY(-7px);
-}    
+}
 
 @media only screen and (max-width: 800px) {
-    .chatbox-child{
+    .chatbox-child {
         height:100%;
         width: 100%;
         border-radius: 0;
         overflow:scroll;
     }
 
-    .chatbox-title{
+    .chatbox-title {
         font-size:2em;
     }
-    .chatbox-subtitle{
+    .chatbox-subtitle {
         font-size:1em;
         line-height: 1.25em;
     }
 
-    .chatbox-buttons{
+    .chatbox-buttons {
         justify-content: center;
     }
-
 }
 
