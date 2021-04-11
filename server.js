@@ -4,14 +4,14 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const RateLimit = require('express-rate-limit');
+//const RateLimit = require('express-rate-limit');
 
 const port = 6969;
 
-const limiter = new RateLimit({
+/*const limiter = new RateLimit({
     windowMs: 1 * 60 * 1000,
     max: 50
-});
+});*/
 
 const router = express.Router();
 
