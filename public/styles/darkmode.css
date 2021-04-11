@@ -64,7 +64,7 @@ body {
 
 .keyname {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: .5em;
+    font-size: 1em;
     color: var(--txt-color);
     margin-left: 5%;
     font-weight: lighter;
@@ -338,4 +338,10 @@ p {
         width:100px;
         margin-bottom:1%;
     }
+}
+
+.info {
+    background: var(--main-background);
+    box-shadow: 20px 20px 60px var(--first-box-shadow),
+                 -20px -20px 60px var(--second-box-shadow);
 }
