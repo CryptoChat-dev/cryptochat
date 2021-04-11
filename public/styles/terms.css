@@ -18,6 +18,7 @@
     --bttn-color: white;
 }
 
+
 *{
     font-family: Arial, Helvetica, sans-serif;
     color: var(--txt-color);
@@ -44,8 +45,8 @@ body{
     position: fixed;
 }
 .chatbox-child{
-    height: 65em;
-    width: 60em;
+    height: 85%;
+    width: 55%;
     border-radius: 50px;
     background: var(--main-background);
     box-shadow:  20px 20px 60px var(--first-box-shadow),
