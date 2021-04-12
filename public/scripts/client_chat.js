@@ -6,7 +6,7 @@ if (matches != null) {
     decryptPass = matches.groups.key;
     user_name = matches.groups.username;
 } else {
-    window.open("/","_self")
+    window.open(window.location.hostname,"_self")
 }
 
 function checkCommands() {
