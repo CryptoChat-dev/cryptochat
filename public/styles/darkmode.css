@@ -186,3 +186,68 @@ p {
         20px 20px 60px var(--first-box-shadow),
         -20px -20px 60px var(--second-box-shadow);
 }
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: pink;
+    font-size: 20px;
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+  }
+  
+  #popUpBox{
+    width: 500px;
+    overflow: hidden;
+    background: #1e1e1e;
+    box-shadow:
+    inset 8px 8px 8px var(--inside-box-shadow-two),
+    inset -8px -8px 8px var(--inside-box-shadow-one);
+
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+    display: none;
+  }
+  .modalButtons{
+      display:flex;
+      justify-items:center;
+      justify-content: space-evenly;
+  }
+  .modalButton{
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: var(--txt-color);
+    background-color: var(--bttn-color);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+
+  }
+
+  .modalButton:hover {
+    color: var(--txt-color);
+    transform: translateY(-7px);
+}

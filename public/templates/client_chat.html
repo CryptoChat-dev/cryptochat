@@ -26,16 +26,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="same-origin" />
         <title>CryptoChat - Anonymous & Secure Messaging</title>
-
-        <!-- bootbox code -->
-        <script src="/scripts/bootbox.min.js"></script>
-        <script src="/scripts/bootbox.locales.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     </head>
     <body>
-        <div class="chatbox-parent">
+        <div class="chatbox-parent" id="chatbox-parent">
             <div class="chatbox-child">
                 <div class="chatbox-header">
                     <p class="keyname" id="keyname"></p>
@@ -70,7 +63,7 @@
                 <div class="chatbox-buttons">
                     <button class="button theme" id="toggler">Dark</button>
                     <button class="button send" id="sendbutton">Send</button>
-                    <button class="button leave" id="leavebutton">Leave</button>
+                    <button class="button leave" id="leavebutton" onclick="Alert.render('You look very pretty today.')">Leave</button>
                 </div>
             </div>
         </div>
@@ -78,13 +71,14 @@
         <a href="https://github.com/httpjamesm/cryptochat/"
             ><button class="button github">Github</button></a
         >
-        <p>Content here. <a class="show-alert" href=#>Alert!</a></p>
     </body>
-<script>
-    $(document).on("click", ".button.leave", function(e) {
-    bootbox.alert("Hello world!", function() {
-        console.log("Alert Callback");
-    });
-});
-</script>
+    <div id="popUpOverlay"></div>
+    <div id="popUpBox">
+        <div id="box">
+          <h1>Are you sure you want to leave?</h1>
+          <div class="modalButtons">
+              <div id="proceedLeave"></div>
+              <div id="cancelLeave"></div>
+          </div>
+        </div>
     </html>

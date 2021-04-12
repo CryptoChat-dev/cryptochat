@@ -233,3 +233,24 @@ document.getElementById('sendbutton').addEventListener('click', checkCommands);
 document.getElementById('toggler').addEventListener('click', switchTheme);
 // bind the leave    button to leaveRoom()
 //document.getElementById('leavebutton').addEventListener('click', location.reload());
+
+var Alert = new CustomAlert();
+
+function CustomAlert(){
+  this.render = function(){
+      //Show Modal
+      let popUpBox = document.getElementById('popUpBox');
+      popUpBox.style.display = "block";
+      document.getElementById('chatbox-parent').style.filter = 'blur(10px)'
+      //Close Modal
+      document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveRoom()" class="modalButton">Yes</button>';
+      document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
+  }
+  
+this.ok = function(){
+  document.getElementById('popUpBox').style.display = "none";
+  document.getElementById('popUpOverlay').style.display = "none";
+  document.getElementById('chatbox-parent').style.filter = 'none'
+
+}
+}
