@@ -170,15 +170,21 @@ socket.on('my response', function (msg) {
 
         // create a text node with the decrypted username and message
         text = document.createTextNode(
-            code.decryptMessage(msg.user_name, decryptPass) +
+            code.decryptMessage(msg.user_name, decryptPass).toString() +
                 ': ' +
-                code.decryptMessage(msg.message, decryptPass)
+                code.decryptMessage(msg.message, decryptPass).toString()
         );
 
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
-        messages.scrollTop = messages.scrollHeight; // auto-scroll the message viewer for convenience
+
+        if (
+            messages.scrollHeight - messages.scrollTop <
+            messages.clientHeight + 20
+        ) {
+            messages.scrollTop = messages.scrollHeight; // auto-scroll the message viewer for convenience
+        }
 
         if (document.hasFocus()) {
             // if the tab is in focus, don't play any notification sound
@@ -194,16 +200,16 @@ function switchTheme() {
 
     button = document.getElementById('toggler').innerText; // get the text value of the theme button
 
-    if (button === 'DARK') {
+    if (button === 'LIGHT') {
         // if the button says 'dark', switch the page to light theme
 
         document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('toggler').innerText = 'LIGHT';
+        document.getElementById('toggler').innerText = 'DARK';
     } else {
         // otherwise, just switch the page to dark theme
 
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('toggler').innerText = 'DARK';
+        document.getElementById('toggler').innerText = 'LIGHT';
     }
 }
 
