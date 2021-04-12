@@ -25,13 +25,13 @@ function checkCommands() {
                 );
             } else {
                 // broadcast the username change to the whole room
-                socket.emit('chat event', JSON.stringify({
+                socket.emit('chat event', {
                     "user_name": code.encryptMessage(user_name, decryptPass),
                     "message": code.encryptMessage(
                         'changed their username to ' + args[1],
                         decryptPass
                         )
-                    }));
+                    });
                 user_name = args[1];
                 $('input.message').val('').focus();
             }
@@ -126,11 +126,11 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 // change to the key name
 document.getElementById('keyname').innerText = 'Key: ' + decodeURI(decryptPass);
 
-socket.emit('chat event', JSON.stringify({
+socket.emit('chat event', {
     // on join, broadcast to room
     "user_name": code.encryptMessage(user_name, decryptPass),
     "message": code.encryptMessage('has joined the room.', decryptPass)
-}));
+});
 
 function form2() {
     // send message from message box
