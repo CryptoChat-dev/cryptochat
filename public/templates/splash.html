@@ -11,23 +11,29 @@
     <body>
         <div class="container">
             <div class="logo"></div>
+            </div>
             <h1>CryptoChat</h1>
-            <div class="messagebox">
-                <div class="username">
-                    <input
-                        id="msg"
-                        type="username"
-                        class="message"
-                        placeholder="Username"
-                    />
-                    <div class="roomkey">
+            <div class="messagebox-parent">
+                <div class="messagebox">
+                    <div class="username">
                         <input
                             id="msg"
                             type="username"
                             class="message"
-                            placeholder="Room Key"
+                            placeholder="Username"
                         />
-                </div>
+                        <div class="roomkey">
+                            <input
+                            id="msg"
+                            type="username"
+                            class="message"
+                            placeholder="Room Key"
+                            />
+                            <button class="button randomize">Random</button>
+                        </div>
+                        <button class="button theme" id="toggler">Light</button>
+                        <button class="button join" id="join">Join</button>
+                    </div>
             </div>
         </div>
     </body>

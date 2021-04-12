@@ -122,5 +122,13 @@ body {
     background-color: #e52ecd;
     box-shadow: 0 15px 20px 0 #e52ecd;
 }
+.button.join {
+    float: right;
+}
+.button.join:hover {
+    background-color: #2ee52e;
+    box-shadow: 0 15px 20px 0 #2ee52e;
+    color: var(--bttn-color)
+}
 
 /* Classes for text imputs */

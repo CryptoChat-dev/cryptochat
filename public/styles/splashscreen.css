@@ -33,13 +33,18 @@ body {
     width: 100vw;
 
 }
+.messagebox-parent{
 
-.messagebox {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
+.messagebox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
+}
 .messagebox input {
     border: none;
     outline: none;
@@ -48,7 +53,6 @@ body {
     margin-left: 1%;
     padding: 20px 10px 20px 5px;
     margin-right: 1%;
-    width: 95%;
     color: var(--txt-color);
 }
 
@@ -57,9 +61,18 @@ body {
     border-radius: 25px;
     box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
         inset -8px -8px 8px var(--inside-box-shadow-two);
-    width: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .roomkey {
     margin-top:10%;
+}
+.username{
+    width: 50%;
+}
+.roomkey{
+    display:flex;
+    justify-content: center;
 }
