@@ -233,8 +233,3 @@ document.getElementById('sendbutton').addEventListener('click', checkCommands);
 document.getElementById('toggler').addEventListener('click', switchTheme);
 // bind the leave    button to leaveRoom()
 //document.getElementById('leavebutton').addEventListener('click', location.reload());
-$(document).on("click", ".show-alert", function(e) {
-    bootbox.alert("Hello world!", function() {
-        console.log("Alert Callback");
-    });
-});
