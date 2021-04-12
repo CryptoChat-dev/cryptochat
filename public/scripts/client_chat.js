@@ -262,7 +262,7 @@ function CustomAlert(){
         cancelbutton.onclick = Alert.ok();
         
         document.getElementById('proceedLeave').appendChild(confirmbutton);
-        document.getElementById('cancelLeave').appendChile(cancelbutton);
+        document.getElementById('cancelLeave').appendChild(cancelbutton);
         
 //         document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
 //         document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
