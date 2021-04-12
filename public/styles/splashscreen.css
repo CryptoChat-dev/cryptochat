@@ -50,7 +50,6 @@ body {
     outline: none;
     background: none;
     font-size: 18px;
-    margin-left: 1%;
     padding: 20px 10px 20px 5px;
     margin-right: 1%;
     color: var(--txt-color);
@@ -75,4 +74,9 @@ body {
 .roomkey{
     display:flex;
     justify-content: center;
+}
+@media only screen and (max-width: 800px) {
+    .username {
+        width:90%;
+    }
 }
