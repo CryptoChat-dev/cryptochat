@@ -22,7 +22,7 @@ CryptoChat has barely any clutter on its user interface. It's a simple, yet feat
 
 ### Encryption
 
-All messages sent through the official CryptoChat clients are end-to-end encrypted locally, meaning nobody except for the message recipients can read their contents. 
+All messages sent through the official CryptoChat clients are end-to-end encrypted locally, meaning nobody except for the message recipients can read their contents. If you need more piece of mind during your chats, use the random key generator for an extra-secure key (it would take 3,505 years to crack!).
 
 ### Ephemeral
 
