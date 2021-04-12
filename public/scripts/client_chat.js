@@ -225,7 +225,7 @@ function leaveRoom() {
 
 function leaveAndReload() {
     leaveRoom()
-    location.reload()
+    window.open(window.location.hostname, "_self")
 }
 
 window.addEventListener('beforeunload', function (evt) {
