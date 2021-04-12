@@ -171,7 +171,7 @@ socket.on('my response', function (msg) {
 
         // create a text node with the decrypted username and message
         text = document.createTextNode(
-            code.decryptMessage(msg.user_name, decryptPass).toString() +
+            decodeURI(code.decryptMessage(msg.user_name, decryptPass).toString()) +
                 ': ' +
                 code.decryptMessage(msg.message, decryptPass).toString()
         );
