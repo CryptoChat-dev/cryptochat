@@ -206,13 +206,9 @@ body{
   }
   
   #popUpBox{
-    width: 500px;
+    width: 25%;
     overflow: hidden;
-    background: #1e1e1e;
-    box-shadow:
-    inset 8px 8px 8px var(--inside-box-shadow-two),
-    inset -8px -8px 8px var(--inside-box-shadow-one);
-
+    background: #292929;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -222,10 +218,12 @@ body{
     padding: 10px;
     text-align: center;
     display: none;
-  }
+    padding: 2%;
+}
   .modalButtons{
       display:flex;
       justify-items:center;
+      margin-top: 15%;
       justify-content: space-evenly;
   }
   .modalButton{
@@ -248,6 +246,29 @@ body{
   }
 
   .modalButton:hover {
+    color: var(--txt-color);
+    transform: translateY(-7px);
+}
+
+.modalButton-red{
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: black;
+    background-color: red;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+
+  }
+  .modalButton-red:hover {
     color: var(--txt-color);
     transform: translateY(-7px);
 }
