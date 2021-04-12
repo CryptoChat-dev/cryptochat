@@ -31,6 +31,7 @@ body {
     background-repeat: no-repeat;
     height: 10vh;
     width: 100vw;
+
 }
 
 .messagebox {
@@ -51,10 +52,14 @@ body {
     color: var(--txt-color);
 }
 
-.username {
+.message {
     margin-bottom: 30px;
     border-radius: 25px;
     box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
         inset -8px -8px 8px var(--inside-box-shadow-two);
-    width: 50em;
+    width: 25%;
+}
+
+.roomkey {
+    margin-top:10%;
 }
