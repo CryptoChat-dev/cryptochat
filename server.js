@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
     res.sendFile('public/templates/splash.html', { root: __dirname });
 });
 
+app.get('/chat', (req, res) => {
+    res.sendFile('public/templates/client_chat.html', { root: __dirname });
+});
+
 // Legal
 
 app.get('/legal', (req, res) => {
