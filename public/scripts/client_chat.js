@@ -34,7 +34,6 @@ function checkCommands() {
                     });
                 user_name = args[1];
                 $('input.message').val('').focus();
-                alertNickChange()
             }
             break;
 
@@ -280,33 +279,4 @@ function CustomAlert(){
 
 function renderAlert(){
     Alert.render('You look very pretty today.')
-}
-
-var nickAlert = new customNick();
-function customNick(){
-    this.render = function(){
-        //Show Modal
-        let popUpBox = document.getElementById('popUpBox-nick');
-        popUpBox.style.display = "block";
-        document.getElementById('chatbox-parent').style.filter = 'blur(10px)';
-
-        //Close Modal
-        document.getElementById("nick-sub").innerText = "Your nickname has been changed to " + user_name + "."
-        cancelbutton = document.createElement('button');
-        cancelbutton.className = 'modalok';
-        cancelbutton.appendChild(document.createTextNode('Ok'));
-        cancelbutton.onclick = Alert.ok;
-        document.getElementById('nickok').appendChild(cancelbutton);
-    }
-    
-    this.ok = function(){
-        document.getElementById('popUpBox-nick').style.display = "none";
-        document.getElementById('popUpOverlay-nick').style.display = "none";
-        document.getElementById('chatbox-parent').style.filter = 'none'
-        
-    }
-}
-
-function alertNickChange() {
-    nickAlert.render('You look very pretty today.')
 }
