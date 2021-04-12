@@ -34,7 +34,7 @@ function checkCommands() {
                     });
                 user_name = args[1];
                 $('input.message').val('').focus();
-                alertNickChange(args[1])
+                alertNickChange()
             }
             break;
 
@@ -283,7 +283,7 @@ function renderAlert(){
 }
 
 var nickAlert = new customNick();
-function customNick(name){
+function customNick(){
     this.render = function(){
         //Show Modal
         let popUpBox = document.getElementById('popUpBox-nick');
@@ -292,7 +292,7 @@ function customNick(name){
 
         //Close Modal
         if (document.getElementById('proceedLeave').children.length === 0) {
-            document.getElementById("nick-sub").innerText = "Your nickname has been changed to " + name + "."
+            document.getElementById("nick-sub").innerText = "Your nickname has been changed to " + user_name + "."
             cancelbutton = document.createElement('button');
             cancelbutton.className = 'modalok';
             cancelbutton.appendChild(document.createTextNode('Ok'));
@@ -312,6 +312,6 @@ function customNick(name){
     }
 }
 
-function alertNickChange(name) {
+function alertNickChange() {
     nickAlert.render('You look very pretty today.')
 }

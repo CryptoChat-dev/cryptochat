@@ -209,7 +209,9 @@ body {
     color: var(--txt-color);
     transform: translateY(-7px);
 }
-
+#nick-sub {
+    font-weight: lighter;
+}
 .modalButton-red {
     width: 140px;
     height: 45px;
