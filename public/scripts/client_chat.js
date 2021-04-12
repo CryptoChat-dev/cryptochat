@@ -253,16 +253,21 @@ function CustomAlert(){
         document.getElementById('chatbox-parent').style.filter = 'blur(10px)';
 
         //Close Modal
-        confirmbutton = document.createElement('button');
-        confirmbutton.className = 'modalButton-red';
-        confirmbutton.appendChild(document.createTextNode('Yes'));
-        confirmbutton.onclick = leaveAndReload;
-        cancelbutton = document.createElement('button');
-        cancelbutton.className = 'modalButton';
-        cancelbutton.appendChild(document.createTextNode('No'));
-        cancelbutton.onclick = Alert.ok;
-        document.getElementById('proceedLeave').appendChild(confirmbutton);
-        document.getElementById('cancelLeave').appendChild(cancelbutton);
+        if (document.getElementById('proceedLeave').children.length === 0) {
+            confirmbutton = document.createElement('button');
+            confirmbutton.className = 'modalButton-red';
+            confirmbutton.appendChild(document.createTextNode('Yes'));
+            confirmbutton.onclick = leaveAndReload;
+            cancelbutton = document.createElement('button');
+            cancelbutton.className = 'modalButton';
+            cancelbutton.appendChild(document.createTextNode('No'));
+            cancelbutton.onclick = Alert.ok;
+            document.getElementById('proceedLeave').appendChild(confirmbutton);
+            document.getElementById('cancelLeave').appendChild(cancelbutton);
+        }
+
+//         document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
+//         document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
     }
     
     this.ok = function(){
@@ -286,17 +291,12 @@ function customNick(){
         document.getElementById('chatbox-parent').style.filter = 'blur(10px)';
 
         //Close Modal
-        if (document.getElementById('proceedLeave').children.length === 0) {
             document.getElementById("nick-sub").innerText = "Your nickname has been changed to " + user_name + "."
             cancelbutton = document.createElement('button');
             cancelbutton.className = 'modalok';
             cancelbutton.appendChild(document.createTextNode('Ok'));
             cancelbutton.onclick = Alert.ok;
             document.getElementById('nickok').appendChild(cancelbutton);
-        }
-
-//         document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
-//         document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
     }
     
     this.ok = function(){
