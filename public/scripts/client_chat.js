@@ -242,9 +242,13 @@ document.getElementById('sendbutton').addEventListener('click', checkCommands);
 // bind the theme toggle button to switchTheme()
 document.getElementById('toggler').addEventListener('click', switchTheme);
 // bind the leave    button to leaveRoom()
-document.getElementById('leavebutton').addEventListener('click', CustomAlert());
+document.getElementById('leavebutton').addEventListener('click', renderAlert());
 
 var Alert = new CustomAlert();
+
+function renderAlert() {
+    Alert.render('You look good today.')
+}
 
 function CustomAlert(){
   this.render = function(){
