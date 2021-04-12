@@ -25,7 +25,7 @@ function checkCommands() {
                 );
             } else {
                 // broadcast the username change to the whole room
-                socket.emit('chat event', JSON.parse({
+                socket.emit('chat event', JSON.stringify({
                     "user_name": code.encryptMessage(user_name, decryptPass),
                     "message": code.encryptMessage(
                         'changed their username to ' + args[1],
@@ -126,11 +126,11 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 // change to the key name
 document.getElementById('keyname').innerText = 'Key: ' + decodeURI(decryptPass);
 
-socket.emit('chat event', JSON.parse(JSON.stringify({
+socket.emit('chat event', JSON.stringify({
     // on join, broadcast to room
     "user_name": code.encryptMessage(user_name, decryptPass),
     "message": code.encryptMessage('has joined the room.', decryptPass)
-})));
+}));
 
 function form2() {
     // send message from message box
@@ -210,10 +210,10 @@ function switchTheme() {
 function leaveRoom() {
     // on tab close, broadcast to the room
 
-    socket.emit('chat event', JSON.parse(JSON.stringify({
+    socket.emit('chat event', JSON.stringify({
         "user_name": code.encryptMessage(user_name, decryptPass),
         "message": code.encryptMessage('has left the room.', decryptPass)
-    })));
+    }));
 }
 
 function leaveAndReload() {
