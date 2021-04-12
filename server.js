@@ -57,6 +57,7 @@ io.on('connection', (connection) => {
     connection.on('chat event', (data) => {
         if (typeof data === 'object') {
             io.emit('my response', data);
+            return
         }
         console.log("Event was rejected.")
     });
