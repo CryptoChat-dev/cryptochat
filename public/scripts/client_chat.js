@@ -1,3 +1,6 @@
+import {render} from 'react-dom';
+
+
 var matches = window.location.href.match(/\?key=(?<key>.*)/);
 var user_name = prompt('Username:', '');
 var decryptPass;
