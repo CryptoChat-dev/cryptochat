@@ -194,16 +194,16 @@ function switchTheme() {
 
     button = document.getElementById('toggler').innerText; // get the text value of the theme button
 
-    if (button === 'DARK') {
+    if (button === 'LIGHT') {
         // if the button says 'dark', switch the page to light theme
 
         document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('toggler').innerText = 'LIGHT';
+        document.getElementById('toggler').innerText = 'DARK';
     } else {
         // otherwise, just switch the page to dark theme
 
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('toggler').innerText = 'DARK';
+        document.getElementById('toggler').innerText = 'LIGHT';
     }
 }
 
