@@ -126,7 +126,7 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 });
 
 // change to the key name
-document.getElementById('keyname').innerText = 'Key: ' + decryptPass;
+document.getElementById('keyname').innerText = 'Key: ' + decodeURI(decryptPass);
 
 socket.emit('chat event', {
     // on join, broadcast to room
