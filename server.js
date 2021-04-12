@@ -58,7 +58,6 @@ io.on('connection', (connection) => {
         try {
             JSON.parse(x);
         } catch (e) {
-            console.log("not JSON");
             json = false
         }
         if (typeof data === 'object' || json == true) {

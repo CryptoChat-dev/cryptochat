@@ -153,7 +153,6 @@ function form2() {
 
 socket.on('my response', function (msg) {
     console.log(msg); // for debugging: print the encrypted contents of the response
-    JSON.parse(msg)
     if (typeof msg.user_name !== 'undefined') {
         // create a paragraph element and name it 'messagetxt'
         messagebox = document.createElement('P');
