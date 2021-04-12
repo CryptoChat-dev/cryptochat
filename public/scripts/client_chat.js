@@ -4,7 +4,6 @@ var decryptPass;
 
 if (matches != null) {
     decryptPass = matches.groups.key;
-
 } else {
     decryptPass = prompt('Encryption Key:', '');
 }
@@ -23,7 +22,6 @@ function checkCommands() {
                 window.alert(
                     'Invalid nickname. Correct usage: /nick <username>'
                 );
-
             } else {
                 var user_name = args[1];
                 socket.emit('chat event', {
@@ -180,8 +178,11 @@ socket.on('my response', function (msg) {
         messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
-        
-        if (messages.scrollHeight - messages.scrollTop < messages.clientHeight + 20) {
+
+        if (
+            messages.scrollHeight - messages.scrollTop <
+            messages.clientHeight + 20
+        ) {
             messages.scrollTop = messages.scrollHeight; // auto-scroll the message viewer for convenience
         }
 
