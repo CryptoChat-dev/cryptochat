@@ -178,7 +178,7 @@ p {
         width: 100px;
         margin-bottom: 1%;
     }
-    
+
     .popUpBox {
         width: 90%;
     }
@@ -219,17 +219,16 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    padding: 10px;
     text-align: center;
     display: none;
     padding: 2%;
 }
 
 .modalButtons {
-      display:flex;
-      justify-items:center;
-      margin-top: 15%;
-      justify-content: space-evenly;
+    display: flex;
+    justify-items: center;
+    margin-top: 15%;
+    justify-content: space-evenly;
 }
 
 .modalButton {
