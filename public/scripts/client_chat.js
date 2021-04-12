@@ -1,6 +1,3 @@
-import {render} from 'react-dom';
-
-
 var matches = window.location.href.match(/\?key=(?<key>.*)/);
 var user_name = prompt('Username:', '');
 var decryptPass;
@@ -248,24 +245,25 @@ document.getElementById('toggler').addEventListener('click', switchTheme);
 document.getElementById('leavebutton').addEventListener('click', renderAlert());
 
 var Alert = new CustomAlert();
+function CustomAlert(){
+    this.render = function(){
+        //Show Modal
+        let popUpBox = document.getElementById('popUpBox');
+        popUpBox.style.display = "block";
+        document.getElementById('chatbox-parent').style.filter = 'blur(10px)'
+        //Close Modal
+        document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
+        document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
+    }
+    
+    this.ok = function(){
+        document.getElementById('popUpBox').style.display = "none";
+        document.getElementById('popUpOverlay').style.display = "none";
+        document.getElementById('chatbox-parent').style.filter = 'none'
+        
+    }
+}
+
 function renderAlert(){
     Alert.render('You look very pretty today.')
-}
-function CustomAlert(){
-  this.render = function(){
-      //Show Modal
-      let popUpBox = document.getElementById('popUpBox');
-      popUpBox.style.display = "block";
-      document.getElementById('chatbox-parent').style.filter = 'blur(10px)'
-      //Close Modal
-      document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
-      document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
-  }
-  
-this.ok = function(){
-  document.getElementById('popUpBox').style.display = "none";
-  document.getElementById('popUpOverlay').style.display = "none";
-  document.getElementById('chatbox-parent').style.filter = 'none'
-
-}
 }
