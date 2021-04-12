@@ -58,6 +58,7 @@ io.on('connection', (connection) => {
         if (typeof data === 'object') {
             io.emit('my response', data);
         }
+        console.log("Event was rejected.")
     });
 });
 
