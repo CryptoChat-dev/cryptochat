@@ -291,12 +291,12 @@ function customNick(){
         document.getElementById('chatbox-parent').style.filter = 'blur(10px)';
 
         //Close Modal
-            document.getElementById("nick-sub").innerText = "Your nickname has been changed to " + user_name + "."
-            cancelbutton = document.createElement('button');
-            cancelbutton.className = 'modalok';
-            cancelbutton.appendChild(document.createTextNode('Ok'));
-            cancelbutton.onclick = Alert.ok;
-            document.getElementById('nickok').appendChild(cancelbutton);
+        document.getElementById("nick-sub").innerText = "Your nickname has been changed to " + user_name + "."
+        cancelbutton = document.createElement('button');
+        cancelbutton.className = 'modalok';
+        cancelbutton.appendChild(document.createTextNode('Ok'));
+        cancelbutton.onclick = Alert.ok;
+        document.getElementById('nickok').appendChild(cancelbutton);
     }
     
     this.ok = function(){
