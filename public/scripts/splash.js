@@ -18,3 +18,40 @@ function switchTheme() {
 
 // bind the theme toggle button to switchTheme()
 document.getElementById('toggler').addEventListener('click', switchTheme);
+
+function getWordNum(num) {
+    var wordslist = []
+    for (var i = 0; i < 6; i += 1) {
+        var newnum = []
+        for (var j = 0; j < 5; j += 1) {
+            // roll a 6 sided die
+            newnum.push(secureRandom(6) + 1)
+        }
+        var theword = eff[newnum.join('')]
+        wordslist.push(theword.charAt(0).toUpperCase() + theword.slice(1))
+    document.getElementById("key").value = wordslist.join('')
+    }
+}
+
+function secureRandom (count) {
+    var cryptoObj = window.crypto || window.msCrypto
+    var rand = new Uint32Array(1)
+    var skip = 0x7fffffff - 0x7fffffff % count
+    var result
+    
+    if (((count - 1) & count) === 0) {
+        cryptoObj.getRandomValues(rand)
+        return rand[0] & (count - 1)
+    }
+    
+    do {
+        cryptoObj.getRandomValues(rand)
+        result = rand[0] & 0x7fffffff
+    } while (result >= skip)
+    
+    return result % count
+    }
+
+  
+
+document.getElementById('randomizer').addEventListener("click", function(){getWordNum(6)});
