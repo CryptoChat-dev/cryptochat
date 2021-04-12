@@ -32,7 +32,7 @@ function checkCommands() {
                         decryptPass
                     )
                 });
-                
+
                 $('input.message').val('').focus();
                 window.alert('Nickname changed to ' + args[1]);
             }
