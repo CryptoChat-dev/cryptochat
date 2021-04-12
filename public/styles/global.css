@@ -131,4 +131,18 @@ body {
     color: var(--bttn-color)
 }
 
+.button.randomize {
+    background: rgb(11,95,247);
+    color: white;
+    background: linear-gradient(72deg, rgba(11,95,247,1) 0%, rgba(9,109,121,1) 36%, rgba(31,9,121,1) 100%);
+}
+
+.button.randomize:hover{
+    box-shadow: 0 15px 20px 0 purple;
+    color: white;
+    background: rgb(11,95,247);
+    background: linear-gradient(72deg, rgba(11,95,247,1) 0%, rgba(9,109,121,1) 36%, rgba(31,9,121,1) 100%);
+}
+
+
 /* Classes for text imputs */

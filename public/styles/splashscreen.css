@@ -79,3 +79,93 @@ body {
         width:90%;
     }
 }
+
+.buttons.bottom {
+    margin-top: 5%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: pink;
+    font-size: 20px;
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.popUpBox {
+    width: 25%;
+    overflow: hidden;
+    background: #292929;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    text-align: center;
+    display: none;
+    padding: 2%;
+}
+
+.modalButtons {
+    display: flex;
+    justify-items: center;
+    margin-top: 15%;
+    justify-content: space-evenly;
+}
+
+.modalButton {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: var(--txt-color);
+    background-color: var(--bttn-color);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.modalButton:hover {
+    color: var(--txt-color);
+    transform: translateY(-7px);
+}
+
+.modalButton-red {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: black;
+    background-color: red;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.modalButton-red:hover {
+    color: var(--txt-color);
+    transform: translateY(-7px);
+}

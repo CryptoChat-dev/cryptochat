@@ -10,35 +10,56 @@
         <link rel="stylesheet" href="/styles/splashscreen.css" />
         <script defer src="/scripts/splash.js"></script>
         <script defer src="/assets/diceware.js"></script>
+        <script defer src="/scripts/passwordCheck.js"></script>
         <meta name="referrer" content="same-origin" />
     </head>
     <body>
-        <div class="container">
-            <div class="logo"></div>
+        <div id="content">
+            <div class="container">
+                <div class="logo"></div>
+                <h1>CryptoChat</h1>
             </div>
-            <h1>CryptoChat</h1>
-            <div class="messagebox-parent">
-                <div class="messagebox">
-                    <div class="username">
-                        <input
-                            id="msg"
-                            type="username"
-                            class="message"
-                            placeholder="Username"
-                        />
-                        <div class="roomkey">
+                <div class="messagebox-parent">
+                    <div class="messagebox">
+                        <div class="username">
                             <input
-                            id="key"
-                            type="username"
-                            class="message"
-                            placeholder="Room Key"
+                                id="msg"
+                                type="username"
+                                class="message"
+                                placeholder="Username"
                             />
-                            <button class="button randomize" id="randomizer">Random</button>
+                            <div class="roomkey">
+                                <input
+                                id="key"
+                                type="username"
+                                class="message"
+                                placeholder="Room Key"
+                                />
+                                <button class="button randomize" id="randomizer">Random</button>
+                            </div>
+                            <div class="buttons">
+                                <div class="buttons top">
+                                    <button class="button theme" id="toggler">Light</button>
+                                    <button class="button join" id="join">Join</button>
+                                </div>
+                                <div class="buttons bottom">
+                                    <a href="/legal"><button class="button legal">Legal</button></a>
+                                    <a href="https://github.com/httpjamesm/cryptochat/"><button class="button github">Github</button></a>
+                                </div>
+                            </div>
                         </div>
-                        <button class="button theme" id="toggler">Light</button>
-                        <button class="button join" id="join">Join</button>
-                    </div>
+                </div>
             </div>
         </div>
+        <div id="popUpOverlay"></div>
+        <div class="popUpBox" id="popUpBox">
+            <div id="box">
+              <h1>Weak Key</h1>
+              <h2 style='font-weight: lighter;'>The key you entered is insecure. It is recommended to use the random button. Do you wish to proceed anyways?</h2>
+              <div class="modalButtons">
+                  <div id="proceedLeave"></div>
+                  <div id="cancelLeave"></div>
+              </div>
+            </div>
     </body>
 </html>

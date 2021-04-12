@@ -54,10 +54,51 @@ function secureRandom (count) {
     return result % count
 }
 
-function loadChat(username, key) {
-    // load the chat by giving the key and username to the chat route endpoint 
-    window.open(window.location.href + "chat/?key=" + key + "&username=" + username,"_self")
-}
 
 document.getElementById('randomizer').addEventListener("click", function(){getWordNum()});
 document.getElementById('join').addEventListener("click", function(){loadChat(document.getElementById('msg').value, document.getElementById('key').value)});
+
+var Alert = new CustomAlert();
+
+function CustomAlert(){
+    this.render = function(){
+        //Show Modal
+        let popUpBox = document.getElementById('popUpBox');
+        popUpBox.style.display = "block";
+        document.getElementById('content').style.filter = 'blur(10px)';
+
+        //Close Modal
+        if (document.getElementById('proceedLeave').children.length === 0) {
+            confirmbutton = document.createElement('button');
+            confirmbutton.className = 'modalButton-red';
+            confirmbutton.appendChild(document.createTextNode('Yes'));
+            confirmbutton.onclick = function () {loadChat(document.getElementById('msg').value, document.getElementById('key').value, true)};
+            cancelbutton = document.createElement('button');
+            cancelbutton.className = 'modalButton';
+            cancelbutton.appendChild(document.createTextNode('No'));
+            cancelbutton.onclick = Alert.ok;
+            document.getElementById('proceedLeave').appendChild(confirmbutton);
+            document.getElementById('cancelLeave').appendChild(cancelbutton);
+        }
+    }
+    
+    this.ok = function(){
+        document.getElementById('popUpBox').style.display = "none";
+        document.getElementById('popUpOverlay').style.display = "none";
+        document.getElementById('content').style.filter = 'none'
+        
+    }
+}
+
+function renderAlert(){
+    Alert.render('You look very pretty today.')
+}
+
+function loadChat(username, key, override = false) {
+    if (toWords(scorePassword(key)) == "weak" && override == false) {
+        renderAlert()
+    } else {
+        // load the chat by giving the key and username to the chat route endpoint 
+        window.open(window.location.href + "chat/?key=" + key + "&username=" + username,"_self")
+    }
+}
