@@ -216,6 +216,11 @@ function leaveRoom() {
     });
 }
 
+function leaveAndReload() {
+    leaveRoom()
+    location.reload()
+}
+
 window.addEventListener('beforeunload', function (evt) {
     // execute code before the tab closes
 
@@ -231,7 +236,7 @@ document.getElementById('sendbutton').addEventListener('click', checkCommands);
 // bind the theme toggle button to switchTheme()
 document.getElementById('toggler').addEventListener('click', switchTheme);
 // bind the leave    button to leaveRoom()
-//document.getElementById('leavebutton').addEventListener('click', location.reload());
+document.getElementById('leavebutton').addEventListener('click', Alert.render('You look very pretty today.'));
 
 var Alert = new CustomAlert();
 
@@ -242,7 +247,7 @@ function CustomAlert(){
       popUpBox.style.display = "block";
       document.getElementById('chatbox-parent').style.filter = 'blur(10px)'
       //Close Modal
-      document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveRoom()" class="modalButton-red">Yes</button>';
+      document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
       document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
   }
   
