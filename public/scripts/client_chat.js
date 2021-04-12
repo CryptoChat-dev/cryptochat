@@ -24,14 +24,14 @@ function checkCommands() {
                     'Invalid nickname. Correct usage: /nick <username>'
                 );
             } else {
-                socket.emit('chat event', {
-                    // broadcast the username change to the whole room
-                    user_name: code.encryptMessage(user_name, decryptPass),
-                    message: code.encryptMessage(
+                // broadcast the username change to the whole room
+                socket.emit('chat event', JSON.parse({
+                    "user_name": code.encryptMessage(user_name, decryptPass),
+                    "message": code.encryptMessage(
                         'changed their username to ' + args[1],
                         decryptPass
                         )
-                    });
+                    }));
                 user_name = args[1];
                 $('input.message').val('').focus();
             }
@@ -126,11 +126,11 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 // change to the key name
 document.getElementById('keyname').innerText = 'Key: ' + decodeURI(decryptPass);
 
-socket.emit('chat event', {
+socket.emit('chat event', JSON.parse({
     // on join, broadcast to room
-    user_name: code.encryptMessage(user_name, decryptPass),
-    message: code.encryptMessage('has joined the room.', decryptPass)
-});
+    "user_name": code.encryptMessage(user_name, decryptPass),
+    "message": code.encryptMessage('has joined the room.', decryptPass)
+}));
 
 function form2() {
     // send message from message box
@@ -142,11 +142,11 @@ function form2() {
         return;
     }
 
-    socket.emit('chat event', {
+    socket.emit('chat event', JSON.parse({
         // encrypt and send the user's name and message
-        user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage(user_input, decryptPass)
-    });
+        "user_name": code.encryptMessage(user_name, decryptPass),
+        "message": code.encryptMessage(user_input, decryptPass)
+    }));
 
     $('input.message').val('').focus(); // clear the message input box after send
 }
@@ -210,10 +210,10 @@ function switchTheme() {
 function leaveRoom() {
     // on tab close, broadcast to the room
 
-    socket.emit('chat event', {
-        user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage('has left the room.', decryptPass)
-    });
+    socket.emit('chat event', JSON.parse({
+        "user_name": code.encryptMessage(user_name, decryptPass),
+        "message": code.encryptMessage('has left the room.', decryptPass)
+    }));
 }
 
 function leaveAndReload() {
