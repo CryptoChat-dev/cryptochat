@@ -44,6 +44,13 @@ app.get('/privacy', (req, res) => {
     res.sendFile('public/templates/privacy.html', { root: __dirname });
 });
 
+//The 404 Route (ALWAYS Keep this as the last route)
+
+app.get('*', function(req, res){
+    res.status(404).sendFile('public/templates/404.html', { root: __dirname });
+  });
+  
+
 // SocketIO
 
 io.on('connection', (connection) => {
