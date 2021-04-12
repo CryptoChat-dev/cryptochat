@@ -1,75 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=en>
     <head>
-        <script
-            src="/bower_components/crypto-js/crypto-js.js"
-            cross-origin="anonymous"
-        ></script>
-        <script src="/scripts/jquery.min.js" crossorigin="anonymous"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script defer src="/scripts/client_chat.js"></script>
-        <link rel="manifest" href="/manifest.webmanifest" />
-        <link
-            rel="stylesheet"
-            href="/styles/font-awesome.min.css"
-            type="text/css"
-        />
-        <link rel="stylesheet" href="/styles/darkmode.css" />
-        <link rel="stylesheet" href="/styles/global.css" />
-        <link rel="shortcut icon" type="image/jpg" href="/icons/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icons/cryptochat-512.png" />
-        <meta
-            name="description"
-            content="Chat anonymously and securely with disposable encrypted rooms."
-        />
-        <meta name="theme-color" content="#363636" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="referrer" content="same-origin" />
+        <script src='/bower_components/crypto-js/crypto-js.js' cross-origin='anonymous'></script>
+        <script src='/scripts/jquery.min.js' crossorigin='anonymous'></script>
+        <script src='/socket.io/socket.io.js'></script>
+        <script defer src="/scripts/client_chat.js"></script> 
+        <link rel='manifest' href='/manifest.webmanifest'>
+        <link rel='stylesheet' href='/styles/font-awesome.min.css' type='text/css'>
+        <link rel='stylesheet' href='/styles/darkmode.css'>
+        <link rel="shortcut icon" type="image/jpg" href="/icons/favicon.ico"/>
+        <link rel='apple-touch-icon' href='/icons/cryptochat-512.png'>
+        <meta name='description' content='Chat anonymously and securely with disposable encrypted rooms.'>
+        <meta name='theme-color' content='#363636'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta name="referrer" content="same-origin">
+        <link rel="stylesheet" href="/styles/global.css">
         <title>CryptoChat - Anonymous & Secure Messaging</title>
+        
+        <!-- bootbox code -->
+        <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css">
+        <script src="/scripts/bootbox.min.js"></script>
+        <script src="/scripts/bootbox.locales.min.js"></script>
     </head>
-    <body>
+    <body>        
         <div class="chatbox-parent">
             <div class="chatbox-child">
                 <div class="chatbox-header">
                     <p class="keyname" id="keyname"></p>
                     <h1 class="chatbox-title">CryptoChat</h1>
-                    <h2 class="chatbox-subtitle">
-                        A stunning encrypted chat webapp.
-                    </h2>
+                    <h2 class="chatbox-subtitle">A stunning encrypted chat webapp.</h2>
                 </div>
-                <div class="chatbox-messages">
-                    <div class="messageviewer-parent">
-                        <div
-                            id="messageviewer"
-                            name="messageviewer"
-                            class="messageviewer"
-                        >
-                            <p class="messagetxt"></p>
+                <div class='chatbox-messages'>
+                    <div class='messageviewer-parent'>
+                        <div id='messageviewer' name='messageviewer' class='messageviewer'>
+                            <p class='messagetxt'></p>
                         </div>
                     </div>
-                    <div class="messagebox">
-                        <div class="fields">
-                            <div class="username">
-                                <input
-                                    id="msg"
-                                    type="username"
-                                    class="message"
-                                    placeholder="Hello!"
-                                />
-                            </div>
+                    <div class='messagebox'>
+                        <div class='fields'>
+                            <div class='username'><input id='msg' type='username' class='message' placeholder='Hello!' /></div>
                         </div>
                     </div>
                 </div>
                 <div class="chatbox-buttons">
-                    <button class="button theme" id="toggler">Dark</button>
-                    <button class="button send" id="sendbutton">Send</button>
-                    <button class="button leave" id="leavebutton">Leave</button>
+                    <button class="themetoggler" id="toggler">Dark</button>
+                    <button class="send" id="sendbutton">Send</button>
+                    <button class="leavebutton" id="leavebutton">Leave</button>
                 </div>
             </div>
         </div>
-        <a href="/legal"><button class="button legal">Legal</button></a>
-        <a href="https://github.com/httpjamesm/cryptochat/"
-            ><button class="button github">Github</button></a
-        >
+        <a href="/legal"><button class="legal">Legal</button></a>
+        <a href='https://github.com/httpjamesm/cryptochat/'><button class='githubbttn'>Github</button></a>
     </body>
 </html>
