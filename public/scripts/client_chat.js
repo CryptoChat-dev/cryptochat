@@ -32,10 +32,9 @@ function checkCommands() {
                         decryptPass
                         )
                     });
-                console.log(args[1])
                 user_name = args[1];
                 $('input.message').val('').focus();
-                window.alert('Nickname changed to ' + args[1]);
+                alertNickChange(args[1])
             }
             break;
 
@@ -281,4 +280,38 @@ function CustomAlert(){
 
 function renderAlert(){
     Alert.render('You look very pretty today.')
+}
+
+var nickAlert = new customNick();
+function customNick(name){
+    this.render = function(){
+        //Show Modal
+        let popUpBox = document.getElementById('popUpBox-nick');
+        popUpBox.style.display = "block";
+        document.getElementById('chatbox-parent').style.filter = 'blur(10px)';
+
+        //Close Modal
+        if (document.getElementById('proceedLeave').children.length === 0) {
+            document.getElementById("nick-sub").innerText = "Your nickname has been changed to " + name + "."
+            cancelbutton = document.createElement('button');
+            cancelbutton.className = 'modalok';
+            cancelbutton.appendChild(document.createTextNode('Ok'));
+            cancelbutton.onclick = Alert.ok;
+            document.getElementById('nickok').appendChild(cancelbutton);
+        }
+
+//         document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
+//         document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
+    }
+    
+    this.ok = function(){
+        document.getElementById('popUpBox-nick').style.display = "none";
+        document.getElementById('popUpOverlay-nick').style.display = "none";
+        document.getElementById('chatbox-parent').style.filter = 'none'
+        
+    }
+}
+
+function nickAlert(name) {
+    nickAlert.render('You look very pretty today.')
 }

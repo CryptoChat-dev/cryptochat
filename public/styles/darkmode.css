@@ -187,6 +187,28 @@ body {
     color: var(--txt-color);
     transform: translateY(-7px);
 }
+.modalok {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: var(--txt-color);
+    background-color: var(--bttn-color);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.modalok:hover {
+    color: var(--txt-color);
+    transform: translateY(-7px);
+}
 
 .modalButton-red {
     width: 140px;
