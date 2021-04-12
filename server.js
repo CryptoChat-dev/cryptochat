@@ -56,14 +56,16 @@ app.get('*', function(req, res){
 io.on('connection', (connection) => {
     connection.on('chat event', (data) => {
         try {
-            JSON.parse(data);
+            JSON.parse(x);
         } catch (e) {
-            console.log(e)
-            console.log(data)
-            console.log("[err] data received is not JSON");
+            console.log("not JSON");
+            json = false
+        }
+        if (typeof data === 'object' || json == true) {
+            io.emit('my response', data);
             return
         }
-        io.emit('my response', data);
+        console.log("Event was rejected." + data)
     });
 });
 
