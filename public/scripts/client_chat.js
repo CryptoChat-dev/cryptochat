@@ -243,17 +243,29 @@ document.getElementById('sendbutton').addEventListener('click', checkCommands);
 document.getElementById('toggler').addEventListener('click', switchTheme);
 // bind the leave    button to leaveRoom()
 var Alert = new CustomAlert();
-document.getElementById('leavebutton').onclick = Alert.render('You look very pretty today.')
+document.getElementById('leavebutton').onclick = renderAlert(); // Alert.render('You look very pretty today.')
 
 function CustomAlert(){
     this.render = function(){
         //Show Modal
         let popUpBox = document.getElementById('popUpBox');
         popUpBox.style.display = "block";
-        document.getElementById('chatbox-parent').style.filter = 'blur(10px)'
+        document.getElementById('chatbox-parent').style.filter = 'blur(10px)';
+        
         //Close Modal
-        document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
-        document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
+        confirmbutton = document.createElement('button');
+        confirmbutton.className = 'modalButton-red';
+        confirmbutton.onclick = leaveAndReload();
+        
+        cancelbutton = document.createElement('button');
+        cancelbutton.className = 'modalButton';
+        cancelbutton.onclick = Alert.ok();
+        
+        document.getElementById('proceedLeave').appendChild(confirmbutton);
+        document.getElementById('cancelLeave').appendChile(cancelbutton);
+        
+//         document.getElementById('proceedLeave').innerHTML = '<button onclick="leaveAndReload()" class="modalButton-red">Yes</button>';
+//         document.getElementById('cancelLeave').innerHTML = '<button onclick="Alert.ok()" class="modalButton">No</button>';
     }
     
     this.ok = function(){
