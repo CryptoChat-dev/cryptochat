@@ -19,7 +19,7 @@ function switchTheme() {
 // bind the theme toggle button to switchTheme()
 document.getElementById('toggler').addEventListener('click', switchTheme);
 
-function getWordNum(num) {
+function getWordNum() {
     var wordslist = []
     for (var i = 0; i < 6; i += 1) {
         var newnum = []
@@ -56,5 +56,5 @@ function loadChat(username, key) {
     window.open(window.location.href + "chat/?key=" + key + "&username=" + username,"_self")
 }
 
-document.getElementById('randomizer').addEventListener("click", function(){getWordNum(6)});
+document.getElementById('randomizer').addEventListener("click", function(){getWordNum()});
 document.getElementById('join').addEventListener("click", function(){loadChat(document.getElementById('msg').value, document.getElementById('key').value)});

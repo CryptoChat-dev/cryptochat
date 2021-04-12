@@ -67,14 +67,13 @@ body {
 
 .roomkey {
     margin-top:10%;
+    display:flex;
+    justify-content: center;
 }
 .username{
     width: 50%;
 }
-.roomkey{
-    display:flex;
-    justify-content: center;
-}
+
 @media only screen and (max-width: 800px) {
     .username {
         width:90%;
