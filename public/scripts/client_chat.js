@@ -1,11 +1,12 @@
-var matches = window.location.href.match(/\?key=(?<key>.*)/);
-var user_name = prompt('Username:', '');
+var matches = window.location.href.match(/\?key=(?<key>.*)&username=(?<username>.*)/);
+var user_name;
 var decryptPass;
 
 if (matches != null) {
     decryptPass = matches.groups.key;
+    user_name = matches.groups.username;
 } else {
-    decryptPass = prompt('Encryption Key:', '');
+    window.open("/")
 }
 
 function checkCommands() {
