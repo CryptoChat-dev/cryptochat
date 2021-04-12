@@ -178,8 +178,9 @@ p {
         width: 100px;
         margin-bottom: 1%;
     }
-    .popUpBox{
-        width:90%;
+    
+    .popUpBox {
+        width: 90%;
     }
 }
 
@@ -190,13 +191,13 @@ p {
         -20px -20px 60px var(--second-box-shadow);
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  .btn{
+}
+
+.btn {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -206,9 +207,9 @@ body{
     color: white;
     padding: 10px 30px;
     cursor: pointer;
-  }
-  
-  .popUpBox{
+}
+
+.popUpBox {
     width: 25%;
     overflow: hidden;
     background: #292929;
@@ -223,13 +224,15 @@ body{
     display: none;
     padding: 2%;
 }
-  .modalButtons{
+
+.modalButtons {
       display:flex;
       justify-items:center;
       margin-top: 15%;
       justify-content: space-evenly;
-  }
-  .modalButton{
+}
+
+.modalButton {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -245,15 +248,14 @@ body{
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+}
 
-  }
-
-  .modalButton:hover {
+.modalButton:hover {
     color: var(--txt-color);
     transform: translateY(-7px);
 }
 
-.modalButton-red{
+.modalButton-red {
     width: 140px;
     height: 45px;
     font-family: 'Roboto', sans-serif;
@@ -269,9 +271,9 @@ body{
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+}
 
-  }
-  .modalButton-red:hover {
+.modalButton-red:hover {
     color: var(--txt-color);
     transform: translateY(-7px);
 }
