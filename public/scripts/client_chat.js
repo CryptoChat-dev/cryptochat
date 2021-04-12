@@ -312,6 +312,6 @@ function customNick(name){
     }
 }
 
-function nickAlert(name) {
+function alertNickChange(name) {
     nickAlert.render('You look very pretty today.')
 }
