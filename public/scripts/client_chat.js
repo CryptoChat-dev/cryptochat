@@ -158,11 +158,8 @@ socket.on('my response', function (msg) {
 
     if (typeof msg.user_name !== 'undefined') {
         // create a paragraph element and name it 'messagetxt'
-        messagebox = document.createElement('div');
+        messagebox = document.createElement('P');
         messagebox.className = 'messagetxt';
-
-        userbox = document.createElement('b');
-        msgbox = document.createElement('p')
 
         if (
             code.decryptMessage(msg.user_name, decryptPass) == '' &&
@@ -173,18 +170,14 @@ socket.on('my response', function (msg) {
         }
 
         // create a text node with the decrypted username and message
-        user = document.createTextNode(
-            decodeURI(code.decryptMessage(msg.user_name, decryptPass).toString())
-        )
         text = document.createTextNode(
+            decodeURI(code.decryptMessage(msg.user_name, decryptPass).toString()) +
                 ': ' +
                 code.decryptMessage(msg.message, decryptPass).toString()
         );
 
-        userbox.appendChild(user); // append the node to the b element
-        msgbox.appendChild(messagebox)
+        messagebox.appendChild(text); // append the node to the p element
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
-        messagebox.normalize();
         messages.appendChild(messagebox); // append the p element to the messageviewer object
 
         if (
