@@ -255,11 +255,11 @@ function CustomAlert(){
         //Close Modal
         confirmbutton = document.createElement('button');
         confirmbutton.className = 'modalButton-red';
-        confirmbutton.onclick = leaveAndReload();
+        confirmbutton.onclick = leaveAndReload;
         
         cancelbutton = document.createElement('button');
         cancelbutton.className = 'modalButton';
-        cancelbutton.onclick = Alert.ok();
+        cancelbutton.onclick = Alert.ok;
         
         document.getElementById('proceedLeave').appendChild(confirmbutton);
         document.getElementById('cancelLeave').appendChild(cancelbutton);
