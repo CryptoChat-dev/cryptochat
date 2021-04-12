@@ -29,6 +29,8 @@ body {
     min-width: auto;
 }
 
+/* Classes for buttons */
+
 .button {
     width: 140px;
     height: 45px;
@@ -120,3 +122,5 @@ body {
     background-color: #e52ecd;
     box-shadow: 0 15px 20px 0 #e52ecd;
 }
+
+/* Classes for text imputs */

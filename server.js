@@ -23,7 +23,7 @@ app.use(express.static('public'));
 // API Routes
 
 app.get('/', (req, res) => {
-    res.sendFile('public/templates/client_chat.html', { root: __dirname });
+    res.sendFile('public/templates/splash.html', { root: __dirname });
 });
 
 // Legal

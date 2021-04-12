@@ -17,8 +17,7 @@
     width: 60em;
     border-radius: 50px;
     background: var(--main-background);
-    box-shadow:
-        20px 20px 60px var(--first-box-shadow),
+    box-shadow: 20px 20px 60px var(--first-box-shadow),
         -20px -20px 60px var(--second-box-shadow);
 }
 
@@ -88,8 +87,7 @@ a {
 .username {
     margin-bottom: 30px;
     border-radius: 25px;
-    box-shadow:
-        inset 8px 8px 8px var(--inside-box-shadow-one),
+    box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
         inset -8px -8px 8px var(--inside-box-shadow-two);
     width: 50em;
 }
@@ -98,8 +96,7 @@ a {
     height: 80%;
     margin-bottom: 30px;
     border-radius: 25px;
-    box-shadow:
-        inset 8px 8px 8px var(--inside-box-shadow-one),
+    box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
         inset -8px -8px 8px var(--inside-box-shadow-two);
     width: 45em;
     border: none;
@@ -182,7 +179,6 @@ p {
 
 .info {
     background: var(--main-background);
-    box-shadow:
-        20px 20px 60px var(--first-box-shadow),
+    box-shadow: 20px 20px 60px var(--first-box-shadow),
         -20px -20px 60px var(--second-box-shadow);
 }
