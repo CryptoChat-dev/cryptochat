@@ -74,12 +74,6 @@ body {
     width: 50%;
 }
 
-@media only screen and (max-width: 800px) {
-    .username {
-        width:90%;
-    }
-}
-
 .buttons.bottom {
     margin-top: 5%;
 }
@@ -168,4 +162,13 @@ body {
 .modalButton-red:hover {
     color: var(--txt-color);
     transform: translateY(-7px);
+}
+
+@media only screen and (max-width: 800px) {
+    .username {
+        width:90%;
+    }
+    .popUpBox{
+        width: 90%;
+    }
 }
