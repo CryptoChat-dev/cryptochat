@@ -24,16 +24,15 @@ function checkCommands() {
                 );
             } else {
                 var user_name = args[1];
-                
                 socket.emit('chat event', {
                     // broadcast the username change to the whole room
                     user_name: code.encryptMessage(user_name, decryptPass),
                     message: code.encryptMessage(
                         'changed their username to ' + args[1],
                         decryptPass
-                    ),
+                    )
                 });
-                
+
                 $('input.message').val('').focus();
                 window.alert('Nickname changed to ' + args[1]);
             }
