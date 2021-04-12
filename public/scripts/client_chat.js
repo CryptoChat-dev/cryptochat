@@ -182,7 +182,7 @@ socket.on('my response', function (msg) {
         );
 
         userbox.appendChild(user); // append the node to the b element
-        msgbox.appendChild(txt)
+        msgbox.appendChild(messagebox)
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messagebox.normalize();
         messages.appendChild(messagebox); // append the p element to the messageviewer object
