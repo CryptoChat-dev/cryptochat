@@ -247,7 +247,7 @@ document.getElementById('leavebutton').addEventListener('click', renderAlert());
 var Alert = new CustomAlert();
 
 function renderAlert() {
-    Alert.render('You look good today.')
+    Alert.render('You look very pretty today.')
 }
 
 function CustomAlert(){
