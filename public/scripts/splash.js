@@ -53,7 +53,7 @@ function secureRandom (count) {
     }
 
 function loadChat(username, key) {
-    window.open(window.location.href + "chat/?key=" + key + "&username=" + username)
+    window.open(window.location.href + "chat/?key=" + key + "&username=" + username,"_self")
 }
 
 document.getElementById('randomizer').addEventListener("click", function(){getWordNum(6)});
