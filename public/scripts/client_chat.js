@@ -178,12 +178,7 @@ socket.on('my response', function (msg) {
         messages = document.getElementsByName('messageviewer')[0]; // get the messageviewer object
         messages.appendChild(messagebox); // append the p element to the messageviewer object
 
-        if (
-            messages.scrollHeight - messages.scrollTop <
-            messages.clientHeight + 20
-        ) {
-            messages.scrollTop = messages.scrollHeight; // auto-scroll the message viewer for convenience
-        }
+        messages.scrollTop = messages.scrollHeight; // auto-scroll the message viewer for convenience
 
         if (document.hasFocus()) {
             // if the tab is in focus, don't play any notification sound

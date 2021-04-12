@@ -94,6 +94,12 @@ function renderAlert(){
     Alert.render('You look very pretty today.')
 }
 
+function checkValues() {
+    if (document.getElementById("msg").value == "" || document.getElementById("key") != "") {
+        return false
+    }
+}
+
 function loadChat(username, key, override = false) {
     if (toWords(scorePassword(key)) == "weak" && override == false) {
         renderAlert()
