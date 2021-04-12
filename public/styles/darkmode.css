@@ -178,6 +178,9 @@ p {
         width: 100px;
         margin-bottom: 1%;
     }
+    .popUpBox{
+        width:90%;
+    }
 }
 
 .info {
@@ -205,7 +208,7 @@ body{
     cursor: pointer;
   }
   
-  #popUpBox{
+  .popUpBox{
     width: 25%;
     overflow: hidden;
     background: #292929;
