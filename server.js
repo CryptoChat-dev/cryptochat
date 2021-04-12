@@ -58,6 +58,7 @@ io.on('connection', (connection) => {
         try {
             JSON.parse(data);
         } catch (e) {
+            console.log(e)
             console.log("[err] data received is not JSON");
             return
         }
