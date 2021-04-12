@@ -6,7 +6,7 @@ if (matches != null) {
     decryptPass = matches.groups.key;
     user_name = matches.groups.username;
 } else {
-    window.open(window.location.hostname,"_self")
+    window.open("https://" + window.location.hostname,"_self")
 }
 
 function checkCommands() {
@@ -225,7 +225,7 @@ function leaveRoom() {
 
 function leaveAndReload() {
     leaveRoom()
-    window.open(window.location.hostname, "_self")
+    window.open("https://" + window.location.hostname, "_self")
 }
 
 window.addEventListener('beforeunload', function (evt) {
