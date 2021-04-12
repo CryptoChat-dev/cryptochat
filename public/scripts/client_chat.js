@@ -126,11 +126,11 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 // change to the key name
 document.getElementById('keyname').innerText = 'Key: ' + decodeURI(decryptPass);
 
-socket.emit('chat event', JSON.parse({
+socket.emit('chat event', JSON.parse(JSON.stringify({
     // on join, broadcast to room
     "user_name": code.encryptMessage(user_name, decryptPass),
     "message": code.encryptMessage('has joined the room.', decryptPass)
-}));
+})));
 
 function form2() {
     // send message from message box
@@ -142,11 +142,11 @@ function form2() {
         return;
     }
 
-    socket.emit('chat event', JSON.parse({
+    socket.emit('chat event', JSON.parse(JSON.stringify({
         // encrypt and send the user's name and message
         "user_name": code.encryptMessage(user_name, decryptPass),
         "message": code.encryptMessage(user_input, decryptPass)
-    }));
+    })));
 
     $('input.message').val('').focus(); // clear the message input box after send
 }
@@ -210,10 +210,10 @@ function switchTheme() {
 function leaveRoom() {
     // on tab close, broadcast to the room
 
-    socket.emit('chat event', JSON.parse({
+    socket.emit('chat event', JSON.parse(JSON.stringify({
         "user_name": code.encryptMessage(user_name, decryptPass),
         "message": code.encryptMessage('has left the room.', decryptPass)
-    }));
+    })));
 }
 
 function leaveAndReload() {
