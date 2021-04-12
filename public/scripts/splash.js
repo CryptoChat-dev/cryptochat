@@ -20,6 +20,7 @@ function switchTheme() {
 document.getElementById('toggler').addEventListener('click', switchTheme);
 
 function getWordNum() {
+    // get the random words from the dice ware dict
     var wordslist = []
     for (var i = 0; i < 6; i += 1) {
         var newnum = []
@@ -34,6 +35,7 @@ function getWordNum() {
 }
 
 function secureRandom (count) {
+    // generate a cryptographically secure integer
     var cryptoObj = window.crypto || window.msCrypto
     var rand = new Uint32Array(1)
     var skip = 0x7fffffff - 0x7fffffff % count
@@ -50,9 +52,10 @@ function secureRandom (count) {
     } while (result >= skip)
     
     return result % count
-    }
+}
 
 function loadChat(username, key) {
+    // load the chat by giving the key and username to the chat route endpoint 
     window.open(window.location.href + "chat/?key=" + key + "&username=" + username,"_self")
 }
 
