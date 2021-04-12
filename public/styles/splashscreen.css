@@ -149,6 +149,10 @@ body {
     transform: translateY(-7px);
 }
 
+.popupsub {
+    font-weight: lighter;
+}
+
 @media only screen and (max-width: 800px) {
     .username {
         width:90%;
