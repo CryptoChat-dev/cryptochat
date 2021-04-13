@@ -6,6 +6,7 @@
     --inside-box-shadow-two: #242424;
     --txt-color: white;
     --bttn-color: black;
+    --modal-color: #292929;
 }
 
 [data-theme='light'] {
@@ -16,6 +17,7 @@
     --inside-box-shadow-two: #ffffff;
     --txt-color: black;
     --bttn-color: white;
+    --modal-color: #b3b3b3;
 }
 
 * {

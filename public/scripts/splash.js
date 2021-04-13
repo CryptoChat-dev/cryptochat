@@ -115,12 +115,16 @@ function renderAlert(){
 }
 
 function checkValues() {
-    if (document.getElementById("msg").value == "" || document.getElementById("key") != "") {
+    if (document.getElementById("msg").value == "" || document.getElementById("key").value == "") {
         return false
     }
 }
 
 function loadChat(username, key, override = false) {
+    if (checkValues() == false) {
+        window.alert("You cannot have an empty username or key!")
+        return
+    }
     if (toWords(scorePassword(key)) == "weak" && override == false) {
         renderAlert()
     } else {

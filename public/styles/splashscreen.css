@@ -71,7 +71,6 @@ body {
 .roomkey {
     margin-top:10%;
     display:flex;
-    justify-content: center;
 }
 .username{
     width: 50%;
@@ -80,12 +79,11 @@ body {
 .buttons.bottom {
     margin-top: 5%;
 }
-
 .popUpBox {
     width: 25%;
     min-width: calc(min(350px, 90%));
     overflow: hidden;
-    background: #292929;
+    background: var(--modal-color);
     border-radius: 10px;
     position: absolute;
     top: 50%;

@@ -144,7 +144,7 @@ body {
     width: 20%;
     min-width: calc(min(350px, 90%));
     overflow: hidden;
-    background: #292929;
+    background: var(--modal-color);
     border-radius: 10px;
     position: absolute;
     top: 50%;
