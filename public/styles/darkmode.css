@@ -142,6 +142,7 @@ body {
 
 .popUpBox {
     width: 25%;
+    min-width: calc(min(350px, 90%));
     overflow: hidden;
     background: #292929;
     border-radius: 10px;
