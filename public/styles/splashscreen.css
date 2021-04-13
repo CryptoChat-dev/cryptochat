@@ -83,7 +83,7 @@ body {
 
 .popUpBox {
     width: 25%;
-    min-width: 400px;
+    min-width: calc(min(350px, 90%));
     overflow: hidden;
     background: #292929;
     border-radius: 10px;
@@ -154,8 +154,11 @@ body {
     font-weight: lighter;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 600px) {
     .username {
         width:90%;
+    }
+    .popUpBox{
+        width: 90%;
     }
 }
