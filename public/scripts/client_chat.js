@@ -45,10 +45,11 @@ function checkCommands() {
         case '/shrug':
             socket.emit('chat event', {
                 "user_name": code.encryptMessage(user_name, decryptPass),
-                "message": code.encryptMessage("¯\_(ツ)_/¯", decryptPass)
+                "message": code.encryptMessage("¯\\_(ツ)_/¯", decryptPass)
             })
+            $('input.message').val('').focus();
             break;
-            
+
         default:
             // if no slash command, just send the message normally
             form2();
