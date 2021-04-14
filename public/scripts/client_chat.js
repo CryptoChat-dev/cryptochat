@@ -109,14 +109,38 @@ let code = (function () {
 })();
 
 // connect to socketio endpoint
-var socket = io.connect(
-    'https://' + window.location.hostname + ':' + location.port
-);
+var socket = io.connect('https://' + window.location.hostname);
+
+setTimeout(() => {
+    if (socket.disconnected) {
+        socket.destroy();
+        socket = io.connect('http://' + window.location.hostname);
+
+        socket.on('connect', function () {
+            // on connect
+            socket.emit('chat event', {
+                data: 'User Connected'
+            });
+
+            socket.emit('chat event', {
+                // on join, broadcast to room
+                "user_name": code.encryptMessage(user_name, decryptPass),
+                "message": code.encryptMessage('has joined the room.', decryptPass)
+            });
+        });
+    }
+}, 3000);
 
 socket.on('connect', function () {
     // on connect
     socket.emit('chat event', {
         data: 'User Connected'
+    });
+    
+    socket.emit('chat event', {
+        // on join, broadcast to room
+        "user_name": code.encryptMessage(user_name, decryptPass),
+        "message": code.encryptMessage('has joined the room.', decryptPass)
     });
 });
 
@@ -133,12 +157,6 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 
 // change to the key name
 document.getElementById('keyname').innerText = 'Key: ' + decodeURI(decryptPass);
-
-socket.emit('chat event', {
-    // on join, broadcast to room
-    "user_name": code.encryptMessage(user_name, decryptPass),
-    "message": code.encryptMessage('has joined the room.', decryptPass)
-});
 
 function form2() {
     // send message from message box
