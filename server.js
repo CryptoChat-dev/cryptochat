@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const compression = require('compression');
+const minify = require('express-minify');
+
 //const RateLimit = require('express-rate-limit');
 
 const port = 6969;
@@ -18,6 +21,8 @@ const port = 6969;
 // apply rate limiter to all requests
 //router.use(limiter);
 //router.use(express.static('public'));
+app.use(compression());
+app.use(minify());
 app.use(express.static('public'));
 
 // API Routes
