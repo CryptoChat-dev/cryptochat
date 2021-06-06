@@ -130,6 +130,7 @@ function loadChat(username, key, override = false) {
     } else {
         // load the chat by storing the data in localstorage
         window.localStorage.setItem('decryptPass', key);
-        window.localStorage.setItem('user_name', username) 
+        window.localStorage.setItem('user_name', username);
+        window.location.href = '/chat'
     }
 }
