@@ -13,7 +13,7 @@
 }
 
 .chatbox-child {
-    height: 90%;
+    height: 75%;
     width: 60em;
     border-radius: 50px;
     background: var(--main-background);
@@ -141,9 +141,10 @@ body {
 }
 
 .popUpBox {
-    width: 25%;
+    width: 20%;
+    min-width: calc(min(350px, 90%));
     overflow: hidden;
-    background: #292929;
+    background: var(--modal-color);
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -284,6 +285,6 @@ body {
     }
 
     .popUpBox {
-        width: 90%;
+        width: 60%;
     }
 }

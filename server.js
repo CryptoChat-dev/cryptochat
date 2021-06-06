@@ -3,7 +3,10 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')({server, origins: '*:*'});
+const io = require('socket.io')(server);
+const compression = require('compression');
+const minify = require('express-minify');
+
 //const RateLimit = require('express-rate-limit');
 
 const port = 6969;
@@ -18,6 +21,8 @@ const port = 6969;
 // apply rate limiter to all requests
 //router.use(limiter);
 //router.use(express.static('public'));
+app.use(compression());
+app.use(minify());
 app.use(express.static('public'));
 
 // API Routes
@@ -55,9 +60,16 @@ app.get('*', function(req, res){
 
 io.on('connection', (connection) => {
     connection.on('chat event', (data) => {
-        if (typeof data === 'object') {
-            io.emit('my response', data);
+        try {
+            JSON.parse(x);
+        } catch (e) {
+            json = false
         }
+        if (typeof data === 'object' || json == true) {
+            io.emit('my response', data);
+            return
+        }
+        console.log("Event was rejected." + data)
     });
 });
 

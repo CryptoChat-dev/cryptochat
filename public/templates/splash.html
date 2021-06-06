@@ -13,9 +13,11 @@
         <script defer src="/scripts/passwordCheck.js"></script>
         <meta name="referrer" content="same-origin" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="shortcut icon" type="image/jpg" href="/icons/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icons/cryptochat-512.png" />
+        <link rel="shortcut icon" type="image/png" href="/icons/new/cryptochat-512.png" />
+        <link rel="apple-touch-icon" href="/icons/new/cryptochat-512.png" />
         <meta name="theme-color" content="#363636" />
+        <link rel="icon" type="image/svg+xml" href="/icons/new/logo.svg">
+        <link rel="alternate icon" href="/icons/favicon.ico">
     </head>
     <body>
         <div id="content">
@@ -39,7 +41,9 @@
                                 class="message"
                                 placeholder="Room Key"
                                 />
-                                <button class="button randomize" id="randomizer">Random</button>
+                                <div class="randomize">
+                                    <button class="button randomize" id="randomizer">Random</button>
+                                </div>
                             </div>
                             <div class="buttons">
                                 <div class="buttons top">
@@ -57,14 +61,6 @@
         </div>
         <div id="popUpOverlay"></div>
         <div class="popUpBox" id="popUpBox">
-            <div id="box">
-              <h1>Weak Key</h1>
-              <h2 class="popupsub">The key you entered is insecure. It is recommended to use the random button. Do you wish to proceed anyways?</h2>
-              <div class="modalButtons">
-                  <div id="proceedLeave"></div>
-                  <div id="cancelLeave"></div>
-              </div>
-            </div>
         <div id="popUpOverlay-nick"></div>
         <div class="popUpBox-nick" id="popUpBox-nick">
             <div id="box">

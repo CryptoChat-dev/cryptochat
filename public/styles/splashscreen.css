@@ -28,7 +28,7 @@ body {
 }
 
 .logo {
-    background-image: url('/icons/logo.svg');
+    background-image: url('/icons/new/logo.svg');
     background-size: auto 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,7 +71,6 @@ body {
 .roomkey {
     margin-top:10%;
     display:flex;
-    justify-content: center;
 }
 .username{
     width: 50%;
@@ -80,11 +79,11 @@ body {
 .buttons.bottom {
     margin-top: 5%;
 }
-
 .popUpBox {
     width: 25%;
+    min-width: calc(min(350px, 90%));
     overflow: hidden;
-    background: #292929;
+    background: var(--modal-color);
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -153,7 +152,7 @@ body {
     font-weight: lighter;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
     .username {
         width:90%;
     }

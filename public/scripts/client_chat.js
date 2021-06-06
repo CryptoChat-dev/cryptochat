@@ -1,12 +1,8 @@
-var matches = window.location.href.match(/\?key=(?<key>.*)&username=(?<username>.*)/);
-var user_name;
-var decryptPass;
+decryptPass = window.localStorage.getItem('decryptPass');
+user_name = window.localStorage.getItem('user_name');
 
-if (matches != null) {
-    decryptPass = matches.groups.key;
-    user_name = matches.groups.username;
-} else {
-    window.open("https://" + window.location.hostname,"_self")
+if (decryptPass === undefined || user_name === undefined) {
+    window.location.href = "/";
 }
 
 function checkCommands() {
@@ -24,10 +20,10 @@ function checkCommands() {
                     'Invalid nickname. Correct usage: /nick <username>'
                 );
             } else {
+                // broadcast the username change to the whole room
                 socket.emit('chat event', {
-                    // broadcast the username change to the whole room
-                    user_name: code.encryptMessage(user_name, decryptPass),
-                    message: code.encryptMessage(
+                    "user_name": code.encryptMessage(user_name, decryptPass),
+                    "message": code.encryptMessage(
                         'changed their username to ' + args[1],
                         decryptPass
                         )
@@ -40,6 +36,14 @@ function checkCommands() {
         case '/leave':
             // leave the room
             leaveAndReload();
+            break;
+        
+        case '/shrug':
+            socket.emit('chat event', {
+                "user_name": code.encryptMessage(user_name, decryptPass),
+                "message": code.encryptMessage("¯\\_(ツ)_/¯", decryptPass)
+            })
+            $('input.message').val('').focus();
             break;
 
         default:
@@ -101,14 +105,38 @@ let code = (function () {
 })();
 
 // connect to socketio endpoint
-var socket = io.connect(
-    'https://' + window.location.hostname + ':' + location.port
-);
+var socket = io.connect('https://' + window.location.hostname);
+
+setTimeout(() => {
+    if (socket.disconnected) {
+        socket.destroy();
+        socket = io.connect('http://' + window.location.hostname);
+
+        socket.on('connect', function () {
+            // on connect
+            socket.emit('chat event', {
+                data: 'User Connected'
+            });
+
+            socket.emit('chat event', {
+                // on join, broadcast to room
+                "user_name": code.encryptMessage(user_name, decryptPass),
+                "message": code.encryptMessage('has joined the room.', decryptPass)
+            });
+        });
+    }
+}, 3000);
 
 socket.on('connect', function () {
     // on connect
     socket.emit('chat event', {
         data: 'User Connected'
+    });
+    
+    socket.emit('chat event', {
+        // on join, broadcast to room
+        "user_name": code.encryptMessage(user_name, decryptPass),
+        "message": code.encryptMessage('has joined the room.', decryptPass)
     });
 });
 
@@ -126,12 +154,6 @@ document.getElementById('msg').addEventListener('keyup', function (event) {
 // change to the key name
 document.getElementById('keyname').innerText = 'Key: ' + decodeURI(decryptPass);
 
-socket.emit('chat event', {
-    // on join, broadcast to room
-    user_name: code.encryptMessage(user_name, decryptPass),
-    message: code.encryptMessage('has joined the room.', decryptPass)
-});
-
 function form2() {
     // send message from message box
 
@@ -142,18 +164,17 @@ function form2() {
         return;
     }
 
-    socket.emit('chat event', {
+    socket.emit('chat event', JSON.parse(JSON.stringify({
         // encrypt and send the user's name and message
-        user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage(user_input, decryptPass)
-    });
+        "user_name": code.encryptMessage(user_name, decryptPass),
+        "message": code.encryptMessage(user_input, decryptPass)
+    })));
 
     $('input.message').val('').focus(); // clear the message input box after send
 }
 
 socket.on('my response', function (msg) {
     console.log(msg); // for debugging: print the encrypted contents of the response
-
     if (typeof msg.user_name !== 'undefined') {
         // create a paragraph element and name it 'messagetxt'
         messagebox = document.createElement('P');
@@ -210,10 +231,10 @@ function switchTheme() {
 function leaveRoom() {
     // on tab close, broadcast to the room
 
-    socket.emit('chat event', {
-        user_name: code.encryptMessage(user_name, decryptPass),
-        message: code.encryptMessage('has left the room.', decryptPass)
-    });
+    socket.emit('chat event', JSON.stringify({
+        "user_name": code.encryptMessage(user_name, decryptPass),
+        "message": code.encryptMessage('has left the room.', decryptPass)
+    }));
 }
 
 function leaveAndReload() {
