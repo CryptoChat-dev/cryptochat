@@ -128,7 +128,8 @@ function loadChat(username, key, override = false) {
     if (toWords(scorePassword(key)) == "weak" && override == false) {
         renderAlert()
     } else {
-        // load the chat by giving the key and username to the chat route endpoint 
-        window.open(window.location.href + "chat/?key=" + key + "&username=" + username,"_self")
+        // load the chat by storing the data in localstorage
+        window.localStorage.setItem('decryptPass', key);
+        window.localStorage.setItem('user_name', username) 
     }
 }
