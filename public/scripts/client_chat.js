@@ -1,12 +1,8 @@
-var matches = window.location.href.match(/\?key=(?<key>.*)&username=(?<username>.*)/);
-var user_name;
-var decryptPass;
+decryptPass = window.localStorage.getItem('decryptPass');
+user_name = window.localStorage.getItem('user_name');
 
-if (matches != null) {
-    decryptPass = matches.groups.key;
-    user_name = matches.groups.username;
-} else {
-    window.open("https://" + window.location.hostname,"_self")
+if (decryptPass === undefined || user_name === undefined) {
+    window.location.href = "/";
 }
 
 function checkCommands() {
