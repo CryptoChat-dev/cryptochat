@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+}
+
+.container h1 {
+    height: 20%;
+    width: 100vw;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.logo {
+    background-image: url('/icons/new/logo.svg');
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 10vh;
+    width: 100vw;
+
+}
+.messagebox-parent{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.messagebox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.messagebox input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    padding: 20px 10px 20px 5px;
+    margin-right: 1%;
+    color: var(--txt-color);
+}
+
+.message {
+    margin-bottom: 30px;
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
+        inset -8px -8px 8px var(--inside-box-shadow-two);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.roomkey {
+    margin-top:10%;
+    display:flex;
+}
+.username{
+    width: 50%;
+}
+
+.buttons.bottom {
+    margin-top: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+    .username {
+        width:90%;
+    }
+    .popUpBox{
+        width: 90%;
+    }
+}

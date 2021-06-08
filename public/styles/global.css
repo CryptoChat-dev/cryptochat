@@ -1,0 +1,149 @@
+:root {
+    --main-background: #1e1e1e;
+    --first-box-shadow: #363636;
+    --second-box-shadow: #1a1a1a;
+    --inside-box-shadow-one: #131313;
+    --inside-box-shadow-two: #242424;
+    --txt-color: white;
+    --bttn-color: black;
+    --modal-color: #292929;
+}
+
+[data-theme='light'] {
+    --main-background: #e0e0e0;
+    --first-box-shadow: #bebebe;
+    --second-box-shadow: #ffffff;
+    --inside-box-shadow-one: #cbced1;
+    --inside-box-shadow-two: #ffffff;
+    --txt-color: black;
+    --bttn-color: white;
+    --modal-color: #b3b3b3;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--txt-color);
+}
+
+body {
+    background: var(--main-background);
+    min-height: 100%;
+    min-width: auto;
+}
+
+/* Classes for buttons */
+
+.button {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: var(--txt-color);
+    background-color: var(--bttn-color);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover {
+    color: var(--txt-color);
+    transform: translateY(-7px);
+}
+
+.button.send:hover {
+    background-color: #2ee59d;
+    box-shadow: 0 15px 20px 0 rgba(46, 229, 157, 0.4);
+}
+
+.button.github {
+    float: right;
+    z-index: 10000 important;
+    position: relative;
+}
+
+.button.github:hover {
+    background-color: #2e68e5;
+    box-shadow: 0 15px 20px 0 #2e68e5;
+}
+
+.button.legal {
+    float: left;
+    z-index: 10000 important;
+    position: relative;
+}
+
+.button.legal:hover {
+    background-color: #832ee5;
+    box-shadow: 0 15px 20px 0 #832ee5;
+}
+
+.button.leave {
+    z-index: 10000 important;
+    position: relative;
+}
+
+.button.leave:hover {
+    background-color: #ff000d;
+    box-shadow: 0 15px 20px 0 #ff000d;
+}
+
+.button.theme:hover {
+    background-color: #2ee5dc;
+    box-shadow: 0 15px 20px 0 #2ee5dc;
+}
+
+.button.home {
+    float: right;
+}
+
+.button.home:hover {
+    background-color: #ffe550;
+    box-shadow: 0 15px 20px 0 #ffe550;
+}
+
+.button.terms {
+    float: left;
+}
+
+.button.terms:hover {
+    background-color: #ff6a50;
+    box-shadow: 0 15px 20px 0 #ff6a50;
+}
+
+.button.privacy {
+    float: right;
+}
+
+.button.privacy:hover {
+    background-color: #e52ecd;
+    box-shadow: 0 15px 20px 0 #e52ecd;
+}
+.button.join {
+    float: right;
+}
+.button.join:hover {
+    background-color: #2ee52e;
+    box-shadow: 0 15px 20px 0 #2ee52e;
+    color: var(--bttn-color)
+}
+
+.button.randomize {
+    background: rgb(11,95,247);
+    color: white;
+    background: linear-gradient(72deg, rgba(11,95,247,1) 0%, rgba(9,109,121,1) 36%, rgba(31,9,121,1) 100%);
+}
+
+.button.randomize:hover{
+    box-shadow: 0 15px 20px 0 purple;
+    color: white;
+    background: rgb(11,95,247);
+}
+
+
+/* Classes for text imputs */

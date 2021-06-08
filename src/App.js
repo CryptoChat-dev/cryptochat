@@ -1,25 +1,32 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import React from 'react';
+import Splash from './pages/Splash.js';
+import Chat from './pages/Chat.js';
+import Store from './Components/Store';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [displayChat, setDisplayChat] = React.useState(false);
+
+    if (displayChat === true) {
+        return (<Store>
+            <div className="App"> {
+                < Chat />
+            } </div>
+        </Store>)
+    } else {
+        return (<Store>
+            <div className="App"> {
+                < Splash displayChat = {
+                    displayChat
+                }
+                setDisplayChat = {
+                    setDisplayChat
+                } />
+            } </div>
+        </Store>)
+    }
+
 }
 
 export default App;
