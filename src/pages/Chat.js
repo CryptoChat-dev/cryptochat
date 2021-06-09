@@ -98,8 +98,13 @@ const Chat = ({displayChat, setDisplayChat}) => {
             "user_name": crypt.encryptMessage(state.username, state.key),
             "message": crypt.encryptMessage(message, state.key)
         })));
-        console.log('received: ' + received)
+        setMessage('')
+    }
 
+    function handleMessageKeyDown(e) {
+        if (e.keyCode === 13) {
+            handleSend();
+        }
     }
 
     // Return
@@ -127,8 +132,10 @@ const Chat = ({displayChat, setDisplayChat}) => {
                     <div class="messagebox">
                         <div class="fields">
                             <div class="username">
-                                <input id="msg" type="text" class="message" placeholder="Hello!"
-                                    onChange={handleMessageChange}/>
+                                <input id="msg" type="text" class="message" placeholder="What's up?"
+                                    value={message}
+                                    onChange={handleMessageChange}
+                                    onKeyDown={handleMessageKeyDown}/>
                             </div>
                         </div>
                     </div>

@@ -7,13 +7,7 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
 
     const [state, dispatch] = useContext(Context);
     const [key, setKey] = React.useState('');
-    const [username, setUsername] = React.useState('');
-
-    const [showDialog, setShowDialog] = React.useState(false);
-    const cancelRef = React.useRef();
-    const open = () => setShowDialog(true);
-    const close = () => setShowDialog(false);
-  
+    const [username, setUsername] = React.useState('');  
 
     var themeSetting;
 
@@ -76,7 +70,7 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
 
     return (<React.Fragment>
         <Helmet>
-            <link rel="stylesheet" href="/styles/Splash.css"></link>
+            <link preload rel="stylesheet" href="/styles/Splash.css"></link>
         </Helmet>
         <div id="content">
             <div class="container">
