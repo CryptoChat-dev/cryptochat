@@ -1,7 +1,25 @@
 import React, {useContext} from 'react';
 import {Helmet} from 'react-helmet';
+import {Context} from '../Components/Store';
 
-const Chat = () => { // console.log('test')
+const Chat = () => {
+    const [state, dispatch] = useContext(Context);
+
+    var themeSetting;
+
+    function changeTheme() {
+        if (state.theme === 'light') {
+            themeSetting = 'dark';
+            dispatch({type: 'SET_OTHEME', payload: 'light'})
+        } else {
+            themeSetting = 'light';
+            dispatch({type: 'SET_OTHEME', payload: 'dark'})
+        }
+        dispatch({type: 'SET_THEME', payload: themeSetting})
+        document.documentElement.setAttribute('data-theme', themeSetting);
+    }
+
+    
     return (<React.Fragment>
         <Helmet>
             <link rel="stylesheet" href="/styles/Chat.css"/>
@@ -30,7 +48,7 @@ const Chat = () => { // console.log('test')
                     </div>
                 </div>
                 <div class="chatbox-buttons">
-                    <button class="button theme" id="toggler">Light</button>
+                    <button class="button theme" id="toggler" onClick={changeTheme}>{state.oppositeTheme}</button>
                     <button class="button send" id="sendbutton">Send</button>
                     <button class="button leave" id="leavebutton">Leave</button>
                 </div>

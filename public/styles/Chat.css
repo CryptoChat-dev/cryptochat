@@ -13,8 +13,8 @@
 }
 
 .chatbox-child {
-    height: 75%;
-    width: 60em;
+    height: 50rem;
+    width: 60rem;
     border-radius: 50px;
     background: var(--main-background);
     box-shadow: 20px 20px 60px var(--first-box-shadow),

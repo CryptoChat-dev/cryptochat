@@ -5,6 +5,11 @@ const Reducer = (state, action) => {
                 ...state,
                 theme: action.payload
             };
+        case 'SET_OTHEME':
+            return {
+                ...state,
+                oppositeTheme: action.payload
+            };
         case 'SET_KEY':
             return {
                 ...state,

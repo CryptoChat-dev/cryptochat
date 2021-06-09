@@ -1,16 +1,22 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
 
-const Splash = ({displayChat, setDisplayChat}) => {
-    // State Variables
+
+const Splash = ({displayChat, setDisplayChat}) => { // State Variables
 
     const [state, dispatch] = useContext(Context);
-    const [key, setKey] = React.useState();
-    const [username, setUsername] = React.useState();
+    const [key, setKey] = React.useState('');
+    const [username, setUsername] = React.useState('');
+
+    const [showDialog, setShowDialog] = React.useState(false);
+    const cancelRef = React.useRef();
+    const open = () => setShowDialog(true);
+    const close = () => setShowDialog(false);
+  
 
     var themeSetting;
-    
+
     function changeTheme() {
         if (state.theme === 'light') {
             themeSetting = 'dark';
@@ -22,6 +28,10 @@ const Splash = ({displayChat, setDisplayChat}) => {
     }
 
     function handleJoin() {
+        if (username.length < 1 || key.length < 1) {
+            // setIsOpen(true);
+            return;
+        }
         dispatch({type: 'SET_USERNAME', payload: username});
         dispatch({type: 'SET_KEY', payload: key});
         setDisplayChat(true);
@@ -39,9 +49,15 @@ const Splash = ({displayChat, setDisplayChat}) => {
             <div class="messagebox-parent">
                 <div class="messagebox">
                     <div class="username">
-                        <input id="msg" type="username" class="message" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
+                        <input id="msg" type="username" class="message" placeholder="Username"
+                            onChange={
+                                (e) => setUsername(e.target.value)
+                            }/>
                         <div class="roomkey">
-                            <input id="key" type="username" class="message" placeholder="Room Key" onChange={(e) => setKey(e.target.value)}/>
+                            <input id="key" type="username" class="message" placeholder="Room Key"
+                                onChange={
+                                    (e) => setKey(e.target.value)
+                                }/>
                             <div class="randomize">
                                 <button class="button randomize" id="randomizer">Random</button>
                             </div>
@@ -50,7 +66,8 @@ const Splash = ({displayChat, setDisplayChat}) => {
                             <div class="buttons top">
                                 <button class="button theme" id="toggler"
                                     onClick={changeTheme}>Light</button>
-                                <button class="button join" id="join" onClick={handleJoin}>Join</button>
+                                <button class="button join" id="join"
+                                    onClick={handleJoin}>Join</button>
                             </div>
                             <div class="buttons bottom">
                                 <a href="/legal">
@@ -65,7 +82,6 @@ const Splash = ({displayChat, setDisplayChat}) => {
                 </div>
             </div>
         </div>
-
     </React.Fragment>)
 }
 

@@ -3,6 +3,7 @@ import Reducer from './Reducer'
 
 const initialState = {
     theme: 'dark',
+    oppositeTheme: 'light',
     key: null,
     username: null,
     error: null
