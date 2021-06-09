@@ -226,8 +226,7 @@ const Terms = () => {
                     <p class="textcontent">
                         If you would like to contact us to understand more about
                                                                     this Agreement or wish to contact us concerning any matter
-                                                                    relating to it, you may send an email to
-                                                                    legal@cryptochat.dev. This document was last updated on
+                                                                    relating to it, you may send an email to <u><a href="mailto:legal@cryptochat.dev">legal@cryptochat.dev</a></u>. This document was last updated on
                                                                     April 10, 2021
                     </p>
 

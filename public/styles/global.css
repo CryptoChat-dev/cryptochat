@@ -35,10 +35,6 @@ h1 {
     margin-bottom: .5;
 }
 
-h2 {
-    text-align: center;
-    font-weight: lighter;
-}
 
 /* Classes for buttons */
 
@@ -158,3 +154,7 @@ h2 {
 /* Classes for Headings */
 
 .title.splash {margin-bottom: 0;}
+.subtitle {
+    text-align: center;
+    font-weight: lighter;
+}
