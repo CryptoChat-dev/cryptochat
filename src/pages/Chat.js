@@ -17,10 +17,6 @@ export const initiateSocket = (room) => {
     socket.emit('join', roomName)
 }
 
-export const sendMessage = (room, user_name, message) => {
-    socket.emit('chat', {roomName: room, user_name: user_name, message: message});
-}
-
 export const disconnectSocket = () => {
     console.log('Disconnecting socket...');
     if(socket) socket.disconnect();
@@ -66,11 +62,12 @@ const Chat = () => {
         initiateSocket(state.key);
         
         if (joinedSent === false) {
-            sendMessage(state.roomName, crypt.encryptMessage(state.username, state.key), crypt.encryptMessage('has joined the room.', state.key));
+            socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
+                "roomName": state.roomName,
+                "user_name": crypt.encryptMessage(state.username, state.key),
+                "message": crypt.encryptMessage('has joined the room.', state.key)
+            })));    
             setJoinedSent(true);
-        }
-        return () => {
-            disconnectSocket();
         }
     }, [state.roomName])
 
@@ -133,7 +130,11 @@ const Chat = () => {
     }
 
     function handleSend() {
-        sendMessage(state.roomName, crypt.encryptMessage(state.username, state.key), crypt.encryptMessage(message, state.key));
+        socket.emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
+            "roomName": state.roomName,
+            "user_name": crypt.encryptMessage(state.username, state.key),
+            "message": crypt.encryptMessage(message, state.key)
+        })));
         setMessage('')
     }
 
