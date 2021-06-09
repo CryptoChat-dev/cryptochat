@@ -40,6 +40,10 @@ const Chat = () => {
     })();
 
     useEffect(() => {
+        if (state.key === null || state.username === null) {
+            history.push('/');
+            return;
+        }
         if (joinedSent === false) {
             socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
                 "user_name": crypt.encryptMessage(state.username, state.key),
