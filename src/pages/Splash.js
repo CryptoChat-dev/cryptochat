@@ -170,7 +170,7 @@ const Splash = () => { // State Variables
                                                 history.push('/legal')
                                             }
                                     }>Legal</button>
-                                    <a href="https://github.com/httpjamesm/cryptochat/" rel="noreferrer" target="_blank">
+                                    <a href="https://github.com/CryptoChat-dev" rel="noreferrer" target="_blank">
                                         <button class="button github">Github</button>
                                     </a>
                                 </div>

@@ -62,20 +62,21 @@ const Chat = () => {
     }, []);
 
     function messageHandler(msg) {
-        console.log(msg); // for debugging: print the encrypted contents of the response
         var decryptedUsername;
         var decryptedMessage;
         decryptedUsername = crypt.decryptMessage(msg.user_name, state.key);
         decryptedMessage = crypt.decryptMessage(msg.message, state.key);
-        if (decryptedUsername === '' || decryptedMessage === '') { // if the username and message are empty values, stop
-            return;
+        if (decryptedUsername !== '' || decryptedMessage !== '') { // if the username and message are empty values, stop
+            console.log(msg); // for debugging: print the encrypted contents of the response
+            setReceived((messages) => [
+                ...messages,
+                <div>
+                    <p> {decryptedUsername}: {decryptedMessage}</p>
+                </div>
+            ]);
+        } else {
+            console.log("Not my message.")
         }
-        setReceived((messages) => [
-            ...messages,
-            <div>
-                <p> {decryptedUsername}: {decryptedMessage}</p>
-            </div>
-        ]);
     }
 
     function broadcastLeave() {
