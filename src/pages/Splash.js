@@ -20,8 +20,10 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
     function changeTheme() {
         if (state.theme === 'light') {
             themeSetting = 'dark';
+            dispatch({type: 'SET_OTHEME', payload: 'light'})
         } else {
             themeSetting = 'light';
+            dispatch({type: 'SET_OTHEME', payload: 'dark'})
         }
         dispatch({type: 'SET_THEME', payload: themeSetting})
         document.documentElement.setAttribute('data-theme', themeSetting);
@@ -100,7 +102,7 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
                         <div class="buttons">
                             <div class="buttons top">
                                 <button class="button theme" id="toggler"
-                                    onClick={changeTheme}>Light</button>
+                                    onClick={changeTheme}>{state.oppositeTheme}</button>
                                 <button class="button join" id="join"
                                     onClick={handleJoin}>Join</button>
                             </div>
