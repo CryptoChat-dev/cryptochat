@@ -72,7 +72,7 @@ const Chat = () => {
         return () => {
             disconnectSocket();
         }
-    })
+    }, [state.roomName])
 
     useEffect(() => {
         window.onbeforeunload = broadcastLeave;
