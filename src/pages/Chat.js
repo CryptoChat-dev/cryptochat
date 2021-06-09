@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useRef} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
 import {useHistory} from 'react-router-dom';
-import UIfx from 'uifx';
+import useSound from 'use-sound';
 import notificationSound from '../assets/notification.mp3';
 
 // Crypto JS
@@ -23,6 +23,7 @@ const sound = new UIfx({asset: notificationSound});
 const Chat = () => {
     const history = useHistory();
     const divRef = useRef(null);
+    const [playNotification] = useSound(notificationSound);
 
     const [state, dispatch] = useContext(Context);
     const [message, setMessage] = React.useState();
@@ -101,7 +102,7 @@ const Chat = () => {
                     <p> {decryptedUsername}: {decryptedMessage}</p>
                 </div>
             ]);
-            sound.play();
+            playNotification();
             divRef.current.scrollIntoView({ behavior: 'smooth' });
         } else {
             console.log(`Not my message: ${msg}`)
