@@ -44,6 +44,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  --webkit-appearance: none;
 }
 
 .messagebox input {
@@ -63,6 +64,7 @@ body {
   box-shadow: inset 8px 8px 8px var(--inside-box-shadow-one),
     inset -8px -8px 8px var(--inside-box-shadow-two);
   width: 100%;
+  --webkit-appearance: none;
   display: flex;
   justify-content: center;
 }
