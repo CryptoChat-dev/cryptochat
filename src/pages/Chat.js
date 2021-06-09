@@ -21,6 +21,11 @@ export const sendMessage = (room, user_name, message) => {
     socket.emit('chat', {roomName: room, user_name: user_name, message: message});
 }
 
+export const disconnectSocket = () => {
+    console.log('Disconnecting socket...');
+    if(socket) socket.disconnect();
+  }  
+
 const Chat = () => {
     const history = useHistory();
     const [state, dispatch] = useContext(Context);
@@ -63,6 +68,9 @@ const Chat = () => {
         if (joinedSent === false) {
             sendMessage(state.roomName, crypt.encryptMessage(state.username, state.key), crypt.encryptMessage('has joined the room.', state.key));
             setJoinedSent(true);
+        }
+        return () => {
+            disconnectSocket();
         }
     })
 
