@@ -18,7 +18,6 @@ export const initiateSocket = (room) => {
     var roomName = CryptoJS.SHA512(room).toString();
     socket.emit('join', roomName)
 }
-const sound = new UIfx({asset: notificationSound});
 
 const Chat = () => {
     const history = useHistory();
