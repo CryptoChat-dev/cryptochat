@@ -53,10 +53,7 @@ const Chat = () => {
         window.addEventListener("beforeunload", (ev) => {
             ev.preventDefault();
             ev.returnValue = '';
-            socket.emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
-                "user_name": crypt.encryptMessage(state.username, state.key),
-                "message": crypt.encryptMessage('has left the room.', state.key)
-            })));
+            broadcastLeave();
         });
         socket.on('my response', messageHandler);
         return() => {
@@ -79,8 +76,15 @@ const Chat = () => {
                 <p> {decryptedUsername}: {decryptedMessage}</p>
             </div>
         ]);
-
     }
+
+    function broadcastLeave() {
+        socket.emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
+            "user_name": crypt.encryptMessage(state.username, state.key),
+            "message": crypt.encryptMessage('has left the room.', state.key)
+        })));
+    }
+    
     function changeTheme() { // Change app-wide theme
         if (state.theme === 'light') {
             themeSetting = 'dark';
@@ -102,6 +106,7 @@ const Chat = () => {
 
 
     function handleLeave() {
+        broadcastLeave();
         history.push('/');
     }
 
