@@ -47,10 +47,14 @@
 
 .chatbox-buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.legal {
+    width: 100%;
 }
 
 a {

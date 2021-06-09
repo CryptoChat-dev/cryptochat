@@ -31,6 +31,15 @@ body {
     min-width: auto;
 }
 
+h1 {
+    margin-bottom: .5;
+}
+
+h2 {
+    text-align: center;
+    font-weight: lighter;
+}
+
 /* Classes for buttons */
 
 .button {
@@ -146,4 +155,6 @@ body {
 }
 
 
-/* Classes for text imputs */
+/* Classes for Headings */
+
+.title.splash {margin-bottom: 0;}
