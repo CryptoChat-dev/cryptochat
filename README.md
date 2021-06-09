@@ -1,4 +1,4 @@
-# cryptochat [![DeepSource](https://deepsource.io/gh/CryptoChat-dev/cryptochat.svg/?label=active+issues)](https://deepsource.io/gh/CryptoChat-dev/cryptochat/?ref=repository-badge) [![CodeFactor](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat/badge)](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f9b9b91bc9e14829809e7547184e5087)](https://www.codacy.com/gh/CryptoChat-dev/cryptochat/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CryptoChat-dev/cryptochat&amp;utm_campaign=Badge_Grade) [![Memes](https://img.shields.io/badge/need-memes-red)](https://img.shields.io/badge/need-memes-red)
+# cryptochat 2.0 [![DeepSource](https://deepsource.io/gh/CryptoChat-dev/cryptochat.svg/?label=active+issues)](https://deepsource.io/gh/CryptoChat-dev/cryptochat/?ref=repository-badge) [![CodeFactor](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat/badge)](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f9b9b91bc9e14829809e7547184e5087)](https://www.codacy.com/gh/CryptoChat-dev/cryptochat/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CryptoChat-dev/cryptochat&amp;utm_campaign=Badge_Grade) [![Memes](https://img.shields.io/badge/need-memes-red)](https://img.shields.io/badge/need-memes-red)
 
 [Official Instance](https://cryptochat.dev), [Roadmap](https://github.com/CryptoChat-dev/cryptochat/projects/1), [Legal](https://cryptochat.dev/legal), [Email](mailto:contact@cryptochat.dev)
 
@@ -36,8 +36,22 @@ Since CryptoChat uses web frameworks, all you need is an electronic device with 
 
 CryptoChat is open-source meaning that anybody can see its interworkings. This allows the community to improve on its codebase and spot potential security vulnerabilities, leading to an awesome product.
 
-## Encryption
+## Encryption Specifics
 
-CryptoChat relies on the crypto-js AES encryption framework to encrypt all usernames and messages with the specified encryption/room key. More specifically, all data sent over the Internet is encrypted using AES-256 bit keys. 
+CryptoChat relies on the crypto-js AES encryption framework to encrypt all usernames and messages with the specified encryption/room key.
 
-(This section will be improved on)
+Here's how CryptoChat's encryption works:
+
+1. The user enters their username and room key (which is used for the encryption key).
+
+The client sends a SHA-512 hash of the encryption key to the backend webserver using Socket.IO. This hashed encryption key is used to create a socket room. The plaintext encryption key never leaves the client--ever.
+
+2. The user sends a message.
+
+Let's say Bob and Alice want to communicate to each other on CryptoChat. They both visit the website and enter the details. Bob says, "Hello Alice!".
+
+Bob's client uses the plaintext encryption key to locally encrypt his username (Bob) and message (Hello Alice!). Alice's client receives the end-to-end message from the backend's using Socket.IO and decrypts the encrypted username and message using her local encryption key that she entered on the splash screen.
+
+3. The user leaves the room.
+
+Bob says goodbye to Alice and he closes his CryptoChat tab. His username, encryption key and messages are now discarded from his end. When Alice leaves CryptoChat, the same happens with her client.
