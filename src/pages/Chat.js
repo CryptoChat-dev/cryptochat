@@ -92,6 +92,10 @@ const Chat = () => {
     }
 
     function handleLeave() {
+        socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
+            "user_name": crypt.encryptMessage(state.username, state.key),
+            "message": crypt.encryptMessage('has left the room.', state.key)
+        })));
         history.push('/');
     }
 
