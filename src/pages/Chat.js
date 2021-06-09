@@ -47,8 +47,10 @@ const Chat = () => {
         }
 
         socket.on('connection', socket => {
-            dispatch({type: 'SET_ROOM', payload: CryptoJS.SHA512(state.key).toString()})
-            socket.emit('join', state.roomName);
+            var roomName = CryptoJS.SHA512(state.key).toString();
+            console.log('room name: ' + roomName)
+            dispatch({type: 'SET_ROOM', payload: roomName})
+            socket.emit('join', roomName);
         })
 
         if (joinedSent === false) {
