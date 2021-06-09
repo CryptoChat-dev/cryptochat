@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
-
+import {eff} from '../assets/eff';
 
 const Splash = ({displayChat, setDisplayChat}) => { // State Variables
 
@@ -37,6 +37,41 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
         setDisplayChat(true);
     }
 
+    function getWordNum() {
+        // get the random words from the dice ware dict
+        var wordslist = []
+        for (var i = 0; i < 6; i += 1) {
+            var newnum = []
+            for (var j = 0; j < 5; j += 1) {
+                // roll a 6 sided die
+                newnum.push(secureRandom(6) + 1)
+            }
+            var theword = eff[newnum.join('')]
+            wordslist.push(theword.charAt(0).toUpperCase() + theword.slice(1))
+        }
+        setKey(wordslist.join(''))
+    }
+    
+    function secureRandom (count) {
+        // generate a cryptographically secure integer
+        var cryptoObj = window.crypto || window.msCrypto
+        var rand = new Uint32Array(1)
+        var skip = 0x7fffffff - 0x7fffffff % count
+        var result
+        
+        if (((count - 1) & count) === 0) {
+            cryptoObj.getRandomValues(rand)
+            return rand[0] & (count - 1)
+        }
+        
+        do {
+            cryptoObj.getRandomValues(rand)
+            result = rand[0] & 0x7fffffff
+        } while (result >= skip)
+        
+        return result % count
+    }    
+
     return (<React.Fragment>
         <Helmet>
             <link rel="stylesheet" href="/styles/Splash.css"></link>
@@ -54,12 +89,12 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
                                 (e) => setUsername(e.target.value)
                             }/>
                         <div class="roomkey">
-                            <input id="key" type="username" class="message" placeholder="Room Key"
+                            <input id="key" type="username" class="message" value={key} placeholder="Room Key"
                                 onChange={
                                     (e) => setKey(e.target.value)
                                 }/>
                             <div class="randomize">
-                                <button class="button randomize" id="randomizer">Random</button>
+                                <button class="button randomize" id="randomizer" onClick={getWordNum}>Random</button>
                             </div>
                         </div>
                         <div class="buttons">

@@ -11,7 +11,12 @@ function App() {
     if (displayChat === true) {
         return (<Store>
             <div className="App"> {
-                < Chat />
+                < Chat displayChat = {
+                    displayChat
+                }
+                setDisplayChat = {
+                    setDisplayChat
+                } />
             } </div>
         </Store>)
     } else {

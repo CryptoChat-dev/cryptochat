@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
 
-const Chat = () => {
+const Chat = ({displayChat, setDisplayChat}) => {
     const [state, dispatch] = useContext(Context);
 
     var themeSetting;
@@ -17,6 +17,10 @@ const Chat = () => {
         }
         dispatch({type: 'SET_THEME', payload: themeSetting})
         document.documentElement.setAttribute('data-theme', themeSetting);
+    }
+
+    function handleLeave() {
+        setDisplayChat(false);
     }
 
     
@@ -50,7 +54,7 @@ const Chat = () => {
                 <div class="chatbox-buttons">
                     <button class="button theme" id="toggler" onClick={changeTheme}>{state.oppositeTheme}</button>
                     <button class="button send" id="sendbutton">Send</button>
-                    <button class="button leave" id="leavebutton">Leave</button>
+                    <button class="button leave" id="leavebutton" onClick={handleLeave}>Leave</button>
                 </div>
             </div>
         </div>
