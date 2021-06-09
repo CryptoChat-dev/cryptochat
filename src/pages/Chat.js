@@ -48,11 +48,12 @@ const Chat = () => {
 
         socket.on('connection', socket => {
             dispatch({type: 'SET_ROOM', payload: CryptoJS.SHA512(state.key).toString()})
-            socket.join(state.roomName);
+            socket.emit('join', state.roomName);
         })
 
         if (joinedSent === false) {
-            socket.to(state.roomName).emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
+            socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
+                "roomName": state.roomName,
                 "user_name": crypt.encryptMessage(state.username, state.key),
                 "message": crypt.encryptMessage('has joined the room.', state.key)
             })));
@@ -87,7 +88,8 @@ const Chat = () => {
     }
 
     function broadcastLeave() {
-        socket.to(state.roomName).emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
+        socket.emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
+            "roomName": state.roomName,
             "user_name": crypt.encryptMessage(state.username, state.key),
             "message": crypt.encryptMessage('has left the room.', state.key)
         })));
@@ -119,7 +121,8 @@ const Chat = () => {
     }
 
     function handleSend() {
-        socket.to(state.roomName).emit('chat event', JSON.parse(JSON.stringify({
+        socket.emit('chat event', JSON.parse(JSON.stringify({
+            "roomName": state.roomName,
             "user_name": crypt.encryptMessage(state.username, state.key),
             "message": crypt.encryptMessage(message, state.key)
         })));
