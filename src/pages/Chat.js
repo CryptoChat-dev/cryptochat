@@ -39,10 +39,10 @@ const Chat = ({displayChat, setDisplayChat}) => {
     useEffect(() => {
         socket.on('connect', function () { // on connect
             socket.emit('chat event', {data: 'User Connected'});
-            socket.emit('chat event', { // on join, broadcast to room
+            socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
                 "user_name": crypt.encryptMessage(state.username, state.key),
                 "message": crypt.encryptMessage('has joined the room.', state.key)
-            })
+            })))
         });
     })
 
