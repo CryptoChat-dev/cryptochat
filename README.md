@@ -2,6 +2,12 @@
 
 [Official Instance](https://cryptochat.dev), [Roadmap](https://github.com/CryptoChat-dev/cryptochat/projects/1), [Legal](https://cryptochat.dev/legal), [Email](mailto:contact@cryptochat.dev)
 
+[NOTICE TO DEVELOPERS]
+
+This repository is now archived because of the release of its successor, [CryptoChat 2.0](https://github.com/CryptoChat-Dev/CryptoChat2).
+
+[NOTICE TO DEVELOPERS]
+
 CryptoChat is a simple, secure and beautiful chat webapp. Chatting has never been so satisfying.
 
 ## Features
