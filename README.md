@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# cryptochat [![DeepSource](https://deepsource.io/gh/CryptoChat-dev/cryptochat.svg/?label=active+issues)](https://deepsource.io/gh/CryptoChat-dev/cryptochat/?ref=repository-badge) [![CodeFactor](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat/badge)](https://www.codefactor.io/repository/github/cryptochat-dev/cryptochat) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f9b9b91bc9e14829809e7547184e5087)](https://www.codacy.com/gh/CryptoChat-dev/cryptochat/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CryptoChat-dev/cryptochat&amp;utm_campaign=Badge_Grade) [![Memes](https://img.shields.io/badge/need-memes-red)](https://img.shields.io/badge/need-memes-red)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Official Instance](https://cryptochat.dev), [Roadmap](https://github.com/CryptoChat-dev/cryptochat/projects/1), [Legal](https://cryptochat.dev/legal), [Email](mailto:contact@cryptochat.dev)
 
-## Available Scripts
+CryptoChat is a simple, secure and beautiful chat webapp. Chatting has never been so satisfying.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+Here's an overview of the features CryptoChat has to offer.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Simple UI
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+CryptoChat has barely any clutter on its user interface. It's a simple, yet featured, interface that anybody could use--even your grandma!
 
-### `npm test`
+![Dark Mode Desktop](https://james-has.among-drip.cool/6lvkfaackmvhcn7ki3.png?raw=true)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Light Mode Desktop](https://i.should-not-be-a.live/jtju0jumo6cg49mzk5.png?raw=true)
 
-### `npm run build`
+![Dark Mode Mobile](https://what-the-fu.cc/a72fkb44q8piej26yb.jpeg?raw=true)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Light Mode Mobile](https://windscribe.is-a-cu.lt/hx9qfnz22w1the7fny.jpeg?raw=true)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Encryption
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All messages sent through the official CryptoChat clients are end-to-end encrypted locally, meaning nobody except for the message recipients can read their contents. If you need more piece of mind during your chats, use the random key generator for an extra-secure key (it would take 3,505 years to crack!).
 
-### `npm run eject`
+### Ephemeral
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Message history is *never* stored when using CryptoChat clients. Not on the server, not on the client, not anywhere. When the browser tab goes, so does the chat history.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Cross-Compatible
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Since CryptoChat uses web frameworks, all you need is an electronic device with a web browser. Whether the device is a smartphone, tablet, game console or desktop computer, you can take CryptoChat with you everywhere.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Open-Source
 
-## Learn More
+CryptoChat is open-source meaning that anybody can see its interworkings. This allows the community to improve on its codebase and spot potential security vulnerabilities, leading to an awesome product.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Encryption
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+CryptoChat relies on the crypto-js AES encryption framework to encrypt all usernames and messages with the specified encryption/room key. More specifically, all data sent over the Internet is encrypted using AES-256 bit keys. 
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+(This section will be improved on)

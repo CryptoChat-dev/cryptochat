@@ -70,7 +70,7 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
 
     return (<React.Fragment>
         <Helmet>
-            <link preload rel="stylesheet" href="/styles/Splash.css"></link>
+            <link rel="stylesheet" href="/styles/Splash.css"></link>
         </Helmet>
         <div id="content">
             <div class="container">
