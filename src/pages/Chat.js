@@ -17,11 +17,6 @@ export const initiateSocket = (room) => {
     socket.emit('join', roomName)
 }
 
-export const disconnectSocket = () => {
-    console.log('Disconnecting socket...');
-    if(socket) socket.disconnect();
-  }  
-
 const Chat = () => {
     const history = useHistory();
     const [state, dispatch] = useContext(Context);
@@ -58,15 +53,24 @@ const Chat = () => {
             history.push('/');
             return;
         }
-        dispatch({type: 'SET_ROOM', payload: CryptoJS.SHA512(state.key).toString()})
+
+        var roomName = CryptoJS.SHA512(state.key).toString();
+
+        dispatch({
+            type: 'SET_ROOM',
+            payload: roomName
+        });
+
         initiateSocket(state.key);
-        
+
         if (joinedSent === false) {
-            socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
-                "roomName": state.roomName,
+            var greetingMessage = JSON.parse(JSON.stringify({ // on join, broadcast to room
+                "roomName": roomName,
                 "user_name": crypt.encryptMessage(state.username, state.key),
                 "message": crypt.encryptMessage('has joined the room.', state.key)
-            })));    
+            }));
+            console.log(greetingMessage)
+            socket.emit('chat event', greetingMessage);
             setJoinedSent(true);
         }
     }, [state.roomName])
@@ -93,7 +97,7 @@ const Chat = () => {
                 </div>
             ]);
         } else {
-            console.log("Not my message.")
+            console.log(`Not my message: ${msg}`)
         }
     }
 
