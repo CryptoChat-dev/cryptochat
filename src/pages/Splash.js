@@ -132,7 +132,8 @@ const Splash = () => { // State Variables
             <div id="content">
                 <div class="container">
                     <div class="logo"></div>
-                    <h1>CryptoChat</h1>
+                    <h1>CryptoChat 2.0</h1>
+                    <h2>Simple, secure and ephermeral anonymous messaging.</h2>
                 </div>
                 <div class="messagebox-parent">
                     <div class="messagebox">
