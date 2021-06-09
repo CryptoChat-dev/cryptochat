@@ -52,6 +52,7 @@ const Chat = () => {
     useEffect(() => {
         window.addEventListener("beforeunload", (ev) => {
             ev.preventDefault();
+            ev.returnValue = '';
             socket.emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
                 "user_name": crypt.encryptMessage(state.username, state.key),
                 "message": crypt.encryptMessage('has left the room.', state.key)
