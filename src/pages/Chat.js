@@ -7,7 +7,19 @@ import {useHistory} from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 
 // Socket.IO
-import {socket} from "../service/socket";
+// import {socket} from "../service/socket";
+import io from "socket.io-client";
+let socket;
+
+export const initiateSocket = (room) => {
+    socket = io(process.env.REACT_APP_API);
+    var roomName = CryptoJS.SHA512(room).toString();
+    socket.emit('join', roomName)
+}
+
+export const sendMessage = (room, user_name, message) => {
+    socket.emit('chat', {roomName: room, user_name: user_name, message: message});
+}
 
 const Chat = () => {
     const history = useHistory();
@@ -45,20 +57,11 @@ const Chat = () => {
             history.push('/');
             return;
         }
-
-        socket.on('connection', socket => {
-            var roomName = CryptoJS.SHA512(state.key).toString();
-            console.log('room name: ' + roomName)
-            dispatch({type: 'SET_ROOM', payload: roomName})
-            socket.emit('join', roomName);
-        })
-
+        dispatch({type: 'SET_ROOM', payload: CryptoJS.SHA512(state.key).toString()})
+        initiateSocket(state.key);
+        
         if (joinedSent === false) {
-            socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
-                "roomName": state.roomName,
-                "user_name": crypt.encryptMessage(state.username, state.key),
-                "message": crypt.encryptMessage('has joined the room.', state.key)
-            })));
+            sendMessage(state.roomName, crypt.encryptMessage(state.username, state.key), crypt.encryptMessage('has joined the room.', state.key));
             setJoinedSent(true);
         }
     })
@@ -96,7 +99,7 @@ const Chat = () => {
             "message": crypt.encryptMessage('has left the room.', state.key)
         })));
     }
-    
+
     function changeTheme() { // Change app-wide theme
         if (state.theme === 'light') {
             themeSetting = 'dark';
@@ -116,18 +119,13 @@ const Chat = () => {
     }
 
 
-
     function handleLeave() {
         broadcastLeave();
         history.push('/');
     }
 
     function handleSend() {
-        socket.emit('chat event', JSON.parse(JSON.stringify({
-            "roomName": state.roomName,
-            "user_name": crypt.encryptMessage(state.username, state.key),
-            "message": crypt.encryptMessage(message, state.key)
-        })));
+        sendMessage(state.roomName, crypt.encryptMessage(state.username, state.key), crypt.encryptMessage(message, state.key));
         setMessage('')
     }
 
