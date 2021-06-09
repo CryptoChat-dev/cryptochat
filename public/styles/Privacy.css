@@ -1,0 +1,88 @@
+.chatbox-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 100%;
+    z-index: 0;
+    width: 100%;
+    position: fixed;
+}
+
+.chatbox-child {
+    height: 75%;
+    width: 55%;
+    border-radius: 50px;
+    background: var(--main-background);
+    box-shadow:
+        20px 20px 60px var(--first-box-shadow),
+        -20px -20px 60px var(--second-box-shadow);
+    word-wrap: break-word;
+    overflow-y: scroll;
+}
+
+.chatbox-title {
+    font-size: 3em;
+    margin-left: 5%;
+}
+
+.chatbox-subtitle {
+    font-size: 1.5em;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    font-weight: lighter;
+}
+
+.chatbox-header {
+    line-height: 0.75em;
+}
+
+.chatbox-buttons {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+a {
+    text-decoration: none;
+    text-decoration-color: none;
+}
+
+.textcontent {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.header {
+    margin-left: 5%;
+}
+
+.bullet {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+@media only screen and (max-width: 800px) {
+    .chatbox-child {
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+        overflow: scroll;
+    }
+
+    .chatbox-title {
+        font-size: 2em;
+    }
+
+    .chatbox-subtitle {
+        font-size: 1em;
+        line-height: 1.25em;
+    }
+
+    .chatbox-buttons {
+        justify-content: center;
+    }
+}

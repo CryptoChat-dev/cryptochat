@@ -50,6 +50,7 @@ body {
 
 .messagebox input {
     border: none;
+    --webkit-appearance: none;
     outline: none;
     background: none;
     font-size: 18px;
