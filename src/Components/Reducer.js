@@ -20,6 +20,11 @@ const Reducer = (state, action) => {
                 ...state,
                 modalColor: action.payload
             };
+        case 'SET_ROOM':
+            return {
+                ...state,
+                roomName: action.payload
+            };
         case 'SET_USERNAME':
             return {
                 ...state,

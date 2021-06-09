@@ -6,6 +6,7 @@ const initialState = {
     oppositeTheme: 'light',
     modalColor: '#292929',
     key: null,
+    roomName: null,
     username: null,
     error: null
 };
