@@ -50,11 +50,7 @@ const Chat = () => {
     })
 
     useEffect(() => {
-        window.addEventListener("beforeunload", (ev) => {
-            ev.preventDefault();
-            broadcastLeave();
-            ev.returnValue = '';
-        });
+        window.onbeforeunload = broadcastLeave;
         socket.on('my response', messageHandler);
         return() => {
             socket.off('my response')
