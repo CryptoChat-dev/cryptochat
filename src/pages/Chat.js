@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 // Crypto JS
 import CryptoJS from 'crypto-js';
@@ -14,6 +14,7 @@ const Chat = () => {
     const [state, dispatch] = useContext(Context);
     const [message, setMessage] = React.useState();
     const [received, setReceived] = React.useState([]);
+    const [joinedSent, setJoinedSent] = React.useState(false);
 
     var themeSetting;
 
@@ -39,17 +40,16 @@ const Chat = () => {
     })();
 
     useEffect(() => {
-        socket.on('connect', function () { // on connect
-            socket.emit('chat event', {data: 'User Connected'});
+        if (joinedSent === false) {
             socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
                 "user_name": crypt.encryptMessage(state.username, state.key),
                 "message": crypt.encryptMessage('has joined the room.', state.key)
-            })))
-        });
+            })));
+            setJoinedSent(true);
+        }
     })
 
     useEffect(() => {
-
         socket.on('my response', messageHandler);
         return() => {
             socket.off('my response')
@@ -111,50 +111,54 @@ const Chat = () => {
 
     // Return
 
-    return (<React.Fragment>
-        <Helmet>
-            <link rel="stylesheet" href="/styles/Chat.css"/> {/* <script src="/crypto-js/aes.js"></script> */} </Helmet>
-        <div class="chatbox-parent" id="chatbox-parent">
-            <div class="chatbox-child">
-                <div class="chatbox-header">
-                    <p class="keyname" id="keyname">Room Key: {
-                        state.key
-                    }</p>
-                    <h1 class="chatbox-title">CryptoChat</h1>
-                    <h2 class="chatbox-subtitle">
-                        A stunning encrypted chat webapp.
-                    </h2>
-                </div>
-                <div class="chatbox-messages">
-                    <div class="messageviewer-parent">
-                        <div id="messageviewer" name="messageviewer" class="messageviewer">
-                            <div class="messagetxt"> {received}</div>
-                        </div>
+    return (
+        <React.Fragment>
+            <Helmet>
+                <link rel="stylesheet" href="/styles/Chat.css"/> {/* <script src="/crypto-js/aes.js"></script> */} </Helmet>
+            <div class="chatbox-parent" id="chatbox-parent">
+                <div class="chatbox-child">
+                    <div class="chatbox-header">
+                        <p class="keyname" id="keyname">Room Key: {
+                            state.key
+                        }</p>
+                        <h1 class="chatbox-title">CryptoChat</h1>
+                        <h2 class="chatbox-subtitle">
+                            A stunning encrypted chat webapp.
+                        </h2>
                     </div>
-                    <div class="messagebox">
-                        <div class="fields">
-                            <div class="username">
-                                <input id="msg" type="text" class="message" placeholder="What's up?"
-                                    value={message}
-                                    onChange={handleMessageChange}
-                                    onKeyDown={handleMessageKeyDown}/>
+                    <div class="chatbox-messages">
+                        <div class="messageviewer-parent">
+                            <div id="messageviewer" name="messageviewer" class="messageviewer">
+                                <div class="messagetxt">
+                                    {received}</div>
+                            </div>
+                        </div>
+                        <div class="messagebox">
+                            <div class="fields">
+                                <div class="username">
+                                    <input id="msg" type="text" class="message" placeholder="What's up?"
+                                        value={message}
+                                        onChange={handleMessageChange}
+                                        onKeyDown={handleMessageKeyDown}/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="chatbox-buttons">
-                    <button class="button theme" id="toggler"
-                        onClick={changeTheme}> {
-                        state.oppositeTheme
-                    }</button>
-                    <button class="button send" id="sendbutton"
-                        onClick={handleSend}>Send</button>
-                    <button class="button leave" id="leavebutton"
-                        onClick={handleLeave}>Leave</button>
+                    <div class="chatbox-buttons">
+                        <button class="button theme" id="toggler"
+                            onClick={changeTheme}>
+                            {
+                            state.oppositeTheme
+                        }</button>
+                        <button class="button send" id="sendbutton"
+                            onClick={handleSend}>Send</button>
+                        <button class="button leave" id="leavebutton"
+                            onClick={handleLeave}>Leave</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </React.Fragment>)
+        </React.Fragment>
+    )
 }
 export default Chat;
