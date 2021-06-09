@@ -3,8 +3,9 @@ import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
 import {useHistory} from 'react-router-dom';
 import {eff} from '../assets/eff';
-import {Dialog, DialogOverlay, DialogContent} from "@reach/dialog";
+import {Dialog} from "@reach/dialog";
 import "@reach/dialog/styles.css"
+import styled from '@emotion/styled';
 
 const Splash = () => { // State Variables
     const history = useHistory();
@@ -20,6 +21,7 @@ const Splash = () => { // State Variables
     const [showEVDialog, setShowEVDialog] = React.useState(false);
     const openEV = () => setShowEVDialog(true);
     const closeEV = () => setShowEVDialog(false);
+
 
     var themeSetting;
 
@@ -61,33 +63,35 @@ const Splash = () => { // State Variables
 
     function scorePassword(pass) {
         var score = 0;
-        if (!pass)
+        if (! pass) 
             return score;
-    
+        
+
+
         // award every unique letter until 5 repetitions
         var letters = Object();
-        for (var i=0; i<pass.length; i++) {
+        for (var i = 0; i < pass.length; i++) {
             letters[pass[i]] = (letters[pass[i]] || 0) + 1;
             score += 5.0 / letters[pass[i]];
         }
-    
+
         // bonus points for mixing it up
         var variations = {
             digits: /\d/.test(pass),
             lower: /[a-z]/.test(pass),
             upper: /[A-Z]/.test(pass),
-            nonWords: /\W/.test(pass),
+            nonWords: /\W/.test(pass)
         }
-    
+
         var variationCount = 0;
         for (var check in variations) {
             variationCount += (variations[check] === true) ? 1 : 0;
         }
         score += (variationCount - 1) * 10;
-    
+
         return parseInt(score);
     }
-    
+
     function secureRandom(count) { // generate a cryptographically secure integer
         var cryptoObj = window.crypto || window.msCrypto
         var rand = new Uint32Array(1)
@@ -177,7 +181,7 @@ const Splash = () => { // State Variables
                 </div>
                 <Dialog style={
                         {
-                            background: state.modalColor,
+                            backgroundColor: state.modalColor,
                             minWidth: "calc(min(350px,90%))",
                             width: "25%",
                             padding: "2%",
@@ -190,23 +194,24 @@ const Splash = () => { // State Variables
                     <h1>Weak Key</h1>
                     <p>The key you entered is insecure. It is recommended to use the random button. Do you wish to override?</p>
                     <div class="modalButtons">
-                        <button class="modalButton red" onClick={handleJoin}>Yes</button>
+                        <button class="modalButton red"
+                            onClick={handleJoin}>Yes</button>
                         <button class="button"
                             onClick={close}>No</button>
                     </div>
                 </Dialog>
-                <Dialog style={
+                <Dialog isOpen={showEVDialog}
+                    onDismiss={closeEV}
+                    style={
                         {
-                            background: state.modalColor,
+                            backgroundColor: state.modalColor,
                             minWidth: "calc(min(350px,90%))",
                             width: "25%",
                             padding: "2%",
                             textAlign: "center",
                             borderRadius: "10px"
                         }
-                    }
-                    isOpen={showEVDialog}
-                    onDismiss={closeEV}>
+                }>
                     <h1>Empty Values</h1>
                     <p>You can't have an empty username or key!</p>
                     <div class="modalButtons">
