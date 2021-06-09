@@ -15,6 +15,11 @@ const Reducer = (state, action) => {
                 ...state,
                 key: action.payload
             };
+        case 'SET_MODAL':
+            return {
+                ...state,
+                modalColor: action.payload
+            };
         case 'SET_USERNAME':
             return {
                 ...state,

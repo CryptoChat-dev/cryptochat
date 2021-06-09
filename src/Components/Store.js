@@ -4,6 +4,7 @@ import Reducer from './Reducer'
 const initialState = {
     theme: 'dark',
     oppositeTheme: 'light',
+    modalColor: '#292929',
     key: null,
     username: null,
     error: null
