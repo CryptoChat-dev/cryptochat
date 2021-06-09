@@ -5,7 +5,6 @@ import {useHistory} from 'react-router-dom';
 import {eff} from '../assets/eff';
 import {Dialog} from "@reach/dialog";
 import "@reach/dialog/styles.css"
-import styled from '@emotion/styled';
 
 const Splash = () => { // State Variables
     const history = useHistory();
