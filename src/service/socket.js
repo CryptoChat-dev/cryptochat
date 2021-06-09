@@ -1,3 +1,3 @@
 import io from "socket.io-client";
 
-export const socket = io("https://cryptochat.dev");
+export const socket = io("https://api.cryptochat.dev");
