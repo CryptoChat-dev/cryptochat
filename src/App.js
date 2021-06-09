@@ -16,7 +16,7 @@ function App() {
                 }
                 setDisplayChat = {
                     setDisplayChat
-                } />
+                }/>
             } </div>
         </Store>)
     } else {

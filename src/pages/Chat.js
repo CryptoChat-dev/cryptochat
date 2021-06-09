@@ -6,25 +6,15 @@ import {Context} from '../Components/Store';
 import CryptoJS from 'crypto-js';
 
 // Socket.IO
-import socketIOClient from "socket.io-client";
-const ENDPOINT = "https://cryptochat.dev";
-const socket = socketIOClient(ENDPOINT);
+import {socket} from "../service/socket";
 
 const Chat = ({displayChat, setDisplayChat}) => {
     const [state, dispatch] = useContext(Context);
-    const [message, setMessage] = React.useState('');
+    const [message, setMessage] = React.useState();
+    const [received, setReceived] = React.useState([]);
 
     var themeSetting;
 
-    useEffect(() => {
-        socket.on('connect', function () { // on connect
-            socket.emit('chat event', {data: 'User Connected'});
-            socket.emit('chat event', { // on join, broadcast to room
-                "user_name": crypt.encryptMessage(state.username, state.key),
-                "message": crypt.encryptMessage('has joined the room.', state.key)
-            });
-        });
-    });
 
     // Helper Functions
 
@@ -35,13 +25,52 @@ const Chat = ({displayChat, setDisplayChat}) => {
                 return encryptedMessage.toString();
             },
             decryptMessage: function (encryptedMessage = '', secretkey = '') {
-                var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
-                var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
-                return decryptedMessage;
+                try {
+                    var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, secretkey);
+                    var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
+                    return decryptedMessage;
+                } catch (err) {
+                    console.log("Malformed UTF-8 Data.")
+                }
             }
         };
     })();
 
+    useEffect(() => {
+        socket.on('connect', function () { // on connect
+            socket.emit('chat event', {data: 'User Connected'});
+            socket.emit('chat event', { // on join, broadcast to room
+                "user_name": crypt.encryptMessage(state.username, state.key),
+                "message": crypt.encryptMessage('has joined the room.', state.key)
+            })
+        });
+    })
+
+    useEffect(() => {
+
+        socket.on('my response', messageHandler);
+        return() => {
+            socket.off('my response')
+        }
+    }, []);
+
+    function messageHandler(msg) {
+        console.log(msg); // for debugging: print the encrypted contents of the response
+        var decryptedUsername;
+        var decryptedMessage;
+        decryptedUsername = crypt.decryptMessage(msg.user_name, state.key);
+        decryptedMessage = crypt.decryptMessage(msg.message, state.key);
+        if (decryptedUsername === '' && decryptedMessage === '') { // if the username and message are empty values, stop
+            return;
+        }
+        setReceived((messages) => [
+            ...messages,
+            <div>
+                <p> {decryptedUsername}: {decryptedMessage}</p>
+            </div>
+        ]);
+
+    }
     function changeTheme() { // Change app-wide theme
         if (state.theme === 'light') {
             themeSetting = 'dark';
@@ -69,6 +98,8 @@ const Chat = ({displayChat, setDisplayChat}) => {
             "user_name": crypt.encryptMessage(state.username, state.key),
             "message": crypt.encryptMessage(message, state.key)
         })));
+        console.log('received: ' + received)
+
     }
 
     // Return
@@ -90,7 +121,7 @@ const Chat = ({displayChat, setDisplayChat}) => {
                 <div class="chatbox-messages">
                     <div class="messageviewer-parent">
                         <div id="messageviewer" name="messageviewer" class="messageviewer">
-                            <p class="messagetxt"></p>
+                            <div class="messagetxt"> {received}</div>
                         </div>
                     </div>
                     <div class="messagebox">
@@ -117,5 +148,4 @@ const Chat = ({displayChat, setDisplayChat}) => {
 
     </React.Fragment>)
 }
-
 export default Chat;
