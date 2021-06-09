@@ -50,6 +50,13 @@ const Chat = () => {
     })
 
     useEffect(() => {
+        window.addEventListener("beforeunload", (ev) => {
+            ev.preventDefault();
+            socket.emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
+                "user_name": crypt.encryptMessage(state.username, state.key),
+                "message": crypt.encryptMessage('has left the room.', state.key)
+            })));
+        });
         socket.on('my response', messageHandler);
         return() => {
             socket.off('my response')
@@ -91,13 +98,6 @@ const Chat = () => {
         setMessage(e.target.value);
     }
 
-    window.addEventListener("beforeunload", (ev) => {
-        ev.preventDefault();
-        socket.emit('chat event', JSON.parse(JSON.stringify({ // on join, broadcast to room
-            "user_name": crypt.encryptMessage(state.username, state.key),
-            "message": crypt.encryptMessage('has left the room.', state.key)
-        })));
-    });
 
 
     function handleLeave() {
