@@ -52,8 +52,8 @@ const Chat = () => {
     useEffect(() => {
         window.addEventListener("beforeunload", (ev) => {
             ev.preventDefault();
-            ev.returnValue = '';
             broadcastLeave();
+            ev.returnValue = '';
         });
         socket.on('my response', messageHandler);
         return() => {
