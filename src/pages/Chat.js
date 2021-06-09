@@ -34,6 +34,7 @@ const Chat = () => {
                     return decryptedMessage;
                 } catch (err) {
                     console.log("Malformed UTF-8 Data.")
+                    return '';
                 }
             }
         };
