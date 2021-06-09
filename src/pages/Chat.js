@@ -1,7 +1,9 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
 import {useHistory} from 'react-router-dom';
+import UIfx from 'uifx';
+import notificationSound from '../assets/notification.mp3';
 
 // Crypto JS
 import CryptoJS from 'crypto-js';
@@ -16,9 +18,12 @@ export const initiateSocket = (room) => {
     var roomName = CryptoJS.SHA512(room).toString();
     socket.emit('join', roomName)
 }
+const sound = new UIfx({asset: notificationSound});
 
 const Chat = () => {
     const history = useHistory();
+    const divRef = useRef(null);
+
     const [state, dispatch] = useContext(Context);
     const [message, setMessage] = React.useState();
     const [received, setReceived] = React.useState([]);
@@ -92,10 +97,12 @@ const Chat = () => {
             console.log(msg); // for debugging: print the encrypted contents of the response
             setReceived((messages) => [
                 ...messages,
-                <div>
+                <div ref={divRef}>
                     <p> {decryptedUsername}: {decryptedMessage}</p>
                 </div>
             ]);
+            sound.play();
+            divRef.current.scrollIntoView({ behavior: 'smooth' });
         } else {
             console.log(`Not my message: ${msg}`)
         }
@@ -134,6 +141,9 @@ const Chat = () => {
     }
 
     function handleSend() {
+        if (message === '') {
+            return;
+        }
         socket.emit('chat event', JSON.parse(JSON.stringify({ // on leave, broadcast to room
             "roomName": state.roomName,
             "user_name": crypt.encryptMessage(state.username, state.key),
