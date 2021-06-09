@@ -62,7 +62,7 @@ const Chat = () => {
         var decryptedMessage;
         decryptedUsername = crypt.decryptMessage(msg.user_name, state.key);
         decryptedMessage = crypt.decryptMessage(msg.message, state.key);
-        if (decryptedUsername === '' && decryptedMessage === '') { // if the username and message are empty values, stop
+        if (decryptedUsername === '' || decryptedMessage === '') { // if the username and message are empty values, stop
             return;
         }
         setReceived((messages) => [
