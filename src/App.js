@@ -6,38 +6,22 @@ import Chat from './pages/Chat.js';
 import Store from './Components/Store';
 import LazyLoad from 'react-lazyload';
 import Loading from './Components/Loading';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+
 function App() {
-    const [displayChat, setDisplayChat] = React.useState(false);
-
-    if (displayChat === true) {
-        return (<LazyLoad placeholder={Loading}>
+    return (
+        <Router>
             <Store>
-                <div className="App"> {
-                    < Chat displayChat = {
-                        displayChat
-                    }
-                    setDisplayChat = {
-                        setDisplayChat
-                    } />
-                } </div>
+                <div className="App">
+                    <Switch>
+                        <Route exact path="/" component={Splash} />
+                        <Route path="/chat" component={Chat} />
+                    </Switch>
+                </div>
             </Store>
-        </LazyLoad>)
-    } else {
-        return (<LazyLoad placeholder={Loading}>
-
-            <Store>
-                <div className="App"> {
-                    < Splash displayChat = {
-                        displayChat
-                    }
-                    setDisplayChat = {
-                        setDisplayChat
-                    } />
-                } </div>
-            </Store>
-        </LazyLoad>)
-    }
-
+        </Router>
+    )
 }
 
 export default App;

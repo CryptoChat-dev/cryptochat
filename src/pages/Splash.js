@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
+import { useHistory } from 'react-router-dom';
 import {eff} from '../assets/eff';
 
-const Splash = ({displayChat, setDisplayChat}) => { // State Variables
+const Splash = () => { // State Variables
+    const history = useHistory();
 
     const [state, dispatch] = useContext(Context);
     const [key, setKey] = React.useState('');
@@ -30,7 +32,8 @@ const Splash = ({displayChat, setDisplayChat}) => { // State Variables
         }
         dispatch({type: 'SET_USERNAME', payload: username});
         dispatch({type: 'SET_KEY', payload: key});
-        setDisplayChat(true);
+        // setDisplayChat(true);
+        history.push('/chat');
     }
 
     function getWordNum() {

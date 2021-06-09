@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import {Helmet} from 'react-helmet';
 import {Context} from '../Components/Store';
+import { useHistory } from 'react-router-dom';
 
 // Crypto JS
 import CryptoJS from 'crypto-js';
@@ -8,7 +9,8 @@ import CryptoJS from 'crypto-js';
 // Socket.IO
 import {socket} from "../service/socket";
 
-const Chat = ({displayChat, setDisplayChat}) => {
+const Chat = () => {
+    const history = useHistory();
     const [state, dispatch] = useContext(Context);
     const [message, setMessage] = React.useState();
     const [received, setReceived] = React.useState([]);
@@ -90,7 +92,7 @@ const Chat = ({displayChat, setDisplayChat}) => {
     }
 
     function handleLeave() {
-        setDisplayChat(false);
+        history.push('/');
     }
 
     function handleSend() {
